@@ -46,11 +46,7 @@
 
 % 英文要旨
 \englishabstract{%
-Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious.
-
-Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious.
-
-Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs are so delicious.
+和文要旨整理し終わった後に書く
 }
 
 \begin{document}
@@ -65,12 +61,12 @@ Elephant eggs are so delicious. Elephant eggs are so delicious. Elephant eggs ar
 \pagenumbering{arabic}
 
 \section{研究の背景} \label{introduction:background}
-水とエタノールの混合物から蒸留を繰り返し、エタノールを濃縮することでアルコール度数を上げることができるが、共沸という現象によってアルコール度数は96度までしか上げることが出来ず、それ以上エタノールを濃縮できないことが知られている。これが世界最高純度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象を実際に実験系で確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、共沸現象は数値計算で精力的に研究が行われてきた。
-これまで共沸現象は、ギブスアンサンブル(GibbsEnsemble, GE)法などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきたが、GE法は計算が不安定、GDI法は共沸現象を基準点からの積分により定義するため誤差が積算されていくといった問題点が存在する。
+蒸留とは、液体の混合物から選択的な沸騰と凝縮を利用して成分や物質を分離するプロセスのことを言う。混合物を加熱していくと、液面から各成分が蒸発していき、各成分の蒸気圧の和が外圧と等しくなったときに沸騰が始まる。このとき、発生する蒸気の組成比はラウールの法則に従って、純液体の蒸気圧と混合溶液中のモル分率の積で決定される。この蒸気を凝縮すると液体混合物が得られるが、この液体混合物は初めの液体混合物と比較すると、特定成分の濃度が上がったものとなる。つまり、この蒸留という操作を繰り返し行うことによって、目的成分の濃度を上昇させることができる。\\
+今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し、エタノールを濃縮することでアルコール度数を上げることができる。共沸という現象によってアルコール度数は96度までしか上げることが出来ず、それ以上エタノールを濃縮できないことが知られている。これが世界最高純度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象を実際に実験系で確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、共沸現象は数値計算で精力的に研究が行われてきた。
+これまで共沸現象は、数値計算の分野においては、ギブスアンサンブル(GibbsEnsemble, GE)法などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
 
 \section{研究の目的}
-
-研究の背景を受けて、この研究分野は重要であるが、なんらかの不満点があることを述べる。その不満点は解決すべき問題であることを文献を引用しながら読者に納得させる。本研究の目的は、その不満点を解消することであることを述べ、その方法について簡単に述べる。
+GE法やGDI法によって、「どんな物性がどのように共沸条件に効いてくるかをミクロに調べたい」という目的は達成された。しかし、GE法はシミュレーションボックス間での粒子交換が必要なため計算が重い、臨界点近傍での気液の密度が近く気液の判別が困難なため計算が不安定といった問題点が、GDI法は共沸現象を基準点からの積分により定義するため誤差が積算されていく、各共沸点が依存しているため並列計算に向いていないといった問題点が存在する。また、これらの手法は2つのシミュレーションボックスで気液共存状態を実現するので、第三成分を加味することが非常に困難である。そこで、我々は分子動力学(Molecular Dynamics, MD)\cite{molecular-dynamics}により、一つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現することを第一の目的とする。そして、既存の手法で困難であった第三成分の添加による共沸組成の変化を観測することを第二の目的とする。
 
 \section{本論文の構成}
 
