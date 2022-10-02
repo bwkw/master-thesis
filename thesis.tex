@@ -65,26 +65,20 @@
 今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し、エタノールを濃縮することでアルコール度数を上げることができる。共沸という現象によってアルコール度数は96度までしか上げることが出来ず、それ以上エタノールを濃縮できないことが知られている。これが世界最高純度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象を実際に実験系で確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、共沸現象は数値計算で精力的に研究が行われてきた。
 これまで共沸現象は、数値計算の分野においては、ギブスアンサンブル(GibbsEnsemble, GE)法などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
 
-\section{研究の目的}
+\section{研究の目的} \label{introduction:purpose}
 GE法やGDI法によって、「どんな物性がどのように共沸条件に効いてくるかをミクロに調べたい」という目的は達成された。しかし、GE法はシミュレーションボックス間での粒子交換が必要なため計算が重い、臨界点近傍での気液の密度が近く気液の判別が困難なため計算が不安定といった問題点が、GDI法は共沸現象を基準点からの積分により定義するため誤差が積算されていく、各共沸点が依存しているため並列計算に向いていないといった問題点が存在する。また、これらの手法は2つのシミュレーションボックスで気液共存状態を実現するので、第三成分を添加することが非常に困難である。そこで、我々は分子動力学(Molecular Dynamics, MD)法により、一つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現することを第一の目的とする。そして、既存の手法で困難であった第三成分の添加による共沸組成の変化を観測することを第二の目的とする。
 
-\section{本論文の構成}
+\section{本論文の構成} \label{introduction:constitution}
 本研究では、分子動力学(Molecular Dynamics, MD)法により、1つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現すること、既存の手法で困難であった第三成分の添加による共沸組成の変化を観測することを目的とする。
 第\ref{chap:introduction}章では、共沸研究に用いられてきたいくつかの数値計算手法を示した。
+第\ref{chap:principle}章では、本研究で必要となるいくつかの原理を述べる。
 第\ref{chap:method}章では、二成分系における共沸現象実現手法、二成分系への第三成分添加手法について説明する。
 第\ref{chap:results}章では、第\ref{chap:method}章で提案した手法による結果を述べる。
 第\ref{chap:summary}章では、本研究で得られた知見を総括し、結論と今後の展望について述べる。
 
 
-\chapter{手法} \label{chap:method}
-\ref{method-sec:mono-component}節では、単成分LJ系におけるMD法による気液共存状態の実現手法を述べる。
-\ref{method-sec:bi-component-azeotrope}節では、二成分LJ系におけるMD法による共沸現象の実現手法を述べる。
-\ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
-\ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
-
-
-\section{単成分LJ系におけるMD法による気液共存状態の実現} \label{method-sec:mono-component}
-\subsection{LJポテンシャル}\label{method-subsec:LJ}
+\chapter{原理} \label{chap:principle}
+\section{LJポテンシャル}\label{principle-sec:LJ}
 分子動力学計算において頻繁に用いられるモデルの一つにLennard-Jones\,(LJ)ポテンシャルと呼ばれるものが存在する。
 LJポテンシャルは、アルゴンのような貴ガスのファンデルワールス力を記述するために提案された\cite{lennard-jones}もので、
 このポテンシャルモデルにおいて二つの原子間相互作用ポテンシャルエネルギーは
@@ -132,6 +126,44 @@ t^*=t\sqrt{\frac{\varepsilon}{m{\sigma}^2}}\label{eq:time}
 \normalsize
 と表される。
 
+\section{WCAポテンシャル}\label{principle-sec:WCA}
+\ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
+WCAポテンシャル粒子系においてもLJ単位系を用いる。
+カットオフ距離とは、その距離内の原子間の相互作用のみを考慮するものであり、それ以上の距離での原子間の力を無視するものである\cite{cutoff}。
+WCAポテンシャル粒子系において二つの原子間相互作用ポテンシャルエネルギーは、
+
+\large
+\begin{equation}
+\phi(r) = \left\{ \begin{array}{ll}
+    4{\varepsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right) & (r\,{\leq}\,{r_c}) \\
+    0 & (r>r_c)\label{eq:wca}
+\end{array} \right.
+\end{equation}
+\normalsize
+と表される\cite{wca}。
+したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二原子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
+
+\section{LJ, WCAポテンシャル}\label{principle-sec:LJ-WCA}
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/dis-poen.pdf}
+    \end{center}
+    \caption{WCAとLJの原子間距離-ポテンシャルエネルギー。
+    WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、$r>r_c$でポテンシャルエネルギーが0になっている。}
+    \label{fig:dis-poen}
+\end{figure}
+
+図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
+$r>r_c$でポテンシャルエネルギーが0になっている。
+
+
+\chapter{手法} \label{chap:method}
+\ref{method-sec:mono-component}節では、単成分LJ系におけるMD法による気液共存状態の実現手法を述べる。
+\ref{method-sec:bi-component-azeotrope}節では、二成分LJ系におけるMD法による共沸現象の実現手法を述べる。
+\ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
+\ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
+
+\section{単成分LJ系におけるMD法による気液共存状態の実現} \label{method-sec:mono-component}
 \section{二成分LJ系におけるMD法による共沸現象の実現} \label{method-sec:bi-component-azeotrope}
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
 \section{二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
