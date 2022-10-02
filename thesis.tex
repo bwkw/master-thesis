@@ -78,9 +78,13 @@ GE法やGDI法によって、「どんな物性がどのように共沸条件に
 
 
 \chapter{原理} \label{chap:principle}
+\section{分子動力学法}\label{principle-sec:molecular-dynamics}
+原子や分子間に働く力を計算し、位置や運動量の時間発展を数値的に追う手法を分子動力学(Molecular Dynamics method, MD)法と言う。
+本研究では、分子に関する計算をMDシミュレーションにより行う。
+尚、MDシミュレーションには、分子動力学プログラムLarge-scale Atomic/Molecular Massively Parallel Simulator\,(LAMMPS)\cite{lammps}を用いた。
 \section{LJポテンシャル}\label{principle-sec:LJ}
 分子動力学計算において頻繁に用いられるモデルの一つにLennard-Jones\,(LJ)ポテンシャルと呼ばれるものが存在する。
-LJポテンシャルは、アルゴンのような貴ガスのファンデルワールス力を記述するために提案された\cite{lennard-jones}もので、
+LJポテンシャルは、アルゴンのような貴ガスのファンデルワールス力を記述するために提案された\cite{lennard-jones}もので、単純な物質(Lennard-Jonesium)を記述する研究\cite{lennard-jonesium-1,lennard-jonesium-2}や、実際の物質の多くの力場における構成要素\cite{lennard-jones-force-field-1,lennard-jones-force-field-2, lennard-jones-force-field-3}として用いられている。
 このポテンシャルモデルにおいて二つの原子間相互作用ポテンシャルエネルギーは
 \large
 \begin{equation}
@@ -131,7 +135,6 @@ t^*=t\sqrt{\frac{\varepsilon}{m{\sigma}^2}}\label{eq:time}
 WCAポテンシャル粒子系においてもLJ単位系を用いる。
 カットオフ距離とは、その距離内の原子間の相互作用のみを考慮するものであり、それ以上の距離での原子間の力を無視するものである\cite{cutoff}。
 WCAポテンシャル粒子系において二つの原子間相互作用ポテンシャルエネルギーは、
-
 \large
 \begin{equation}
 \phi(r) = \left\{ \begin{array}{ll}
@@ -143,7 +146,7 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 と表される\cite{wca}。
 したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二原子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
 
-\section{LJ, WCAポテンシャル}\label{principle-sec:LJ-WCA}
+\section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=14cm]{fig/dis-poen.pdf}
@@ -168,57 +171,6 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
 \section{二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
 
-\section{引用の仕方}
-
-原則として科学技術論文では、引用のない文章は「著者のオリジナル」であるとみなされる。LAMMPSなどのツールを使えばその関連論文を、手法の説明をするならその手法を提案した論文を引用しなければならない。
-
-引用するのは、原則として書籍か査読論文とし、ウェブサイトの引用はさけること。特に何かの説明の参照先としてWikipediaやSlideShareなどを挙げないこと。機械学習の論文であればプレプリント(arXiv)を読むことも多いと思われるが、引用したくなるような論文はどこかのカンファレンスに採択されていることが多いので、そちらを引用すること。たとえ自分がWikipediaで知識を得たとしても、Wikipediaで引用されている文献にあたり、書籍なり論文なりを参考にすること。
-
-参考文献は、原則としてBibTeXで管理すること。これにより、「本文で参照されていない文献を参考文献に入れてはならない」「本文で参照される順番に並べないとならない」などのルールが自動的に満たされる。
-
-BibTeXでは、参考文献を「エントリ」と呼ばれる構造で管理する。エントリにはいくつか種別があるが、良く使うのは書籍(book)、論文(article)、プロシーディング(inproceedings)などであろう。例えば書籍は以下のようなエントリとする。
-
-\begin{lstlisting}[language=TeX]
-@book{okumura2020,
-    author    = {奥村 晴彦 and 黒木 裕介},
-    title     = {LaTeX2ε美文書作成入門},
-    publisher = {技術評論社},
-    year      = {2020}
-}
-\end{lstlisting}
-
-これをTeXファイル中で以下のように引用する。
-
-\begin{verbatim}
-本論文の執筆にあたり、LaTeXの書き方については奥村・黒木の書籍を参考にした\cite{okumura2020}。
-\end{verbatim}
-
-これは以下のようにタイプセットされる。
-\begin{quotation}
-    本論文の執筆にあたり、LaTeXの書き方については奥村・黒木の書籍を参考にした\cite{okumura2020}。
-\end{quotation}
-
-
-GitHubのサイトなど、やむを得ずURLを引用する場合には、bibitemのmiscを使って以下のようにする。
-
-\begin{lstlisting}[language=TeX]
-@misc{github,
-  howpublished = {\url{https://github.com/kaityo256/rbs}
-},
-\end{lstlisting}
-
-例えば
-
-\begin{verbatim}
-この論文の参照実装はGitHubにて利用可能である\cite{github}。
-\end{verbatim}
-として引用すると、
-
-\begin{quotation}
-    この論文の参照実装はGitHubにて利用可能である\cite{github}。
-\end{quotation}
-となる。
-
 \chapter{結果} \label{chap:results}
 
 \section{図の入れ方}
@@ -239,7 +191,7 @@ GitHubのサイトなど、やむを得ずURLを引用する場合には、bibit
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=10cm]{fig/temperature.pdf}
-    \caption{温度の時間発展。}
+    \caption{温度の時間発展}
     \label{fig:temperature}
 \end{figure}
 
