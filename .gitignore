@@ -20,3 +20,5 @@
 *.fdb_latexmk
 *.synctex.gz
 thesis.pdf
+
+.idea
