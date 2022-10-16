@@ -78,7 +78,7 @@ GE法やGDI法によって、「どんな物性がどのように共沸条件に
 
 \chapter{原理} \label{chap:principle}
 \section{分子動力学法}\label{principle-sec:molecular-dynamics}
-原子や分子間に働く力を計算し、位置や運動量の時間発展を数値的に追う手法を分子動力学(Molecular Dynamics method, MD)法と言う。
+原子や分子間に働く力を計算し、位置や運動量の時間発展を数値的に追う手法を分子動力学(Molecular Dynamics, MD)法と言う。
 本研究では、分子に関する計算をMDシミュレーションにより行う。
 尚、MDシミュレーションには、分子動力学プログラムLarge-scale Atomic/Molecular Massively Parallel Simulator\,(LAMMPS)\cite{lammps}を用いた。
 \section{LJポテンシャル}\label{principle-sec:LJ}
@@ -146,6 +146,10 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二原子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
 
 \section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
+図{\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における原子間距離$r$と原子間のポテンシャルエネルギー$E$を示す。
+尚、図{\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
+
+\newpage
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=14cm]{fig/dis-poen.pdf}
@@ -166,49 +170,32 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
 
 \section{単成分LJ系におけるMD法による気液共存状態の実現} \label{method-sec:mono-component}
+LJ系では、ある温度、密度条件では気相と液相が相分離することが平衡状態（=気液共存状態）である事が知られている\cite{gas-liquid-equilibrium}。本節では、実際にMDシミュレーションによりこの事実を観測し、先行研究の再現を行う。
+初期状態として$100×50×50$の直方体の左半分に$N=87808(28×28×28×4)$個の粒子を、右半分に$N=2916(9×9×9×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。
+
+% 図\ref{fig:initial-state-molecule}に、原子の初期配置を示す。
+% \begin{figure}[htbp]
+%     \begin{center}
+%         \includegraphics[width=8cm]{}
+%     \end{center}
+%     \caption{原子の初期配置。
+%     fcc構造上に配置されている。}
+%     \label{fig:initial-state-molecule}
+% \end{figure}
+
+この初期条件の下、LJポテンシャルパラメータの${\sigma}$,\,${\varepsilon}$を共に1.0、温度$T=1.0$とし、タイムステップ0.001で20000ステップ実行のシミュレーションを行い、粒子の状態を観測した。
+\ref{results-sec:mono-component}では、このシミュレーション実行時の粒子の状態および、先行研究との比較を行う。
+
 \section{二成分LJ系におけるMD法による共沸現象の実現} \label{method-sec:bi-component-azeotrope}
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
 \section{二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
 
+
 \chapter{結果} \label{chap:results}
-
-\section{図の入れ方}
-
-図は、数が多くなければとりえあずfigといったディレクトリにまとめて入れておくと良いだろう。数が増えてきて管理が難しくなったら節ごとにわけるなど工夫すること。画像ファイルは原則としてPDFにすること。例えば\verb|temperature.pdf|を入れたいなら、
-
-\begin{lstlisting}[language={[LaTeX]TeX}]
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=10cm]{fig/temperature.pdf}
-    \caption{温度の時間発展。}
-    \label{fig:temperature}
-\end{figure}
-\end{lstlisting}
-
-とすると、以下のような図が得られる。
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=10cm]{fig/temperature.pdf}
-    \caption{温度の時間発展}
-    \label{fig:temperature}
-\end{figure}
-
-この時、元データと、データからPDFを作るためのプロットファイルもしくはスクリプトファイルを一緒に入れておく。この時、画像ファイルとプロットファイルの名前を同じにしておくと良い。例えばgnuplotを使って\verb|temperature.pdf|という画像を作るなら、プロットファイルを\verb|temperature.plt|にしておく。すると、
-
-\begin{lstlisting}[language=bash]
-gnuplot temperature.plt
-\end{lstlisting}
-
-を実行することで\verb|temperature.pdf|ができるのでわかりやすい。
-
-また、名前を揃えておくとmakefileとの相性が良くなる。例えば\verb|pressure.pdf|、\verb|temperature.pdf|、\verb|error.pdf|の三つのファイルが、同名のpltファイルから作成されるなら
-
-\lstinputlisting[language=make]{fig/makefile}
-
-といったmakefileを作っておけば、make一発で三つのファイルを作ることができるので便利だ。
-
-もちろんPythonのMatplotlibを使っても良いが、いずれにせよ「データとスクリプトからコマンド一発で図のファイルが作成できる状況にしておく。
+\section{単成分LJ系におけるMD法による気液共存状態の実現} \label{results-sec:mono-component}
+\section{二成分LJ系におけるMD法による共沸現象の実現} \label{results-sec:bi-component-azeotrope}
+\section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-ratio}
+\section{二成分LJ系への第三成分の添加} \label{results-sec:bi-component-addition-of-3rd-component}
 
 \chapter{考察および結論} \label{chap:summary}
 
