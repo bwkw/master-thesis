@@ -164,12 +164,12 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 
 
 \chapter{手法} \label{chap:method}
-\ref{method-sec:mono-component}節では、単成分LJ系におけるMD法による気液共存状態の実現手法を述べる。
-\ref{method-sec:bi-component-azeotrope}節では、二成分LJ系におけるMD法による共沸現象の実現手法を述べる。
+\ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
+\ref{method-sec:bi-component-azeotrope}節では、二成分LJ系における共沸現象の実現手法を述べる。
 \ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
 \ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
 
-\section{単成分LJ系におけるMD法による気液共存状態の実現} \label{method-sec:mono-component}
+\section{単成分LJ系における気液共存状態の実現} \label{method-sec:mono-component}
 LJ系では、ある温度、密度条件では気相と液相が相分離することが平衡状態（=気液共存状態）である事が知られている\cite{gas-liquid-equilibrium}。本節では、実際にMDシミュレーションによりこの事実を観測し、先行研究の再現を行う。
 初期状態として$100×50×50$の直方体の左半分に$N=87808(28×28×28×4)$個の粒子を、右半分に$N=2916(9×9×9×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。
 
@@ -186,7 +186,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 この初期条件の下、LJポテンシャルパラメータの${\sigma}$,\,${\varepsilon}$を共に1.0、温度$T=1.0$とし、タイムステップ0.001で20000ステップ実行のシミュレーションを行い、粒子の状態を観測した。
 \ref{results-sec:mono-component}では、このシミュレーション実行時の粒子の状態および、先行研究との比較を行う。
 
-\section{二成分LJ系におけるMD法による共沸現象の実現} \label{method-sec:bi-component-azeotrope}
+\section{二成分LJ系における共沸現象の実現} \label{method-sec:bi-component-azeotrope}
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
 \section{二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
 
