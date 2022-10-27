@@ -2,6 +2,7 @@
 
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{listings,jlisting}
+\usepackage{bm}
 \usepackage{cite}
 \usepackage{url}
 \usepackage{master_thesis}
@@ -162,8 +163,19 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
 $r>r_c$でポテンシャルエネルギーが0になっている。
 
+\section{最小二乗法}\label{principle-sec:gradient-descent}
+最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメータ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、これは
 
-\chapter{手法} \label{chap:method}
+\large
+\begin{eqnarray}
+\chi^2(p) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_(y_i)}\Bigg]^2 \nonumber\\
+          &=& (\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}(\bm{y}-\hat{\bm{y}}(\bm{p})) \nonumber\\
+          &=& \bm{y}^\top\bm{W}\bm{y}-2\bm{y}^\top\bm{W}\hat{\bm{y}}+\hat{\bm{y}}^\top\bm{W}\hat{\bm{y}} \label{eq:queue-residual-error}
+\end{eqnarray}
+\normalsize
+と書き表せる。
+ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquard}。
+
 \ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
 \ref{method-sec:bi-component-azeotrope}節では、二成分LJ系における共沸現象の実現手法を述べる。
 \ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
@@ -242,7 +254,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}で得た平衡状態における気液密度を基に、以降では初期状態で凡その気体状態、液体状態を実現した上で研究を進めることにより、平衡状態までの収束を早くすることとする。
+表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}より、本研究と先行研究には誤差が存在するが、これは本研究と先行研究とでカットオフ距離近傍での原子間相互作用がわずかに違うため生じたものと考えられる。そのため、本研究で得られた結果は妥当であると判断し、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}で得た平衡状態における気液密度を基に、以降では初期状態で凡その気体状態、液体状態を実現した上で研究を進めることにより、平衡状態までの収束を早めた。
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-ratio}
