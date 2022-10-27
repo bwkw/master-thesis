@@ -176,12 +176,21 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 と書き表せる。
 ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquard}。
 
+\section{勾配降下法}\label{principle-sec:gradient-descent}
+
+\section{ガウスニュートン法}\label{principle-sec:gauss-newton}
+
+\section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
+Lebenberg-Marquardrt法は、非線形最小二乗問題を解くために1960年代初頭に開発された最適化アルゴリズムであり、様々な問題において、単純な勾配降下法や他の共役勾配法よりも大幅に優れていることが知られている\cite{levenberg-marquardt}。
+Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたものである。勾配降下法では、最急降下方向にパラメータを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。Levenberg-Marquardt法は、パラメータが最適値から遠い場合は勾配降下法に近い働きをし、パラメータが最適値に近い場合はガウス・ニュートン法に近い働きをする。
+
+\chapter{手法} \label{chap:method}
 \ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
 \ref{method-sec:bi-component-azeotrope}節では、二成分LJ系における共沸現象の実現手法を述べる。
 \ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
 \ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
 
-\section{単成分LJ系における気液共存状態の実現} \label{method-sec:mono-component}
+\section{単成分LJ系にpおける気液共存状態の実現} \label{method-sec:mono-component}
 LJ系では、ある温度、密度条件では気相と液相が相分離することが平衡状態（=気液共存状態）である事が知られている\cite{gas-liquid-equilibrium}。本節では、実際にMDシミュレーションによりこの事実を観測し、条件の近い先行研究と比較し大きな相違がないことを確認する。
 初期状態として$100×50×50$の直方体の左半分に$N=78732(27×27×27×4)$個の粒子を、右半分に$N=10976(14×14×14×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。図に、原子の初期配置を示す。
 
