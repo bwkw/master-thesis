@@ -185,6 +185,25 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 
 
 \section{勾配降下法}\label{principle-sec:gradient-descent}
+勾配降下法は、パラメタ値を下り坂方向、つまり目的関数の勾配と反対方向に更新する最小化手法である。勾配降下法は、単純な目的関数の最小化問題においては、非常によく収束することが知られている\cite{gradient-descent}。パラメタに関するカイ二乗目的関数の勾配は、
+\large
+\begin{eqnarray}
+\frac{\partial}{\partial\bm{p}}\chi^2 &=& 2(\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}\frac{\partial}{\partial\bm{p}}(\bm{y}-\hat{\bm{y}}(\bm{p})) \nonumber\\
+          &=& -2(\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}\Bigg[\frac{\partial\hat{\bm{y}}(\bm{p})}{\partial\bm{p}}\Bigg] \nonumber\\
+          &=& -2(\bm{y}-\hat{\bm{y}})^\top\bm{W}\bm{J} \label{eq:gradient-of-the-chi-square-objective-function}
+\end{eqnarray}
+\normalsize
+と書き表せる。\cite{gradient-descent_gauss-newton_levenberg-marquard}
+ここで、$m×n$ヤコビアン行列$\partial\hat{\bm{y}}/{\partial\bm{p}}$は、関数の局所的な感度を表す。
+また、パラメタを最急降下の方向に移動させるパラメタ更新$\bm{h}$は、
+\large
+\begin{eqnarray}
+\bm{h} = \alpha\bm{J}^\top\bm{W}(\bm{y}-\hat{\bm{y}})
+\end{eqnarray}
+\normalsize
+と書き表せる。
+尚、正のスカラー$\alpha$は、最急降下方向のステップの長さを示す。
+
 
 \section{ガウスニュートン法}\label{principle-sec:gauss-newton}
 
