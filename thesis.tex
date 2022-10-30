@@ -61,12 +61,15 @@
 \chapter{はじめに} \label{chap:introduction}
 \pagenumbering{arabic}
 
+
 \section{研究の背景} \label{introduction:background}
 蒸留とは、液体の混合物から選択的な沸騰と凝縮を利用して成分や物質を分離するプロセスのことを言う。混合物を加熱していくと、液面から各成分が蒸発していき、各成分の蒸気圧の和が外圧と等しくなったときに沸騰が始まる。このとき、発生する蒸気の組成比はラウールの法則に従って、純液体の蒸気圧と混合溶液中のモル分率の積で決定される。この蒸気を凝縮すると液体混合物が得られるが、この液体混合物は初めの液体混合物と比較すると、特定成分の濃度が上がったものとなる。つまり、この蒸留という操作を繰り返し行うことによって、目的成分の濃度を上昇させることができる。\\
 今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し行うことで、エタノールを濃縮し、アルコール度数を上げることができる。しかし、共沸という現象によって、いくら蒸留を繰り返してもアルコール度数は96度までしか上げることが出来ず、それ以上エタノールは濃縮できないことが知られている。これが世界最高純度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象は、共沸蒸留塔、抽出蒸留塔、反応蒸留塔といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、数値計算系で精力的に研究が行われてきた。数値計算の分野においては、ギブスアンサンブル(GibbsEnsemble, GE)法などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
 
+
 \section{研究の目的} \label{introduction:purpose}
 GE法やGDI法によって、「どんな物性がどのように共沸条件に効いてくるかをミクロに調べたい」という目的は達成された。しかし、GE法はシミュレーションボックス間での粒子交換が必要なため計算が重い、臨界点近傍での気液の密度が近く気液の判別が困難なため計算が不安定といった問題点が、GDI法は共沸現象を基準点からの積分により定義するため誤差が積算されていく、各共沸点が依存しているため並列計算に向いていないといった問題点が存在する。また、これらの手法は2つのシミュレーションボックスで気液共存状態を実現するので、第三成分を添加することが非常に困難である。そこで、我々は分子動力学(Molecular Dynamics, MD)法により、一つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現することを第一の目的とする。そして、既存の手法で困難であった第三成分の添加による共沸組成の変化を観測することを第二の目的とする。
+
 
 \section{本論文の構成} \label{introduction:constitution}
 本研究では、分子動力学(Molecular Dynamics, MD)法により、1つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現すること、既存の手法で困難であった第三成分の添加による共沸組成の変化を観測することを目的とする。
@@ -82,6 +85,8 @@ GE法やGDI法によって、「どんな物性がどのように共沸条件に
 原子や分子間に働く力を計算し、位置や運動量の時間発展を数値的に追う手法を分子動力学(Molecular Dynamics, MD)法と言う。
 本研究では、分子に関する計算をMDシミュレーションにより行う。
 尚、MDシミュレーションには、分子動力学プログラムLarge-scale Atomic/Molecular Massively Parallel Simulator\,(LAMMPS)\cite{lammps}を用いた。
+
+
 \section{LJポテンシャル}\label{principle-sec:LJ}
 分子動力学計算において頻繁に用いられるモデルの一つにLennard-Jones\,(LJ)ポテンシャルと呼ばれるものが存在する。
 LJポテンシャルは、アルゴンのような貴ガスのファンデルワールス力を記述するために提案された\cite{lennard-jones}もので、単純な物質(Lennard-Jonesium)を記述する研究\cite{lennard-jonesium-1,lennard-jonesium-2}や、実際の物質の多くの力場における構成要素\cite{lennard-jones-force-field-1,lennard-jones-force-field-2, lennard-jones-force-field-3}として用いられている。
@@ -130,6 +135,7 @@ t^*=t\sqrt{\frac{\varepsilon}{m{\sigma}^2}}\label{eq:time}
 \normalsize
 と表される。
 
+
 \section{WCAポテンシャル}\label{principle-sec:WCA}
 \ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
 WCAポテンシャル粒子系においてもLJ単位系を用いる。
@@ -145,6 +151,7 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 \normalsize
 と表される\cite{wca}。
 したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二原子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
+
 
 \section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
 図{\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における原子間距離$r$と原子間のポテンシャルエネルギー$E$を示す。
@@ -163,9 +170,9 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
 $r>r_c$でポテンシャルエネルギーが0になっている。
 
-\section{最小二乗法}\label{principle-sec:gradient-descent}
-最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメータ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、これは
 
+\section{最小二乗法}\label{principle-sec:gradient-descent}
+最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメータ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
 \large
 \begin{eqnarray}
 \chi^2(p) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_(y_i)}\Bigg]^2 \nonumber\\
@@ -176,13 +183,16 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 と書き表せる。
 ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquard}。
 
+
 \section{勾配降下法}\label{principle-sec:gradient-descent}
 
 \section{ガウスニュートン法}\label{principle-sec:gauss-newton}
 
+
 \section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
 Lebenberg-Marquardrt法は、非線形最小二乗問題を解くために1960年代初頭に開発された最適化アルゴリズムであり、様々な問題において、単純な勾配降下法や他の共役勾配法よりも大幅に優れていることが知られている\cite{levenberg-marquardt}。
 Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたものである。勾配降下法では、最急降下方向にパラメータを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。Levenberg-Marquardt法は、パラメータが最適値から遠い場合は勾配降下法に近い働きをし、パラメータが最適値に近い場合はガウス・ニュートン法に近い働きをする。
+
 
 \chapter{手法} \label{chap:method}
 \ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
@@ -219,6 +229,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係を示す。
 \ref{results-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加による共沸組成のずれを観測する。
 
+
 \section{単成分LJ系における気液共存状態の実現} \label{results-sec:mono-component}
 \ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションにおいて測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
 
@@ -231,10 +242,9 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \end{figure}
 
 図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}より、$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。ここで、気液界面およびその近傍の密度プロファイルの関数は、次のような式で表されることが知られている\cite{gas-liquid-interface-density-profile}。
-
 \large
 \begin{eqnarray}
-    \rho(x) = \frac{\rho_l+\rho_g}{2} + \frac{\rho_l-\rho_g}{2}\,tanh(\frac{x-x_d}{2\delta_d}) \label{eq:gas-liquid-interface-density-profile}
+    \rho(x) = \frac{\rho_l+\rho_g}{2} + \frac{\rho_l-\rho_g}{2}\,tanh\Bigg(\frac{x-x_d}{2\delta_d}\Bigg) \label{eq:gas-liquid-interface-density-profile}
 \end{eqnarray}
 \normalsize
 ここで、$\rho_l$は液相密度、$\rho_g$は気相密度、$x_d$は分割面の位置、$\delta_d$は界面厚さを示す。
@@ -264,6 +274,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \end{table}
 
 表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}より、本研究と先行研究には誤差が存在するが、これは本研究と先行研究とでカットオフ距離近傍での原子間相互作用がわずかに違うため生じたものと考えられる。そのため、本研究で得られた結果は妥当であると判断し、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}で得た平衡状態における気液密度を基に、以降では初期状態で凡その気体状態、液体状態を実現した上で研究を進めることにより、平衡状態までの収束を早めた。
+
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-ratio}
