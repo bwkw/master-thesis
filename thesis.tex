@@ -206,6 +206,15 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 
 
 \section{ガウスニュートン法}\label{principle-sec:gauss-newton}
+ガウスニュートン法は、最適解の近傍のパラメタにおいて目的関数がほぼ二次関数であることを仮定して\cite{gauss-newton-objective-function}、二乗和の目的関数を最小化する手法である。ガウスニュートン法は、適度な大きさの問題では、勾配降下法よりも遥かに速く収束する\cite{gauss-newton}。
+摂動されたモデルパラメタで評価される関数は、一次テイラー級数展開により
+\large
+\begin{eqnarray}
+\hat{\bm{y}}(\bm{p}+\bm{h})&\approx&\hat{\bm{y}}(\bm{p})+\Bigg[\frac{\partial\hat{\bm{y}}}{\partial\bm{p}}\bm{h}\Bigg] \nonumber\\
+                           &=&\hat{\bm{y}}+\bm{J}\bm{h}
+\end{eqnarray}
+\normalsize
+と局所的に近似することが出来る。
 
 
 \section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
