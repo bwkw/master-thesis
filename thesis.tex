@@ -99,7 +99,7 @@ LJポテンシャルは、アルゴンのような貴ガスのファンデルワ
 と表される。
 ここで、$r$は原子間距離、${\sigma}$は原子直径の長さ、${\varepsilon}$はポテンシャルの深さを表す。
 式(\ref{eq:lj})の右辺第一項は原子間の斥力相互作用を表し、右辺第二項は原子間の引力相互作用を表す。
-LJポテンシャルを用いる系では、パラメータ$\sigma$\,,\,$\varepsilon$と粒子の質量$m$を用いて物理量を無次元化したLJ単位系と呼ばれる単位を用いる。
+LJポテンシャルを用いる系では、パラメタ$\sigma$\,,\,$\varepsilon$と粒子の質量$m$を用いて物理量を無次元化したLJ単位系と呼ばれる単位を用いる。
 例えば、アルゴンでは、${\sigma}=3.40×10^{-10}\,\mathrm{m}$\,,\,${\varepsilon}=1.67×10^{-21}\,\mathrm{J}$であり\cite{lennard-jones-argon-parameters}、
 他にも多くの気体ごとに値が定められている\cite{lennard-jones-many-parameters}。
 
@@ -109,25 +109,25 @@ LJ単位系では、ボルツマン定数$k$は
 k=1.0\label{eq:k}
 \end{equation}
 \normalsize
-温度$T^*$はパラメータ$\varepsilon$\,,ボルツマン定数$k$を用いて、
+温度$T^*$はパラメタ$\varepsilon$\,,ボルツマン定数$k$を用いて、
 \large
 \begin{equation}
 T^*=\frac{kT}{\varepsilon}\label{eq:T}
 \end{equation}
 \normalsize
-圧力$P^*$はパラメータ${\sigma}$\,,\,${\varepsilon}$を用いて
+圧力$P^*$はパラメタ${\sigma}$\,,\,${\varepsilon}$を用いて
 \large
 \begin{equation}
 P^*=\frac{P\sigma^3}{\varepsilon}\label{eq:P}
 \end{equation}
 \normalsize
-数密度$\rho^*$はパラメータ$\sigma$を用いて、
+数密度$\rho^*$はパラメタ$\sigma$を用いて、
 \large
 \begin{equation}
 \rho^*=\rho{\sigma}^3\label{eq:rho}
 \end{equation}
 \normalsize
-時間$t^*$はパラメータ${\sigma}$\,,\,${\varepsilon}$\,,\,質量$m$を用いて
+時間$t^*$はパラメタ${\sigma}$\,,\,${\varepsilon}$\,,\,質量$m$を用いて
 \large
 \begin{equation}
 t^*=t\sqrt{\frac{\varepsilon}{m{\sigma}^2}}\label{eq:time}
@@ -172,7 +172,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 
 
 \section{最小二乗法}\label{principle-sec:gradient-descent}
-最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメータ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
+最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメタ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
 \large
 \begin{eqnarray}
 \chi^2(\bm{p}) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_(y_i)}\Bigg]^2 \nonumber\\
@@ -239,7 +239,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 
 \section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
 Lebenberg-Marquardrt法は、非線形最小二乗問題を解くために1960年代初頭に開発された最適化アルゴリズムであり、様々な問題において、単純な勾配降下法や他の共役勾配法よりも大幅に優れていることが知られている\cite{levenberg-marquardt}。
-Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたものである。勾配降下法では、最急降下方向にパラメータを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。Levenberg-Marquardt法は、パラメータが最適値から遠い場合は勾配降下法に近い働きをし、パラメータが最適値に近い場合はガウス・ニュートン法に近い働きをする。
+Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたものである。勾配降下法では、最急降下方向にパラメタを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。Levenberg-Marquardt法は、パラメタが最適値から遠い場合は勾配降下法に近い働きをし、パラメタが最適値に近い場合はガウス・ニュートン法に近い働きをする。
 
 
 \chapter{手法} \label{chap:method}
@@ -261,7 +261,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 %     fcc構造上に配置されている。}
 %     \label{fig:initial-state-molecule}
 % \end{figure}
-この初期条件の下、LJポテンシャルパラメータの${\sigma}$,\,${\varepsilon}$を共に1.0、温度$T=1.0$とし、タイムステップ0.001で500000ステップ実行のシミュレーションを行い、
+この初期条件の下、LJポテンシャルパラメタの${\sigma}$,\,${\varepsilon}$を共に1.0、温度$T=1.0$とし、タイムステップ0.001で500000ステップ実行のシミュレーションを行い、
 粒子の密度の観測を行うことによって、気液共存状態が実現されていることを確認する。
 \ref{results-sec:mono-component}節では、このシミュレーション実行時の粒子の密度の観測および、条件の近い先行研究との比較を行う。
 
