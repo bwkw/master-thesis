@@ -175,9 +175,9 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメータ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
 \large
 \begin{eqnarray}
-\chi^2(p) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_(y_i)}\Bigg]^2 \nonumber\\
-          &=& (\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}(\bm{y}-\hat{\bm{y}}(\bm{p})) \nonumber\\
-          &=& \bm{y}^\top\bm{W}\bm{y}-2\bm{y}^\top\bm{W}\hat{\bm{y}}+\hat{\bm{y}}^\top\bm{W}\hat{\bm{y}} \label{eq:queue-residual-error}
+\chi^2(\bm{p}) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_(y_i)}\Bigg]^2 \nonumber\\
+               &=& (\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}(\bm{y}-\hat{\bm{y}}(\bm{p})) \nonumber\\
+               &=& \bm{y}^\top\bm{W}\bm{y}-2\bm{y}^\top\bm{W}\hat{\bm{y}}+\hat{\bm{y}}^\top\bm{W}\hat{\bm{y}} \label{eq:queue-residual-error}
 \end{eqnarray}
 \normalsize
 と書き表せる。
@@ -189,8 +189,8 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \large
 \begin{eqnarray}
 \frac{\partial}{\partial\bm{p}}\chi^2 &=& 2(\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}\frac{\partial}{\partial\bm{p}}(\bm{y}-\hat{\bm{y}}(\bm{p})) \nonumber\\
-          &=& -2(\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}\Bigg[\frac{\partial\hat{\bm{y}}(\bm{p})}{\partial\bm{p}}\Bigg] \nonumber\\
-          &=& -2(\bm{y}-\hat{\bm{y}})^\top\bm{W}\bm{J} \label{eq:gradient-of-the-chi-square-objective-function}
+                                      &=& -2(\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}\Bigg[\frac{\partial\hat{\bm{y}}(\bm{p})}{\partial\bm{p}}\Bigg] \nonumber\\
+                                      &=& -2(\bm{y}-\hat{\bm{y}})^\top\bm{W}\bm{J} \label{eq:gradient-of-the-chi-square-objective-function}
 \end{eqnarray}
 \normalsize
 と書き表せる。\cite{gradient-descent_gauss-newton_levenberg-marquard}
@@ -211,10 +211,23 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \large
 \begin{eqnarray}
 \hat{\bm{y}}(\bm{p}+\bm{h})&\approx&\hat{\bm{y}}(\bm{p})+\Bigg[\frac{\partial\hat{\bm{y}}}{\partial\bm{p}}\bm{h}\Bigg] \nonumber\\
-                           &=&\hat{\bm{y}}+\bm{J}\bm{h}
+                           &=&\hat{\bm{y}}+\bm{J}\bm{h} \label{gauss-newton_model-parameter}
 \end{eqnarray}
 \normalsize
 と局所的に近似することが出来る。
+これを式(\ref{eq:queue-residual-error})に代入すると、
+\large
+\begin{eqnarray}
+\chi^2(\bm{p}+\bm{h}) &\approx& \bm{y}^\top\bm{W}\bm{y}+\bm{y}^\top\bm{W}\hat{\bm{y}}-2\bm{y}^\top\bm{W}\hat{\bm{y}}-2(\bm{y}-\bm{\hat{y}})^\top\bm{W}\bm{J}\bm{h}+\bm{h}^\top\bm{J}^\top\bm{W}\bm{J}\bm{h}
+\end{eqnarray}
+\normalsize
+となり、$\chi^2$を最小にするパラメタ更新$\bm{h}$は、${\partial\chi^2}/{\partial\bm{h}}=0$により、
+\large
+\begin{eqnarray}
+\frac{\partial^2}{\partial\bm{h}}\chi^2(\bm{p}+\bm{h}) &\approx& -2(\bm{y}-\bm{\hat{y}})^\top\bm{W}\bm{J}+2\bm{h}^\top\bm{J}^\top\bm{W}\bm{J}
+\end{eqnarray}
+\normalsize
+と表される。
 
 
 \section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
