@@ -181,7 +181,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \end{eqnarray}
 \normalsize
 と表される。
-ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquard}。
+ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
 
 \section{勾配降下法}\label{principle-sec:gradient-descent}
@@ -201,12 +201,12 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \bm{h} = \alpha\bm{J}^\top\bm{W}(\bm{y}-\hat{\bm{y}})
 \end{eqnarray}
 \normalsize
-と表される\cite{gradient-descent_gauss-newton_levenberg-marquard}。
+と表される\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 尚、正のスカラー$\alpha$は、最急降下方向のステップの長さを示す。
 
 
-\section{ガウスニュートン法}\label{principle-sec:gauss-newton}
-ガウスニュートン法は、最適解の近傍のパラメタにおいて目的関数がほぼ二次関数であることを仮定して\cite{gauss-newton-objective-function}、二乗和の目的関数を最小化する手法である。ガウスニュートン法は、適度な大きさの問題では、勾配降下法よりも遥かに速く収束する\cite{gauss-newton}。
+\section{ガウス・ニュートン法}\label{principle-sec:gauss-newton}
+ガウス。ニュートン法は、最適解の近傍のパラメタにおいて目的関数がほぼ二次関数であることを仮定して\cite{gauss-newton-objective-function}、二乗和の目的関数を最小化する手法である。ガウス・ニュートン法は、適度な大きさの問題では、勾配降下法よりも遥かに速く収束する\cite{gauss-newton}。
 摂動されたモデルパラメタで評価される関数は、一次テイラー級数展開により
 \large
 \begin{eqnarray}
@@ -228,18 +228,25 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \end{eqnarray}
 \normalsize
 と表される。
-以上より、ガウスニュートン更新のための正規方程式は、
+以上より、ガウス・ニュートン更新のための正規方程式は、
 \large
 \begin{eqnarray}
 \Big[\bm{J}^\top\bm{W}\bm{J}\Big]\bm{h} = \bm{J}^\top\bm{W}(\bm{y}-\bm{\hat{y}})
 \end{eqnarray}
 \normalsize
-と表される\cite{gradient-descent_gauss-newton_levenberg-marquard}。
+と表される\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
 
 \section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
 Lebenberg-Marquardrt法は、非線形最小二乗問題を解くために1960年代初頭に開発された最適化アルゴリズムであり、様々な問題において、単純な勾配降下法や他の共役勾配法よりも大幅に優れていることが知られている\cite{levenberg-marquardt}。
-Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたものである。勾配降下法では、最急降下方向にパラメタを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。Levenberg-Marquardt法は、パラメタが最適値から遠い場合は勾配降下法に近い働きをし、パラメタが最適値に近い場合はガウス・ニュートン法に近い働きをする。
+勾配降下法では、最急降下方向にパラメタを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。
+Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたもので、パラメタ更新式は、
+\large
+\begin{eqnarray}
+\Big[\bm{J}^\top\bm{W}\bm{J}+\lambda\bm{I}\Big]\bm{h} = \bm{J}^\top\bm{W}(\bm{y}-\bm{\hat{y}})
+\end{eqnarray}
+\normalsize
+と表せ、Levenberg-Marquardt法は、パラメタが最適値から遠い($\lambda$の値が大きい)場合は勾配降下更新をし、パラメタが最適値に近い($\lambda$の値が小さい)場合はガウス・ニュートン更新をする\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
 
 \chapter{手法} \label{chap:method}
