@@ -248,10 +248,10 @@ Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュ�
 \ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
 \ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
 
+
 \section{単成分LJ系にpおける気液共存状態の実現} \label{method-sec:mono-component}
 LJ系では、ある温度、密度条件では気相と液相が相分離することが平衡状態（=気液共存状態）である事が知られている\cite{gas-liquid-equilibrium}。本節では、実際にMDシミュレーションによりこの事実を観測し、条件の近い先行研究と比較し大きな相違がないことを確認する。
 初期状態として$100×50×50$の直方体の左半分に$N=78732(27×27×27×4)$個の粒子を、右半分に$N=10976(14×14×14×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。図に、原子の初期配置を示す。
-
 % 図\ref{fig:initial-state-molecule}に、原子の初期配置を示す。
 % \begin{figure}[htbp]
 %     \begin{center}
@@ -261,10 +261,10 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 %     fcc構造上に配置されている。}
 %     \label{fig:initial-state-molecule}
 % \end{figure}
-
 この初期条件の下、LJポテンシャルパラメータの${\sigma}$,\,${\varepsilon}$を共に1.0、温度$T=1.0$とし、タイムステップ0.001で500000ステップ実行のシミュレーションを行い、
 粒子の密度の観測を行うことによって、気液共存状態が実現されていることを確認する。
 \ref{results-sec:mono-component}節では、このシミュレーション実行時の粒子の密度の観測および、条件の近い先行研究との比較を行う。
+
 
 \section{二成分LJ系における共沸現象の実現} \label{method-sec:bi-component-azeotrope}
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
