@@ -180,7 +180,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
                &=& \bm{y}^\top\bm{W}\bm{y}-2\bm{y}^\top\bm{W}\hat{\bm{y}}+\hat{\bm{y}}^\top\bm{W}\hat{\bm{y}} \label{eq:queue-residual-error}
 \end{eqnarray}
 \normalsize
-と書き表せる。
+と表される。
 ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquard}。
 
 
@@ -193,7 +193,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
                                       &=& -2(\bm{y}-\hat{\bm{y}})^\top\bm{W}\bm{J} \label{eq:gradient-of-the-chi-square-objective-function}
 \end{eqnarray}
 \normalsize
-と書き表せる。\cite{gradient-descent_gauss-newton_levenberg-marquard}
+と表される。
 ここで、$m×n$ヤコビアン行列$\partial\hat{\bm{y}}/{\partial\bm{p}}$は、関数の局所的な感度を表す。
 また、パラメタを最急降下の方向に移動させるパラメタ更新$\bm{h}$は、
 \large
@@ -201,7 +201,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \bm{h} = \alpha\bm{J}^\top\bm{W}(\bm{y}-\hat{\bm{y}})
 \end{eqnarray}
 \normalsize
-と書き表せる。
+と表される\cite{gradient-descent_gauss-newton_levenberg-marquard}。
 尚、正のスカラー$\alpha$は、最急降下方向のステップの長さを示す。
 
 
@@ -234,7 +234,7 @@ $r>r_c$でポテンシャルエネルギーが0になっている。
 \Big[\bm{J}^\top\bm{W}\bm{J}\Big]\bm{h} = \bm{J}^\top\bm{W}(\bm{y}-\bm{\hat{y}})
 \end{eqnarray}
 \normalsize
-と書き表される。
+と表される\cite{gradient-descent_gauss-newton_levenberg-marquard}。
 
 
 \section{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
