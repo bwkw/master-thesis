@@ -252,7 +252,7 @@ Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュ�
 \chapter{手法} \label{chap:method}
 \ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
 \ref{method-sec:bi-component-azeotrope}節では、二成分LJ系における共沸現象の実現手法を述べる。
-\ref{method-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
+\ref{method-sec:bi-component-potential-parameter-azeotrope-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
 \ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
 
 
@@ -370,11 +370,79 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \ref{results-subsec:bi-asymmetric-component-azeotrope}節では、上記のパラメタを元に気液共存状態を実現し、各組成の気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に$X$を求め、共沸組成を導出する。
 
+\section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-parameter-azeotrope-ratio}
+手法\ref{method-sec:bi-component-azeotrope}で観測した共沸現象の内、非対称LJ系に着目する。本研究で採用した、LJポテンシャルは、ポテンシャルパラメタとして、${\sigma}$,\,${\varepsilon}$の二つのパラメタが存在する。
+本節では、この二つのパラメタを変化させた時の共沸組成のずれを観測する。
+
+
+\subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{method-subsec:bi-component-sigma-azeotrope-ratio}
+二成分LJ系において${\sigma}$を変化させた時のシミュレーションにおけるパラメタを表\ref{table:bi-component-sigma-azeotrope-ratio-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-sigma-azeotrope-ratio-potential-parameter}に示す。
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各パラメタの値}
+        \label{table:bi-component-sigma-azeotrope-ratio-parameter}
+        \begin{tabular}{c c c}
+            $T$ & timestep & 実行回数 \\
+            \hline
+            1.0 & 0.001 & 4000000 \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
+        \label{table:bi-component-sigma-azeotrope-ratio-potential-parameter}
+        \begin{tabular}{c c c c}
+            & $\sigma$ & $\varepsilon$ & $r_c$ \\
+            \hline
+            A-A & 1.0 & 1.0 & 3.0 \\
+            A-B & 1.05 & 0.9 & 3.0 \\
+            B-B & variable & 1.0 & 3.0
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\ref{results-subsec:bi-component-sigma-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\sigma$と共沸組成の関係を導出する。
+
+
+\subsection{二成分LJ系における$\varepsilon$と共沸組成の関係} \label{method-subsec:bi-component-epsilon-azeotrope-ratio}
+二成分LJ系において${\varepsilon}$を変化させた時のシミュレーションにおけるパラメタを表\ref{table:bi-component-epsilon-azeotrope-ratio-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-epsilon-azeotrope-ratio-potential-parameter}に示す。
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各パラメタの値}
+        \label{table:bi-component-epsilon-azeotrope-ratio-parameter}
+        \begin{tabular}{c c c}
+            $T$ & timestep & 実行回数 \\
+            \hline
+            1.0 & 0.001 & 4000000 \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
+        \label{table:bi-component-epsilon-azeotrope-ratio-potential-parameter}
+        \begin{tabular}{c c c c}
+            & $\sigma$ & $\varepsilon$ & $r_c$ \\
+            \hline
+            A-A & 1.0 & 1.0 & 3.0 \\
+            A-B & 1.05 & 0.9 & 3.0 \\
+            B-B & 1.0 & variable & 3.0
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\varepsilon$と共沸組成の関係を導出する。
+
 
 \chapter{結果} \label{chap:results}
 \ref{results-sec:mono-component}節では、単成分LJ系において気液共存状態を実現する。
 \ref{results-sec:bi-component-azeotrope}節では、二成分LJ系において共沸現象を実現する。
-\ref{results-sec:bi-component-potential-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係を示す。
+\ref{results-sec:bi-component-potential-parameter-azeotrope-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係を示す。
 \ref{results-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加による共沸組成のずれを観測する。
 
 
