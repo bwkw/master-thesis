@@ -439,6 +439,45 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\varepsilon$と共沸組成の関係を導出する。
 
 
+\section{相互作用が対称な二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
+共沸が生じると、蒸留により混合物が分離出来なくなるが、第三成分を添加することにより、共沸混合物の組成を変化させることが出来ることが知られている\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することを確認する。
+
+シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
+
+この初期配置の下、実行したシミュレーションにおけるパラメタを表\ref{table:bi-component-addition-of-3rd-component-parameter}に、粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示す。
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各パラメタの値}
+        \label{table:bi-component-addition-of-3rd-component-parameter}
+        \begin{tabular}{c c c}
+            $T$ & timestep & 実行回数 \\
+            \hline
+            1.0 & 0.001 & 7000000 \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
+        \label{table:bi-component-addition-of-3rd-component-potential-parameter}
+        \begin{tabular}{c c c c}
+            & $\sigma$ & $\varepsilon$ & $r_c$ \\
+            \hline
+            A-A & 1.0 & 1.0 & 3.0 \\
+            A-B & 1.05 & 0.9 & 3.0 \\
+            B-B & 1.0 & 1.0 & 3.0 \\
+            A-C & 1.05 & 1.0 & 3.0 \\
+            B-C & 1.0 & 0.9 & 1.12246 \\
+            C-C & 1.0 & 1.0 & 3.0
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\ref{results-sec:bi-component-addition-of-3rd-component}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-sec:bi-component-azeotrope}節）の共沸組成から変化することを確認する。
+
+
 \chapter{結果} \label{chap:results}
 \ref{results-sec:mono-component}節では、単成分LJ系において気液共存状態を実現する。
 \ref{results-sec:bi-component-azeotrope}節では、二成分LJ系において共沸現象を実現する。
@@ -493,8 +532,16 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
-\section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-ratio}
-\section{二成分LJ系への第三成分の添加} \label{results-sec:bi-component-addition-of-3rd-component}
+\subsection{相互作用が対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-symmetric-component-azeotrope}
+\subsection{相互作用が非対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-asymmetric-component-azeotrope}
+
+
+\section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-parameter-azeotrope-ratio}
+\subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{results-subsec:bi-component-sigma-azeotrope-ratio}
+\subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{results-subsec:bi-component-epsilon-azeotrope-ratio}
+
+
+\section{相互作用が対称な二成分LJ系への第三成分の添加} \label{results-sec:bi-component-addition-of-3rd-component}
 
 \chapter{考察および結論} \label{chap:summary}
 
