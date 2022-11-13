@@ -337,12 +337,38 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \ref{results-subsec:bi-symmetric-component-azeotrope}節では、上記のパラメタを元に気液共存状態を実現し、各組成の気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に$X$を求め、共沸組成を導出する。
 
-\section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
-手法\ref{method-sec:bi-component-azeotrope}で観測した共沸現象の内、非対称系について着目する。本研究で採用した、LJポテンシャルは、ポテンシャルパラメタとして、${\sigma}$,\,${\varepsilon}$の二つのパラメタが存在する。
-本節では、手法\ref{method-sec:bi-component-azeotrope}と同条件のシミュレーションを行い、この二つのパラメタを変化させたときの共沸組成の変化を観測する。
+
+\subsection{相互作用が非対称な二成分LJ系における共沸現象の実現} \label{method-subsec:bi-asymmetric-component-azeotrope}
+相互作用が非対称な二成分LJ系において実行したシミュレーションにおけるパラメタを表\ref{table:asymmetric-bi-component-azeotrope-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:asymmetric-bi-component-azeotrope-potential-parameter}に示す。
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各パラメタの値}
+        \label{table:asymmetric-bi-component-azeotrope-parameter}
+            \begin{tabular}{c c c}
+                $T$ & timestep & 実行回数 \\
+                \hline
+                1.0 & 0.001 & 4000000 \\
+            \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
+        \label{table:asymmetric-bi-component-azeotrope-potential-parameter}
+            \begin{tabular}{c c c c}
+                & $\sigma$ & $\varepsilon$ & $r_c$ \\
+                \hline
+                A-A & 1.0 & 1.0 & 3.0 \\
+                A-B & 1.05 & 0.9 & 3.0 \\
+                B-B & 1.0 & 1.05 & 3.0
+            \end{tabular}
+    \end{center}
+\end{table}
 
 
-\section{二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
+\ref{results-subsec:bi-asymmetric-component-azeotrope}節では、上記のパラメタを元に気液共存状態を実現し、各組成の気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に$X$を求め、共沸組成を導出する。
 
 
 \chapter{結果} \label{chap:results}
