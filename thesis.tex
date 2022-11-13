@@ -304,9 +304,38 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではAの組成比を0.02〜0.98に0.02刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
 
-この初期条件の下、二成分の相互作用が対称な系と非対称な系においてシミュレーションを行う。二成分の相互作用が対称な系においては${\sigma}=1.0$,\,${\varepsilon}=1.0$とし、二成分の相互作用が非対称な系においては${\sigma}=1.0$,\,${\varepsilon}=1.05$とする。どちらの系においても、温度$T=1.0$とし、タイムステップ0.001で4000000実行のシミュレーションを行い、気液共存状態を実現する。
-その後、それぞれの系,各組成において気液共存状態におけるA, Bの気相密度を$g_A, g_B$、液相密度を$l_A, l_B$を元に、$X$を導出する。この$X$が0となる組成比を共沸組成といい、この共沸組成を導出する。
+この初期条件の下、相互作用が対称な二成分LJ系と非対称な二成分LJ系においてシミュレーションを行う。
 
+\subsection{相互作用が対称な二成分LJ系における共沸現象の実現} \label{method-subsec:bi-symmetric-component-azeotrope}
+相互作用が対称な二成分LJ系において実行したシミュレーションにおけるパラメタを表\ref{table:symmetric-bi-component-azeotrope-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:symmetric-bi-component-azeotrope-potential-parameter}に示す。
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各パラメタの値}
+        \label{table:symmetric-bi-component-azeotrope-parameter}
+            \begin{tabular}{c c c}
+                $T$ & timestep & 実行回数 \\
+                \hline
+                1.0 & 0.001 & 4000000 \\
+            \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
+        \label{table:symmetric-bi-component-azeotrope-potential-parameter}
+            \begin{tabular}{c c c c}
+                & $\sigma$ & $\varepsilon$ & $r_c$ \\
+                \hline
+                A-A & 1.0 & 1.0 & 3.0 \\
+                A-B & 1.05 & 0.9 & 3.0 \\
+                B-B & 1.0 & 1.0 & 3.0
+            \end{tabular}
+    \end{center}
+\end{table}
+
+\ref{results-subsec:bi-symmetric-component-azeotrope}節では、上記のパラメタを元に気液共存状態を実現し、各組成の気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に$X$を求め、共沸組成を導出する。
 
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-ratio}
 手法\ref{method-sec:bi-component-azeotrope}で観測した共沸現象の内、非対称系について着目する。本研究で採用した、LJポテンシャルは、ポテンシャルパラメタとして、${\sigma}$,\,${\varepsilon}$の二つのパラメタが存在する。
