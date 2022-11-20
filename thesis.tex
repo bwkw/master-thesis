@@ -440,7 +440,8 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
-共沸が生じると、蒸留により混合物が分離出来なくなるが、第三成分を添加することにより、共沸混合物の組成を変化させることが出来ることが知られている\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することを確認する。
+\subsection{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の増加} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
+蒸留によって得られる目的物質の最高純度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高純度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高純度が上がることを確認する。
 
 シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
 
@@ -475,7 +476,14 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-\ref{results-sec:bi-component-addition-of-3rd-component}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-sec:bi-component-azeotrope}節）の共沸組成から変化することを確認する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-sec:bi-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質の最高純度が上がることを確認する。
+
+
+\subsection{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-subsec:bi-component-addition-of-3rd-component-steps}
+蒸留においては、目的物質の最高純度に達するまでの段数も重要となるが、これも第三成分を添加することにより減らすことが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、目的物質の最高純度に達するまでの段数が減ることを確認する。
+本研究のシミュレーションは、
+
+\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-sec:bi-component-azeotrope}節）の段数と比較し、段数が減ることを確認する。
 
 
 \chapter{結果} \label{chap:results}
