@@ -154,8 +154,8 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 
 
 \section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
-図{\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における原子間距離$r$と原子間のポテンシャルエネルギー$E$を示す。
-尚、図{\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
+図\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における原子間距離$r$と原子間のポテンシャルエネルギー$E$を示す。
+尚、図\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
 
 \newpage
 \begin{figure}[htbp]
@@ -253,7 +253,8 @@ Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュ�
 \ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
 \ref{method-sec:bi-component-azeotrope}節では、二成分LJ系における共沸現象の実現手法を述べる。
 \ref{method-sec:bi-component-potential-parameter-azeotrope-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
-\ref{method-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加手法を述べる。
+\ref{method-sec:bi-component-addition-of-3rd-component-highest-purity}節では、二成分LJ系への第三成分の添加手法と添加による目的物質の最高純度の向上確認手法を述べる。
+\ref{method-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加手法と添加による目的物質の最高純度到達までの段数の減少確認手法を述べる。
 
 
 \section{単成分LJ系における気液共存状態の実現} \label{method-sec:mono-component}
@@ -439,8 +440,8 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\varepsilon$と共沸組成の関係を導出する。
 
 
-\section{相互作用が対称な二成分LJ系への第三成分の添加} \label{method-sec:bi-component-addition-of-3rd-component}
-\subsection{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の増加} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
+\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の向上} \label{method-sec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加による目的物質の最高純度の増加} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
 蒸留によって得られる目的物質の最高純度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高純度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高純度が上がることを確認する。
 
 シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
@@ -476,22 +477,28 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-sec:bi-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質の最高純度が上がることを確認する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質の最高純度が上がることを確認する。
 
 
-\subsection{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-subsec:bi-component-addition-of-3rd-component-steps}
+\subsection{第三成分の添加割合と目的物質の最高純度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
+
+
+\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-sec:bi-component-addition-of-3rd-component-steps}
+\subsection{第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-subsec:bi-component-addition-of-3rd-component-steps}
 蒸留においては、目的物質の最高純度に達するまでの段数も重要となるが、これも第三成分を添加することにより減らすことが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、目的物質の最高純度に達するまでの段数が減ることを確認する。
 本研究のシミュレーションは、
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-sec:bi-component-azeotrope}節）の段数と比較し、段数が減ることを確認する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の段数と比較し、段数が減ることを確認する。
+
+\subsection{第三成分の添加割合と目的物質の最高純度到達までの段数の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}
 
 
 \chapter{結果} \label{chap:results}
 \ref{results-sec:mono-component}節では、単成分LJ系において気液共存状態を実現する。
 \ref{results-sec:bi-component-azeotrope}節では、二成分LJ系において共沸現象を実現する。
 \ref{results-sec:bi-component-potential-parameter-azeotrope-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係を示す。
-\ref{results-sec:bi-component-addition-of-3rd-component}節では、二成分LJ系への第三成分の添加による共沸組成のずれを観測する。
-
+\ref{results-sec:bi-component-addition-of-3rd-component-highest-purity}節では、二成分LJ系への第三成分の添加による共沸組成のずれ、及び目的物質の最高純度の向上を観測する。
+\ref{results-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少を観測する。
 
 \section{単成分LJ系における気液共存状態の実現} \label{results-sec:mono-component}
 \ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションにおいて測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
@@ -546,12 +553,17 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-parameter-azeotrope-ratio}
 \subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{results-subsec:bi-component-sigma-azeotrope-ratio}
-\subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{results-subsec:bi-component-epsilon-azeotrope-ratio}
+\subsection{二成分LJ系における$\epsilon$と共沸組成の関係} \label{results-subsec:bi-component-epsilon-azeotrope-ratio}
 
 
-\section{相互作用が対称な二成分LJ系への第三成分の添加} \label{results-sec:bi-component-addition-of-3rd-component}
-\subsection{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の増加} \label{results-subsec:bi-component-addition-of-3rd-component-highest-purity}
-\subsection{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{results-subsec:bi-component-addition-of-3rd-component-steps}
+\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の増加} \label{results-sec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加による目的物質の最高純度の増加} \label{results-subsec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加割合と目的物質の最高純度の関係} \label{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
+
+
+\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{results-sec:bi-component-addition-of-3rd-component-steps}
+\subsection{第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{results-subsec:bi-component-addition-of-3rd-component-steps}
+\subsection{第三成分の添加割合と目的物質の最高純度到達までの段数の関係} \label{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}
 
 
 \chapter{考察および結論} \label{chap:summary}
