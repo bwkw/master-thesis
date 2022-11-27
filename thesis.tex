@@ -477,20 +477,27 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質の最高純度が上がることを確認する。
+表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示したように、第三成分CはAとは引力相互作用をもち、Bとは斥力相互作用をもつようなものを選択した。
+
+\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質（=B）の最高純度が上がることを確認する。
 
 
 \subsection{第三成分の添加割合と目的物質の最高純度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
+本節では、第三成分Cの添加割合のみ変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}と同様のシミュレーションを行う。
 
+\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、Cの添加割合を$0.0~1.0\%$で変化させたときの第三成分の添加割合と目的物質（=B）の最高純度の関係を観測する。
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-sec:bi-component-addition-of-3rd-component-steps}
 \subsection{第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-subsec:bi-component-addition-of-3rd-component-steps}
 蒸留においては、目的物質の最高純度に達するまでの段数も重要となるが、これも第三成分を添加することにより減らすことが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、目的物質の最高純度に達するまでの段数が減ることを確認する。
-本研究のシミュレーションは、
+ただし、本節のシミュレーション条件は、\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}で示したものと同様であるとする。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の段数と比較し、段数が減ることを確認する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の目的物質（=B）の最高純度到達までの段数と比較し、段数が減ることを確認する。
 
 \subsection{第三成分の添加割合と目的物質の最高純度到達までの段数の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}
+本節では、第三成分Cの添加割合のみ変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-steps}と同様のシミュレーションを行う。
+
+\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}節では、Cの添加割合を$0.0~1.0\%$で変化させたときの第三成分の添加割合と目的物質（=B）の最高純度到達までの段数の関係を観測する。
 
 
 \chapter{結果} \label{chap:results}
@@ -501,7 +508,9 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少を観測する。
 
 \section{単成分LJ系における気液共存状態の実現} \label{results-sec:mono-component}
-\ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションにおいて測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
+\ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各原子の座標を出力する。図に、最終ステップの原子のスナップショットを示す。
+
+図の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
 
 \begin{figure}[htbp]
     \begin{center}
@@ -519,7 +528,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \normalsize
 ここで、$\rho_l$は液相密度、$\rho_g$は気相密度、$x_d$は分割面の位置、$\delta_d$は界面厚さを示す。
 
-式(\ref{eq:gas-liquid-interface-density-profile})により、図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}で得られた密度を近似したものを図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}に示す。
+図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}で得られた密度を式(\ref{eq:gas-liquid-interface-density-profile})を目的関数としLevenberg-Marquardt法により近似したものを図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}に示す。
 
 \begin{figure}[htbp]
     \begin{center}
