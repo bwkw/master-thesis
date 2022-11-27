@@ -557,6 +557,29 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
 \subsection{相互作用が対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-symmetric-component-azeotrope}
+\ref{method-subsec:bi-symmetric-component-azeotrope}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各原子の座標を出力する。図に、最終ステップの原子のスナップショットを示す。
+
+図の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/lan140493-lbn561971-ran3930-rbn15722.pdf}
+    \end{center}
+    \caption{単成分LJ系における密度の位置依存性}
+    \label{fig:lan140493-lbn561971-ran3930-rbn15722}
+\end{figure}
+
+図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}より、A,Bともに$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}で得られた密度を式(\ref{eq:gas-liquid-interface-density-profile})を目的関数としLevenberg-Marquardt法により近似したものを図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-fitting}に示す。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/lan140493-lbn561971-ran3930-rbn15722-fitting.pdf}
+    \end{center}
+    \caption{単成分LJ系における密度の位置依存性及びその近似}
+    \label{fig:lan140493-lbn561971-ran3930-rbn15722-fitting}
+\end{figure}
+
+
 \subsection{相互作用が非対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-asymmetric-component-azeotrope}
 
 
