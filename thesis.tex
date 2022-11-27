@@ -510,17 +510,17 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \section{単成分LJ系における気液共存状態の実現} \label{results-sec:mono-component}
 \ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各原子の座標を出力する。図に、最終ステップの原子のスナップショットを示す。
 
-図の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
+図の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
 
 \begin{figure}[htbp]
     \begin{center}
-        \includegraphics[width=14cm]{fig/ln78732-rn10976-ld0.629856-rd0.087808-T1.0.pdf}
+        \includegraphics[width=14cm]{fig/ln78732-rn10976-ld0.629856-rd0.087808.pdf}
     \end{center}
     \caption{単成分LJ系における密度の位置依存性}
-    \label{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}
+    \label{fig:ln78732-rn10976-ld0.629856-rd0.087808}
 \end{figure}
 
-図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}より、$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。ここで、気液界面およびその近傍の密度プロファイルの関数は、次のような式で表されることが知られている\cite{gas-liquid-interface-density-profile}。
+図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}より、$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。ここで、気液界面およびその近傍の密度プロファイルの関数は、次のような式で表されることが知られている\cite{gas-liquid-interface-density-profile}。
 \large
 \begin{eqnarray}
     \rho(x) = \frac{\rho_l+\rho_g}{2} - \frac{\rho_l-\rho_g}{2}\,tanh\Bigg(\frac{x-x_d}{2\delta_d}\Bigg) \label{eq:gas-liquid-interface-density-profile}
@@ -528,22 +528,22 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \normalsize
 ここで、$\rho_l$は液相密度、$\rho_g$は気相密度、$x_d$は分割面の位置、$\delta_d$は界面厚さを示す。
 
-図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0}で得られた密度を式(\ref{eq:gas-liquid-interface-density-profile})を目的関数としLevenberg-Marquardt法により近似したものを図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}に示す。
+図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}で得られた密度を式(\ref{eq:gas-liquid-interface-density-profile})を目的関数としLevenberg-Marquardt法により近似したものを図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-fitting}に示す。
 
 \begin{figure}[htbp]
     \begin{center}
-        \includegraphics[width=14cm]{fig/ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting.pdf}
+        \includegraphics[width=14cm]{fig/ln78732-rn10976-ld0.629856-rd0.087808-fitting.pdf}
     \end{center}
     \caption{単成分LJ系における密度の位置依存性及びその近似}
-    \label{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}
+    \label{fig:ln78732-rn10976-ld0.629856-rd0.087808-fitting}
 \end{figure}
 
-続いて、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}に、先行研究\cite{gas-liquid-equilibrium}における気液密度と、図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}の近似で得られた気液密度を示す。
+続いて、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-fitting}に、先行研究\cite{gas-liquid-equilibrium}における気液密度と、図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-fitting}の近似で得られた気液密度を示す。
 
 \begin{table}[htbp]
     \begin{center}
         \caption{単成分LJ系における密度近似による気液密度値}
-        \label{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}
+        \label{table:ln78732-rn10976-ld0.629856-rd0.087808-fitting}
             \begin{tabular}{c || c | c}
                 & $\rho_l$ & $\rho_g$ \\
                 先行研究 & 0.5891(1) & 0.0856(2) \\
@@ -552,7 +552,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}より、本研究と先行研究には誤差が存在するが、これは本研究と先行研究とでカットオフ距離近傍での原子間相互作用がわずかに違うため生じたものと考えられる。そのため、本研究で得られた結果は妥当であると判断し、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-T1.0-fitting}で得た平衡状態における気液密度を基に、以降では初期状態で凡その気体状態、液体状態を実現した上で研究を進めることにより、平衡状態までの収束を早めた。
+表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-fitting}より、本研究と先行研究には誤差が存在するが、これは本研究と先行研究とでカットオフ距離近傍での原子間相互作用がわずかに違うため生じたものと考えられる。そのため、本研究で得られた結果は妥当であると判断し、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-fitting}で得た平衡状態における気液密度を基に、以降では初期状態で凡その気体状態、液体状態を実現した上で研究を進めることにより、平衡状態までの収束を早めた。
 
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
