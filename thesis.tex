@@ -485,7 +485,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \subsection{第三成分の添加割合と目的物質の最高純度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
 本節では、第三成分Cの添加割合のみ変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}と同様のシミュレーションを行う。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、Cの添加割合を$0.0~1.0\%$で変化させたときの第三成分の添加割合と目的物質（=B）の最高純度の関係を観測する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、シミュレーションではCの組成比を$0.00〜0.02$に$0.002$刻みで変化させたときのCの組成比とと目的物質（=B）の最高純度の関係を観測する。
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-sec:bi-component-addition-of-3rd-component-steps}
 \subsection{第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-subsec:bi-component-addition-of-3rd-component-steps}
@@ -508,9 +508,16 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少を観測する。
 
 \section{単成分LJ系における気液共存状態の実現} \label{results-sec:mono-component}
-\ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各原子の座標を出力する。図に、最終ステップの原子のスナップショットを示す。
+\ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各原子の座標を出力する。図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-final-vmd}に、最終ステップの原子のスナップショットを示す。
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/ln78732-rn10976-ld0.629856-rd0.087808/ln78732-rn10976-ld0.629856-rd0.087808-final-vmd.png}
+    \end{center}
+    \caption{単成分LJ系のMDシミュレーションにおける最終ステップの原子のスナップショット}
+    \label{fig:ln78732-rn10976-ld0.629856-rd0.087808-final-vmd}
+\end{figure}
 
-図の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
+図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-final-vmd}の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
 
 \begin{figure}[htbp]
     \begin{center}
