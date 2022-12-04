@@ -93,14 +93,14 @@ LJポテンシャルは、アルゴンのような貴ガスのファンデルワ
 このポテンシャルモデルにおいて二つの原子間相互作用ポテンシャルエネルギーは
 \large
 \begin{equation}
-\phi(r)=4{\varepsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right)\label{eq:lj}
+\phi(r)=4{\epsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right)\label{eq:lj}
 \end{equation}
 \normalsize
 と表される。
-ここで、$r$は原子間距離、${\sigma}$は原子直径の長さ、${\varepsilon}$はポテンシャルの深さを表す。
+ここで、$r$は原子間距離、${\sigma}$は原子直径の長さ、${\epsilon}$はポテンシャルの深さを表す。
 式(\ref{eq:lj})の右辺第一項は原子間の斥力相互作用を表し、右辺第二項は原子間の引力相互作用を表す。
-LJポテンシャルを用いる系では、パラメタ$\sigma$\,,\,$\varepsilon$と粒子の質量$m$を用いて物理量を無次元化したLJ単位系と呼ばれる単位を用いる。
-例えば、アルゴンでは、${\sigma}=3.40×10^{-10}\,\mathrm{m}$\,,\,${\varepsilon}=1.67×10^{-21}\,\mathrm{J}$であり\cite{lennard-jones-argon-parameters}、
+LJポテンシャルを用いる系では、パラメタ$\sigma$\,,\,$\epsilon$と粒子の質量$m$を用いて物理量を無次元化したLJ単位系と呼ばれる単位を用いる。
+例えば、アルゴンでは、${\sigma}=3.40×10^{-10}\,\mathrm{m}$\,,\,${\epsilon}=1.67×10^{-21}\,\mathrm{J}$であり\cite{lennard-jones-argon-parameters}、
 他にも多くの気体ごとに値が定められている\cite{lennard-jones-many-parameters}。
 
 LJ単位系では、ボルツマン定数$k$は
@@ -109,16 +109,16 @@ LJ単位系では、ボルツマン定数$k$は
 k=1.0\label{eq:k}
 \end{equation}
 \normalsize
-温度$T^*$はパラメタ$\varepsilon$\,,ボルツマン定数$k$を用いて、
+温度$T^*$はパラメタ$\epsilon$\,,ボルツマン定数$k$を用いて、
 \large
 \begin{equation}
-T^*=\frac{kT}{\varepsilon}\label{eq:T}
+T^*=\frac{kT}{\epsilon}\label{eq:T}
 \end{equation}
 \normalsize
-圧力$P^*$はパラメタ${\sigma}$\,,\,${\varepsilon}$を用いて
+圧力$P^*$はパラメタ${\sigma}$\,,\,${\epsilon}$を用いて
 \large
 \begin{equation}
-P^*=\frac{P\sigma^3}{\varepsilon}\label{eq:P}
+P^*=\frac{P\sigma^3}{\epsilon}\label{eq:P}
 \end{equation}
 \normalsize
 数密度$\rho^*$はパラメタ$\sigma$を用いて、
@@ -127,10 +127,10 @@ P^*=\frac{P\sigma^3}{\varepsilon}\label{eq:P}
 \rho^*=\rho{\sigma}^3\label{eq:rho}
 \end{equation}
 \normalsize
-時間$t^*$はパラメタ${\sigma}$\,,\,${\varepsilon}$\,,\,質量$m$を用いて
+時間$t^*$はパラメタ${\sigma}$\,,\,${\epsilon}$\,,\,質量$m$を用いて
 \large
 \begin{equation}
-t^*=t\sqrt{\frac{\varepsilon}{m{\sigma}^2}}\label{eq:time}
+t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \end{equation}
 \normalsize
 と表される。
@@ -144,7 +144,7 @@ WCAポテンシャル粒子系において二つの原子間相互作用ポテ�
 \large
 \begin{equation}
 \phi(r) = \left\{ \begin{array}{ll}
-    4{\varepsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right) & (r\,{\leq}\,{r_c}) \\
+    4{\epsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right) & (r\,{\leq}\,{r_c}) \\
     0 & (r>r_c)\label{eq:wca}
 \end{array} \right.
 \end{equation}
@@ -289,7 +289,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:mono-component-potential-parameter}
             \begin{tabular}{c c c}
-                $\sigma$ & $\varepsilon$ & $r_c$ \\
+                $\sigma$ & $\epsilon$ & $r_c$ \\
                 \hline
                 1.0 & 1.0 & 3.0\\
             \end{tabular}
@@ -327,7 +327,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:symmetric-bi-component-azeotrope-potential-parameter}
             \begin{tabular}{c c c c}
-                & $\sigma$ & $\varepsilon$ & $r_c$ \\
+                & $\sigma$ & $\epsilon$ & $r_c$ \\
                 \hline
                 A-A & 1.0 & 1.0 & 3.0 \\
                 A-B & 1.05 & 0.9 & 3.0 \\
@@ -359,7 +359,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:asymmetric-bi-component-azeotrope-potential-parameter}
             \begin{tabular}{c c c c}
-                & $\sigma$ & $\varepsilon$ & $r_c$ \\
+                & $\sigma$ & $\epsilon$ & $r_c$ \\
                 \hline
                 A-A & 1.0 & 1.0 & 3.0 \\
                 A-B & 1.05 & 0.9 & 3.0 \\
@@ -372,7 +372,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-subsec:bi-asymmetric-component-azeotrope}節では、上記のパラメタを元に気液共存状態を実現し、各組成の気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に$X$を求め、共沸組成を導出する。
 
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{method-sec:bi-component-potential-parameter-azeotrope-ratio}
-手法\ref{method-sec:bi-component-azeotrope}で観測した共沸現象の内、非対称LJ系に着目する。本研究で採用した、LJポテンシャルは、ポテンシャルパラメタとして、${\sigma}$,\,${\varepsilon}$の二つのパラメタが存在する。
+手法\ref{method-sec:bi-component-azeotrope}で観測した共沸現象の内、非対称LJ系に着目する。本研究で採用した、LJポテンシャルは、ポテンシャルパラメタとして、${\sigma}$,\,${\epsilon}$の二つのパラメタが存在する。
 本節では、この二つのパラメタを変化させた時の共沸組成のずれを観測する。
 
 
@@ -396,7 +396,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:bi-component-sigma-azeotrope-ratio-potential-parameter}
         \begin{tabular}{c c c c}
-            & $\sigma$ & $\varepsilon$ & $r_c$ \\
+            & $\sigma$ & $\epsilon$ & $r_c$ \\
             \hline
             A-A & 1.0 & 1.0 & 3.0 \\
             A-B & 1.05 & 0.9 & 3.0 \\
@@ -408,8 +408,8 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-subsec:bi-component-sigma-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\sigma$と共沸組成の関係を導出する。
 
 
-\subsection{二成分LJ系における$\varepsilon$と共沸組成の関係} \label{method-subsec:bi-component-epsilon-azeotrope-ratio}
-二成分LJ系において${\varepsilon}$を変化させた時のシミュレーションにおけるパラメタを表\ref{table:bi-component-epsilon-azeotrope-ratio-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-epsilon-azeotrope-ratio-potential-parameter}に示す。
+\subsection{二成分LJ系における$\epsilon$と共沸組成の関係} \label{method-subsec:bi-component-epsilon-azeotrope-ratio}
+二成分LJ系において${\epsilon}$を変化させた時のシミュレーションにおけるパラメタを表\ref{table:bi-component-epsilon-azeotrope-ratio-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-epsilon-azeotrope-ratio-potential-parameter}に示す。
 
 \begin{table}[htbp]
     \begin{center}
@@ -428,7 +428,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:bi-component-epsilon-azeotrope-ratio-potential-parameter}
         \begin{tabular}{c c c c}
-            & $\sigma$ & $\varepsilon$ & $r_c$ \\
+            & $\sigma$ & $\epsilon$ & $r_c$ \\
             \hline
             A-A & 1.0 & 1.0 & 3.0 \\
             A-B & 1.05 & 0.9 & 3.0 \\
@@ -437,11 +437,11 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-\ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\varepsilon$と共沸組成の関係を導出する。
+\ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\epsilon$と共沸組成の関係を導出する。
 
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の向上} \label{method-sec:bi-component-addition-of-3rd-component-highest-purity}
-\subsection{第三成分の添加による目的物質の最高純度の増加} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加による目的物質の最高純度の向上} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
 蒸留によって得られる目的物質の最高純度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高純度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高純度が上がることを確認する。
 
 シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
@@ -465,7 +465,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:bi-component-addition-of-3rd-component-potential-parameter}
         \begin{tabular}{c c c c}
-            & $\sigma$ & $\varepsilon$ & $r_c$ \\
+            & $\sigma$ & $\epsilon$ & $r_c$ \\
             \hline
             A-A & 1.0 & 1.0 & 3.0 \\
             A-B & 1.05 & 0.9 & 3.0 \\
@@ -489,7 +489,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-sec:bi-component-addition-of-3rd-component-steps}
 \subsection{第三成分の添加による目的物質の最高純度到達までの段数の減少} \label{method-subsec:bi-component-addition-of-3rd-component-steps}
-蒸留においては、目的物質の最高純度に達するまでの段数も重要となるが、これも第三成分を添加することにより減らすことが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、目的物質の最高純度に達するまでの段数が減ることを確認する。
+蒸留においては、目的物質の最高純度に達するまでの段数も重要となるが、これも第三成分を添加することにより減らすことが出来る\cite{distillation}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、目的物質の最高純度に達するまでの段数が減ることを確認する。
 ただし、本節のシミュレーション条件は、\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}で示したものと同様であるとする。
 
 \ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の目的物質（=B）の最高純度到達までの段数と比較し、段数が減ることを確認する。
@@ -653,7 +653,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \includegraphics[width=14cm]{fig/sigma-composition_ratio/sigma-composition_ratio.pdf}
     \end{center}
-    \caption{相互作用が非対称な二成分LJ系における$\sigma$とBの組成比の関係}
+    \caption{二成分LJ系における$\sigma$とBの組成比の関係}
     \label{fig:sigma-composition_ratio}
 \end{figure}
 
