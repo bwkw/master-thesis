@@ -64,7 +64,7 @@
 
 \section{研究の背景} \label{introduction:background}
 蒸留とは、液体の混合物から選択的な沸騰と凝縮を利用して成分や物質を分離するプロセスのことを言う。混合物を加熱していくと、液面から各成分が蒸発していき、各成分の蒸気圧の和が外圧と等しくなったときに沸騰が始まる。このとき、発生する蒸気の組成比はラウールの法則に従って、純液体の蒸気圧と混合溶液中のモル分率の積で決定される。この蒸気を凝縮すると液体混合物が得られるが、この液体混合物は初めの液体混合物と比較すると、特定成分の濃度が上がったものとなる。つまり、この蒸留という操作を繰り返し行うことによって、目的成分の濃度を上昇させることができる。\\
-今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し行うことで、エタノールを濃縮し、アルコール度数を上げることができる。しかし、共沸という現象によって、いくら蒸留を繰り返してもアルコール度数は96度までしか上げることが出来ず、それ以上エタノールは濃縮できないことが知られている。これが世界最高純度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象は、共沸蒸留塔、抽出蒸留塔、反応蒸留塔といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、数値計算系で精力的に研究が行われてきた。数値計算の分野においては、ギブスアンサンブル(GibbsEnsemble, GE)法などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
+今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し行うことで、エタノールを濃縮し、アルコール度数を上げることができる。しかし、共沸という現象によって、いくら蒸留を繰り返してもアルコール度数は96度までしか上げることが出来ず、それ以上エタノールは濃縮できないことが知られている。これが世界最高濃度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象は、共沸蒸留塔、抽出蒸留塔、反応蒸留塔といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、数値計算系で精力的に研究が行われてきた。数値計算の分野においては、ギブスアンサンブル(GibbsEnsemble, GE)法などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
 
 
 \section{研究の目的} \label{introduction:purpose}
@@ -253,8 +253,8 @@ Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュ�
 \ref{method-sec:mono-component}節では、単成分LJ系における気液共存状態の実現手法を述べる。
 \ref{method-sec:bi-component-azeotrope}節では、二成分LJ系における共沸現象の実現手法を述べる。
 \ref{method-sec:bi-component-potential-parameter-azeotrope-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係の推定手法を述べる。
-\ref{method-sec:bi-component-addition-of-3rd-component-highest-purity}節では、二成分LJ系への第三成分の添加手法と添加による目的物質の最高純度の向上確認手法を述べる。
-\ref{method-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加手法と添加による目的物質の最高純度到達までの段数の減少確認手法を述べる。
+\ref{method-sec:bi-component-addition-of-3rd-component-highest-purity}節では、二成分LJ系への第三成分の添加手法と添加による目的物質の最高濃度の上昇確認手法を述べる。
+\ref{method-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加手法と添加による特定段数で到達する目的物質の濃度の上昇確認手法を述べる。
 
 
 \section{単成分LJ系における気液共存状態の実現} \label{method-sec:mono-component}
@@ -440,9 +440,9 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、$\epsilon$と共沸組成の関係を導出する。
 
 
-\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の向上} \label{method-sec:bi-component-addition-of-3rd-component-highest-purity}
-\subsection{第三成分の添加による目的物質の最高純度の向上} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
-蒸留によって得られる目的物質の最高純度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高純度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高純度が上がることを確認する。
+\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高濃度の上昇} \label{method-sec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加による目的物質の最高濃度の上昇} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
+蒸留によって得られる目的物質の最高濃度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高濃度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高濃度が上がることを確認する。
 
 シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
 
@@ -479,13 +479,13 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示したように、第三成分CはAとは引力相互作用をもち、Bとは斥力相互作用をもつようなものを選択した。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質（=B）の最高純度が上がることを確認する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質（=B）の最高濃度が上がることを確認する。
 
 
-\subsection{第三成分の添加割合と目的物質の最高純度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
+\subsection{第三成分の添加割合と目的物質の最高濃度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
 本節では、第三成分Cの添加割合のみ変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}と同様のシミュレーションを行う。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、シミュレーションではCの組成比を$0.00〜0.02$に$0.002$刻みで変化させたときのCの組成比とと目的物質（=B）の最高純度の関係を観測する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、シミュレーションではCの組成比を$0.00〜0.02$に$0.002$刻みで変化させたときのCの組成比とと目的物質（=B）の最高濃度の関係を観測する。
 
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による特定段数で到達する目的物質の濃度の上昇} \label{method-sec:bi-component-addition-of-3rd-component-steps}
@@ -507,8 +507,8 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-sec:mono-component}節では、単成分LJ系において気液共存状態を実現する。
 \ref{results-sec:bi-component-azeotrope}節では、二成分LJ系において共沸現象を実現する。
 \ref{results-sec:bi-component-potential-parameter-azeotrope-ratio}節では、二成分LJ系におけるポテンシャルパラメタと共沸組成の関係を示す。
-\ref{results-sec:bi-component-addition-of-3rd-component-highest-purity}節では、二成分LJ系への第三成分の添加による共沸組成のずれ、及び目的物質の最高純度の向上を観測する。
-\ref{results-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加による目的物質の最高純度到達までの段数の減少を観測する。
+\ref{results-sec:bi-component-addition-of-3rd-component-highest-purity}節では、二成分LJ系への第三成分の添加による共沸組成のずれ、及び目的物質の最高濃度の上昇を観測する。
+\ref{results-sec:bi-component-addition-of-3rd-component-steps}節では、二成分LJ系への第三成分の添加による特定段数で到達する目的物質の濃度の上昇を観測する。
 
 \section{単成分LJ系における気液共存状態の実現} \label{results-sec:mono-component}
 \ref{method-sec:mono-component}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各原子の座標を出力する。図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-final-vmd}に、最終ステップの原子のスナップショットを示す。
@@ -683,10 +683,11 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 図\ref{fig:epsilon-composition_ratio}から、$\epsilon$を大きくすればするほど、その物質の共沸組成が小さくなることが分かる。
 
+
 \newpage
-\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高純度の向上} \label{results-sec:bi-component-addition-of-3rd-component-highest-purity}
-\subsection{第三成分の添加による目的物質の最高純度の向上} \label{results-subsec:bi-component-addition-of-3rd-component-highest-purity}
-\subsection{第三成分の添加割合と目的物質の最高純度の関係} \label{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
+\section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高濃度の上昇} \label{results-sec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加による目的物質の最高濃度の上昇} \label{results-subsec:bi-component-addition-of-3rd-component-highest-purity}
+\subsection{第三成分の添加割合と目的物質の最高濃度の関係} \label{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
 
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による特定段数で到達する目的物質の濃度の上昇} \label{results-sec:bi-component-addition-of-3rd-component-steps}
