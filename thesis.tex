@@ -453,7 +453,15 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \subsection{第三成分の添加による目的物質の最高濃度の上昇} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
 蒸留によって得られる目的物質の最高濃度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高濃度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高濃度が上がることを確認する。
 
-シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図に、原子の初期配置を示す。
+シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図\ref{fig:lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first}に、Aの組成比0.198, Bの組成比0.792, Cの組成比0.01の時の原子の初期配置を示す。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197/lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first.png}
+    \end{center}
+    \caption{二成分LJ系のMDシミュレーションにおける原子の初期配置。fcc構造上に配置されている。水色が物質A, 桃色が物質B, 紫色が物質Cを指す。}
+    \label{fig:lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first}
+\end{figure}
 
 この初期配置の下、実行したシミュレーションにおけるパラメタを表\ref{table:bi-component-addition-of-3rd-component-parameter}に、粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示す。
 
