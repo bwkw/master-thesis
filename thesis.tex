@@ -346,7 +346,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \end{table}
 
 表\ref{table:symmetric-bi-component-azeotrope-parameter}, \ref{table:symmetric-bi-component-azeotrope-potential-parameter}パラメタを基に、MDシミュレーションをLAMMPSで実行して、各粒子の座標を出力し、各位置$x$\,(0.0〜1.0の0.0025刻み)における密度を測定する。尚、各粒子の密度は最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。このように粒子の密度を測定しプロットすることで、最終的に気液共存状態を実現する。
-\ref{results-subsec:bi-symmetric-component-azeotrope}節では、上記の手法で気液共存状態を実現し、気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に$X$を求め、共沸組成を導出する。
+\ref{results-subsec:bi-symmetric-component-azeotrope}節では、上記の手法で気液共存状態を実現し、気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に共沸パラメタ$X$を求め、共沸組成を導出する。
 
 
 \subsection{相互作用が非対称な二成分LJ系における共沸現象の実現} \label{method-subsec:bi-asymmetric-component-azeotrope}
