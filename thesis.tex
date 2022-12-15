@@ -136,39 +136,45 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 と表される。
 
 
-\section{WCAポテンシャル}\label{principle-sec:WCA}
-\ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
-WCAポテンシャル粒子系においてもLJ単位系を用いる。
-カットオフ距離とは、その距離内の粒子間の相互作用のみを考慮するものであり、それ以上の距離での粒子間の力を無視するものである\cite{cutoff}。
-WCAポテンシャル粒子系において二つの粒子間相互作用ポテンシャルエネルギーは、
-\large
-\begin{equation}
-\phi(r) = \left\{ \begin{array}{ll}
-    4{\epsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right) & (r\,{\leq}\,{r_c}) \\
-    0 & (r>r_c)\label{eq:wca}
-\end{array} \right.
-\end{equation}
-\normalsize
-と表される\cite{wca}。
-したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二粒子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
+% \section{WCAポテンシャル}\label{principle-sec:WCA}
+% \ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
+% WCAポテンシャル粒子系においてもLJ単位系を用いる。
+% カットオフ距離とは、その距離内の粒子間の相互作用のみを考慮するものであり、それ以上の距離での粒子間の力を無視するものである\cite{cutoff}。
+% WCAポテンシャル粒子系において二つの粒子間相互作用ポテンシャルエネルギーは、
+% \large
+% \begin{equation}
+% \phi(r) = \left\{ \begin{array}{ll}
+%     4{\epsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right) & (r\,{\leq}\,{r_c}) \\
+%     0 & (r>r_c)\label{eq:wca}
+% \end{array} \right.
+% \end{equation}
+% \normalsize
+% と表される\cite{wca}。
+% したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二粒子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
 
 
-\section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
-図\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における粒子間距離$r$と粒子間のポテンシャルエネルギー$E$を示す。
-尚、図\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
+% \section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
+% 図\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における粒子間距離$r$と粒子間のポテンシャルエネルギー$E$を示す。
+% 尚、図\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
 
-\newpage
-\begin{figure}[htbp]
-    \begin{center}
-        \includegraphics[width=14cm]{fig/dis-poen/dis-poen.pdf}
-    \end{center}
-    \caption{WCAとLJの粒子間距離-ポテンシャルエネルギー。
-    WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、$r>r_c$でポテンシャルエネルギーが0になっている。}
-    \label{fig:dis-poen}
-\end{figure}
+% \newpage
+% \begin{figure}[htbp]
+%     \begin{center}
+%         \includegraphics[width=14cm]{fig/dis-poen/dis-poen.pdf}
+%     \end{center}
+%     \caption{WCAとLJの粒子間距離-ポテンシャルエネルギー。
+%     WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、$r>r_c$でポテンシャルエネルギーが0になっている。}
+%     \label{fig:dis-poen}
+% \end{figure}
 
-図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
-$r>r_c$でポテンシャルエネルギーが0になっている。
+% 図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
+% $r>r_c$でポテンシャルエネルギーが0になっている。
+
+
+\section{物性研スーパーコンピューター システムB ohtaka} \label{principle-sec:super-computer}
+ohtakaは、1ノードに128コアをもつAMD Romeを搭載した標準的な構成のCPUノードと1ノードあたり3TBの大容量メモリを搭載したFatノードで構成されるスーパーコンピューターである。\cite{ohtaka}
+まず、CPUノードは1680ノード（420筐体/24ラック）存在し、1ノードあたり4.096TFLOPS(2.0GHz×64core×16命令×2sock)の理論演算性能、409.6GByte/sec(3,200MHz×16channel×8Byte)のメモリ転送性能を誇り、1ノードあたり128コア、1コアあたり2GBのメモリ容量を持つ。
+続いて、Fatノードは8ノード存在し、1ノードあたり9.6768TFLOPS(2.7GHz×28core×32命令×4sock)の理論演算性能、563.136GByte/sec(2,933MHzx24channelx8Byte)のメモリ転送性能を誇り、1ノードあたり112コア、1コアあたり約27GBのメモリ容量を持つ。
 
 
 \section{最小二乗法}\label{principle-sec:least-squares}
