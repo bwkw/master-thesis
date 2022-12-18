@@ -510,7 +510,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 
 \subsection{第三成分の添加割合と目的物質の最高濃度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
-本節では、第三成分Cの添加割合のみを変化させ、\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}と同様のシミュレーションを行う。
+本節では、第三成分Cの添加割合のみを変化させ、\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}節と同様のシミュレーションを行う。
 
 \ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、Cの添加割合を$0.0〜2.0\%$で変化させたときのCの添加割合と目的物質Bの最高濃度の関係を観測する。
 
@@ -525,7 +525,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 
 \subsection{第三成分の添加割合と特定段数で到達する目的物質の濃度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}
-本節では、第三成分Cの添加割合のみを変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-steps}と同様のシミュレーションを行う。
+本節では、第三成分Cの添加割合のみを変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-steps}節と同様のシミュレーションを行う。
 
 \ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}節では、Cの添加割合を$0.0〜2.0\%$で変化させたときの第三成分の添加割合と三段で到達する目的物質Bの濃度の関係を観測する。
 
@@ -575,6 +575,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:ln78732-rn10976-ld0.629856-rd0.087808-fitting}
 \end{figure}
 
+\newpage
 続いて、表\ref{table:ln78732-rn10976-ld0.629856-rd0.087808-fitting}に、先行研究\cite{gas-liquid-equilibrium}における気液密度と、図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-fitting}の近似で得られた気液密度を示す。
 
 \begin{table}[htbp]
@@ -594,9 +595,18 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
 \subsection{相互作用が対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-symmetric-component-azeotrope}
-\ref{method-subsec:bi-symmetric-component-azeotrope}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各粒子の座標を出力する。図に、最終ステップの粒子のスナップショットを示す。
+\ref{method-subsec:bi-symmetric-component-azeotrope}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各粒子の座標を出力する。図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-last}に、最終ステップの粒子のスナップショットを示す。
 
-図の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}に示す。ただし、各粒子の密度$density$は、最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/sample.jpeg}
+    \end{center}
+    \caption{二成分LJ系のMDシミュレーションにおける最終ステップの粒子のスナップショット}
+    \label{fig:lan140493-lbn561971-ran3930-rbn15722-last}
+\end{figure}
+
+\newpage
+図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-last}の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}に示す。ただし、各粒子の密度$density$は、最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。
 
 \begin{figure}[htbp]
     \begin{center}
@@ -606,6 +616,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:lan140493-lbn561971-ran3930-rbn15722}
 \end{figure}
 
+\newpage
 図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}より、A,Bともに$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}で得られた密度を式(\ref{eq:gas-liquid-interface-density-profile})を目的関数としLevenberg-Marquardt法により近似したものを図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-fitting}に示す。
 
 \begin{figure}[htbp]
@@ -642,11 +653,12 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:bi-symmetric}
 \end{figure}
 
+\newpage
 共沸条件は$X=0$であるから、図\ref{fig:bi-symmetric}より、Aの組成比$\approx0.5$で共沸現象が実現されていることが分かる。
 
 \newpage
 \subsection{相互作用が非対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-asymmetric-component-azeotrope}
-相互作用が非対称な二成分LJ系においても、Aの組成比を0.02〜0.98に0.02刻みで変化させ、\ref{results-subsec:bi-symmetric-component-azeotrope}節と同様のプロセスで各組成比における$X$を導出する。図\ref{fig:bi-asymmetric}に、Aの組成比とその各組成比における$X$を示す。図\ref{fig:bi-symmetric}に、Aの組成比とその各組成比における$X$を示す。
+相互作用が非対称な二成分LJ系においても、Aの組成比を0.02〜0.98に0.02刻みで変化させ、\ref{results-subsec:bi-symmetric-component-azeotrope}節と同様のプロセスで各組成比における$X$を導出する。図\ref{fig:bi-asymmetric}に、Aの組成比とその各組成比における$X$を示す。
 
 \begin{figure}[htbp]
     \begin{center}
