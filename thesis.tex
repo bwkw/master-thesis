@@ -462,7 +462,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \subsection{第三成分の添加による目的物質の最高濃度の上昇} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
 蒸留によって得られる目的物質の最高濃度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高濃度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高濃度が上がることを確認する。
 
-シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図\ref{fig:lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first}に、Aの組成比0.198, Bの組成比0.792, Cの組成比0.01の時の粒子の初期配置を示す。
+シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01（添加割合$1.0\%$）で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図\ref{fig:lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first}に、Aの組成比0.198, Bの組成比0.792, Cの組成比0.01の時の粒子の初期配置を示す。
 
 \begin{figure}[htbp]
     \begin{center}
@@ -512,7 +512,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \subsection{第三成分の添加割合と目的物質の最高濃度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
 本節では、第三成分Cの添加割合のみを変化させ、\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}と同様のシミュレーションを行う。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、シミュレーションではCの組成比を$0.00〜0.02$に$0.002$刻みで変化させたときのCの組成比と目的物質（=B）の最高濃度の関係を観測する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}節では、Cの添加割合を$0.0〜2.0\%$で変化させたときのCの添加割合と目的物質Bの最高濃度の関係を観測する。
 
 
 \section{相互作用が対称な二成分LJ系への第三成分の添加による特定段数で到達する目的物質の濃度の上昇} \label{method-sec:bi-component-addition-of-3rd-component-steps}
@@ -521,13 +521,13 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、特定段数で到達する目的物質の濃度が上がることを確認する。
 ただし、本節のシミュレーション条件は、\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}で示したものと同様であるとする。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、相互作用が対称な二成分LJ系（\ref{results-subsec:bi-symmetric-component-azeotrope}節）において三段で到達する目的物質の濃度と、第三成分を添加した系において三段で到達する目的物質の濃度を比較し、第三成分を添加することによって目的物質の濃度が上がることを確認する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-steps}節では、目的物質Bの初期濃度0.1の時、相互作用が対称な二成分LJ系（\ref{results-subsec:bi-symmetric-component-azeotrope}節）において三段で到達する濃度と、第三成分を添加した系において三段で到達する濃度を比較し、第三成分を添加することによって目的物質Bの濃度が上がることを確認する。
 
 
 \subsection{第三成分の添加割合と特定段数で到達する目的物質の濃度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}
 本節では、第三成分Cの添加割合のみを変化させた上で\ref{method-subsec:bi-component-addition-of-3rd-component-steps}と同様のシミュレーションを行う。
 
-\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}節では、Cの添加割合を$0.0~1.0\%$で変化させたときの第三成分の添加割合と三段で到達する目的物質（=B）の濃度の関係を観測する。
+\ref{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}節では、Cの添加割合を$0.0〜2.0\%$で変化させたときの第三成分の添加割合と三段で到達する目的物質Bの濃度の関係を観測する。
 
 
 \chapter{結果} \label{chap:results}
@@ -753,7 +753,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \includegraphics[width=14cm]{fig/sample.jpeg}
     \end{center}
-    \caption{対称二成分LJ系に第三成分を添加した系における第三成分の添加割合と目的物質の最高濃度の関係}
+    \caption{対称二成分LJ系と第三成分を添加した系における第三成分の添加割合と目的物質の最高濃度の関係}
     \label{fig:bi-component-addition-of-3rd-component-highest-purity}
 \end{figure}
 
@@ -775,9 +775,52 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \newpage
 図\ref{fig:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}より、第三成分の添加割合を増やせば増やすほど、目的物質Bの最高濃度が上昇していることがわかる。
 
+
 \section{相互作用が対称な二成分LJ系への第三成分の添加による特定段数で到達する目的物質の濃度の上昇} \label{results-sec:bi-component-addition-of-3rd-component-steps}
 \subsection{第三成分の添加による特定段数で到達する目的物質の濃度の上昇} \label{results-subsec:bi-component-addition-of-3rd-component-steps}
+目的物質Bの初期濃度0.1の時、対称二成分LJ系において三段で到達する濃度と、第三成分を添加した系において三段で到達する濃度を求める。この濃度を計算するための、対称二成分LJ系におけるBの液-気相濃度図と第三成分を添加した系におけるBの液-気相濃度図を図\ref{fig:bi-component-addition-of-3rd-component-steps}に示す。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/sample.jpeg}
+    \end{center}
+    \caption{対称二成分LJ系と第三成分を添加した系において三段で到達する濃度計算}
+    \label{fig:bi-component-addition-of-3rd-component-steps}
+\end{figure}
+
+\newpage
+図\ref{fig:bi-component-addition-of-3rd-component-steps}に示した対称二成分LJ系と第三成分を添加した系において、Bの初期濃度0.1の時に三段で到達する濃度を表\ref{table:bi-component-addition-of-3rd-component-steps}に示す。
+
+
+\begin{table}[htbp]
+    \begin{center}
+        \caption{対称二成分LJ系と第三成分を添加した系において、Bの初期濃度0.1の時に三段で到達する濃度}
+        \label{table:bi-component-addition-of-3rd-component-steps}
+        \begin{tabular}{c c}
+            対称二成分系 & 第三成分を添加した系 \\
+            \hline
+            sample & sample \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+表\ref{table:bi-component-addition-of-3rd-component-steps}より、添加物Cを1％加えることにより、三段で到達する目的物質Bの濃度がsample％上がっていることが分かる。
+
+
 \subsection{第三成分の添加割合と特定段数で到達する目的物質の濃度の関係} \label{results-subsec:bi-component-addition-of-3rd-component-addition-ratio-steps}
+\ref{results-subsec:bi-component-addition-of-3rd-component-steps}と同様の手順で、第三成分の添加割合を$0.0〜2.0\%$に変化させた時の三段で到達する目的物質Bの濃度を調べる。
+図\ref{fig:bi-component-addition-of-3rd-component-addition-ratio-steps}に第三成分の添加割合と三段で到達する目的物質の濃度を示す。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/sample.jpeg}
+    \end{center}
+    \caption{対称二成分LJ系に第三成分を添加した系における第三成分の添加割合と三段で到達する目的物質Bの濃度の関係}
+    \label{fig:bi-component-addition-of-3rd-component-addition-ratio-steps}
+\end{figure}
+
+\newpage
+図\ref{fig:bi-component-addition-of-3rd-component-addition-ratio-steps}より、第三成分の添加割合を増やせば増やすほど、三段で到達する目的物質Bの濃度が上昇することが分かる。
 
 
 \chapter{考察および結論} \label{chap:summary}
