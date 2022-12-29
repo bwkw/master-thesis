@@ -546,11 +546,11 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \includegraphics[width=14cm]{fig/ln78732-rn10976-ld0.629856-rd0.087808/ln78732-rn10976-ld0.629856-rd0.087808-last.png}
     \end{center}
-    \caption{単成分LJ系のMDシミュレーションにおける最終ステップの粒子のスナップショット}
+    \caption{単成分LJ系のMDシミュレーションにおける最終ステップの粒子のスナップショット。}
     \label{fig:ln78732-rn10976-ld0.629856-rd0.087808-last}
 \end{figure}
 
-図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-last}の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
+図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808-last}の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度の関係を図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}に示す。ただし、密度$density$は、最後の5ステップを平均して取得するものとする。
 
 \begin{figure}[htbp]
     \begin{center}
@@ -563,7 +563,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}より、$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。ここで、気液界面およびその近傍の密度プロファイルの関数は、次のような式で表されることが知られている\cite{gas-liquid-interface-density-profile}。
 \large
 \begin{eqnarray}
-    \rho(x) = \frac{\rho_l+\rho_g}{2} - \frac{\rho_l-\rho_g}{2}\,tanh\Bigg(\frac{x-x_d}{2\delta_d}\Bigg) \label{eq:gas-liquid-interface-density-profile}
+    \rho(x) = \frac{\rho_l+\rho_g}{2} - \frac{\rho_l-\rho_g}{2}\,\tanh\Bigg(\frac{x-x_d}{2\delta_d}\Bigg) \label{eq:gas-liquid-interface-density-profile}
 \end{eqnarray}
 \normalsize
 ここで、$\rho_l$は液相密度、$\rho_g$は気相密度、$x_d$は分割面の位置、$\delta_d$は界面厚さを示す。
@@ -609,7 +609,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \end{figure}
 
 \newpage
-図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-last}の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度$density$の関係を図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}に示す。ただし、各粒子の密度$density$は、最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。
+図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-last}の出力結果を元に測定された、各位置$x$\,(0.0:最小、1.0:最大において0.2〜0.8の範囲)とその密度の関係を図\ref{fig:lan140493-lbn561971-ran3930-rbn15722}に示す。ただし、各粒子の密度は、最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。
 
 \begin{figure}[htbp]
     \begin{center}
