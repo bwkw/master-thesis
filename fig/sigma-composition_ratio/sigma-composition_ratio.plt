@@ -1,6 +1,6 @@
 set term pdf
 set out 'sigma-composition_ratio.pdf'
-set xlabel '{/Arial-Italic sigma}'
+set xlabel '{/Symbol s}'
 set ylabel '{/Arial-Italic B-compostion-ratio}'
 set xlabel font 'Arial,15'
 set ylabel font 'Arial,15'
