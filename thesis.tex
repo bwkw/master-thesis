@@ -64,7 +64,7 @@
 
 \section{研究の背景} \label{introduction:background}
 蒸留とは、液体の混合物から選択的な沸騰と凝縮を利用して成分や物質を分離するプロセスのことを言う。混合物を加熱していくと、液面から各成分が蒸発していき、各成分の蒸気圧の和が外圧と等しくなったときに沸騰が始まる。このとき、発生する蒸気の組成比はラウールの法則に従って、純液体の蒸気圧と混合溶液中のモル分率の積で決定される。この蒸気を凝縮すると液体混合物が得られるが、この液体混合物は初めの液体混合物と比較すると、特定成分の濃度が上がったものとなる。つまり、この蒸留という操作を繰り返し行うことによって、目的成分の濃度を上昇させることができる。\\
-今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し行うことで、エタノールを濃縮し、アルコール度数を上げることができる。しかし、共沸という現象によって、いくら蒸留を繰り返してもアルコール度数は96度までしか上げることが出来ず、それ以上エタノールは濃縮できないことが知られている。これが世界最高濃度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指す\cite{azeotrope}が、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象は、共沸蒸留塔\cite{azeotropic-distillation-1,azeotropic-distillation-2}、抽出蒸留塔\cite{extractive-distillation-1,extractive-distillation-2}、反応蒸留塔\cite{reactive-distillation-1,reactive-distillation-2}といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、主に数値計算で精力的に研究が行われてきた。数値計算の分野においては、ギブスアンサンブル(Gibbs Ensemble, GE)法\cite{gibbs-ensemble-1, gibbs-ensemble-2,gibbs-ensemble-3}などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法\cite{gibbs-duhem-integration-1, gibbs-duhem-integration-2}といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
+今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し行うことで、エタノールを濃縮し、アルコール度数を上げることができる。しかし、共沸という現象によって、いくら蒸留を繰り返してもアルコール度数は96度までしか上げることが出来ず、それ以上エタノールは濃縮できないことが知られている。これが世界最高濃度の蒸留酒として知られる「スピリタス」である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指す\cite{azeotrope}が、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象は、共沸蒸留塔\cite{azeotropic-distillation-1,azeotropic-distillation-2}、抽出蒸留塔\cite{extractive-distillation-1,extractive-distillation-2}、反応蒸留塔\cite{reactive-distillation-1,reactive-distillation-2}といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、主に数値計算で精力的に研究が行われてきた。数値計算の分野においては、ギブスアンサンブル(Gibbs Ensemble, GE)法\cite{gibbs-ensemble-1,gibbs-ensemble-2}などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法\cite{gibbs-duhem-integration-1,gibbs-duhem-integration-2}といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
 
 
 \section{研究の目的} \label{introduction:purpose}
@@ -167,15 +167,23 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 % 図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
 % $r>r_c$でポテンシャルエネルギーが0になっている。
 
+\subsection{時間積分}\label{principle-subsec:time-integral}
 
-\section{物性研スーパーコンピューター システムB ohtaka} \label{principle-sec:super-computer}
+\subsection{温度制御}\label{principle-subsec:temperature-control}
+
+\section{GE法}\label{principle-sec:gibbs-ensemble}
+ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
+
+相間平衡は、全ての成分の示強変数、すなわち温度、圧力、化学ポテンシャルが二つの相で等しいことで実現される。
 
 
+\section{GDI法}\label{principle-sec:gibbs-duhem-integration}
 
-\section{最適化手法}\label{principle-sec:molecular-dynamics}
+
+\section{最適化手法}\label{principle-sec:optimization-method}
 本研究では、密度のフィッティングにLevenberg-Marquardt(LM)法を用いる。その説明のため、代表的な最適化手法を以下にまとめる。
 
-\subsection{最小二乗法}\label{principle-sec:least-squares}
+\subsection{最小二乗法}\label{principle-subsec:least-squares}
 最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメタ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
 \large
 \begin{eqnarray}
@@ -187,7 +195,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 と表される。
 ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
-\subsection{勾配降下法}\label{principle-sec:gradient-descent}
+\subsection{勾配降下法}\label{principle-subsec:gradient-descent}
 勾配降下法は、パラメタ値を下り坂方向、つまり目的関数の勾配と反対方向に更新する最小化手法である。勾配降下法は、単純な目的関数の最小化問題においては、非常によく収束することが知られている\cite{gradient-descent}。パラメタに関するカイ二乗目的関数の勾配は、
 \large
 \begin{eqnarray}
@@ -207,7 +215,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 と表される\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 尚、正のスカラー$\alpha$は、最急降下方向のステップの長さを示す。
 
-\subsection{ガウス・ニュートン法}\label{principle-sec:gauss-newton}
+\subsection{ガウス・ニュートン法}\label{principle-subsec:gauss-newton}
 ガウス。ニュートン法は、最適解の近傍のパラメタにおいて目的関数がほぼ二次関数であることを仮定して\cite{gauss-newton-objective-function}、二乗和の目的関数を最小化する手法である。ガウス・ニュートン法は、適度な大きさの問題では、勾配降下法よりも遥かに速く収束する\cite{gauss-newton}。
 摂動されたモデルパラメタで評価される関数は、一次テイラー級数展開により
 \large
@@ -238,7 +246,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \normalsize
 と表される\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
-\subsection{Levenberg-Marquardrt法}\label{principle-sec:levenberg-marquardt}
+\subsection{Levenberg-Marquardrt法}\label{principle-subsec:levenberg-marquardt}
 Lebenberg-Marquardrt法は、非線形最小二乗問題を解くために1960年代初頭に開発された最適化アルゴリズムであり、様々な問題において、単純な勾配降下法や他の共役勾配法よりも大幅に優れていることが知られている\cite{levenberg-marquardt}。
 勾配降下法では、最急降下方向にパラメタを更新することにより、二乗誤差の和を減少させる。ガウス・ニュートン法では、最小二乗関数は局所的に二次関数であると仮定して、二乗誤差の総和を小さくする。
 Levenberg-Marquardtアルゴリズムは、勾配降下法とガウス・ニュートン法という2つの数値的最小化アルゴリズムを組み合わせたもので、パラメタ更新式は、
