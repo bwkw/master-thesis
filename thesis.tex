@@ -169,13 +169,11 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 
 
 \section{物性研スーパーコンピューター システムB ohtaka} \label{principle-sec:super-computer}
-本研究では、主要な計算資源として東京大学物性研究所の共同利用スーパーコンピュータ Ohtakaを用いた。ohtakaは、1ノードに128コアをもつAMD Romeを搭載した標準的な構成のCPUノードと1ノードあたり3TBの大容量メモリを搭載したFatノードで構成されるスーパーコンピューターである。\cite{ohtaka}
-まず、CPUノードは1680ノード（420筐体/24ラック）存在し、1ノードあたり4.096TFLOPS(2.0GHz×64core×16命令×2sock)の理論演算性能、409.6GByte/sec(3,200MHz×16channel×8Byte)のメモリ転送性能を誇り、1ノードあたり128コア、1コアあたり2GBのメモリ容量を持つ。
-続いて、Fatノードは8ノード存在し、1ノードあたり9.6768TFLOPS(2.7GHz×28core×32命令×4sock)の理論演算性能、563.136GByte/sec(2,933MHzx24channelx8Byte)のメモリ転送性能を誇り、1ノードあたり112コア、1コアあたり約27GBのメモリ容量を持つ。
+
 
 
 \section{最適化手法}\label{principle-sec:molecular-dynamics}
-本研究では、密度のフィッティングにLevenberg-Marquardt(LM)法を用いる。その説明のため、まず代表的な最適化手法を以下にまとめる。
+本研究では、密度のフィッティングにLevenberg-Marquardt(LM)法を用いる。その説明のため、代表的な最適化手法を以下にまとめる。
 
 \subsection{最小二乗法}\label{principle-sec:least-squares}
 最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメタ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
@@ -317,7 +315,9 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:lan140493-lbn561971-ran3930-rbn15722-first}
 \end{figure}
 
-この初期配置の下、相互作用が対称な二成分LJ系と非対称な二成分LJ系においてシミュレーションを行う。
+この初期配置の下、相互作用が対称な二成分LJ系と非対称な二成分LJ系においてシミュレーションを行う。尚、以降の研究では、主要な計算資源として東京大学物性研究所の共同利用スーパーコンピュータ ohtaka を用いた。ohtakaは、1ノードに128コアをもつAMD Romeを搭載した標準的な構成のCPUノードと1ノードあたり3TBの大容量メモリを搭載したFatノードで構成されるスーパーコンピューターである\cite{ohtaka}。
+まず、CPUノードは1680ノード（420筐体/24ラック）存在し、1ノードあたり4.096TFLOPS(2.0GHz×64core×16命令×2sock)の理論演算性能、409.6GByte/sec(3,200MHz×16channel×8Byte)のメモリ転送性能を誇り、1ノードあたり128コア、1コアあたり2GBのメモリ容量を持つ。
+続いて、Fatノードは8ノード存在し、1ノードあたり9.6768TFLOPS(2.7GHz×28core×32命令×4sock)の理論演算性能、563.136GByte/sec(2,933MHzx24channelx8Byte)のメモリ転送性能を誇り、1ノードあたり112コア、1コアあたり約27GBのメモリ容量を持つ。
 
 \subsection{相互作用が対称な二成分LJ系における共沸現象の実現} \label{method-subsec:bi-symmetric-component-azeotrope}
 相互作用が対称な二成分LJ系において実行したシミュレーションにおけるパラメタを表\ref{table:symmetric-bi-component-azeotrope-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:symmetric-bi-component-azeotrope-potential-parameter}に示す。
