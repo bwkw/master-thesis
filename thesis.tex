@@ -174,6 +174,20 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \section{GE法}\label{principle-sec:gibbs-ensemble}
 ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
 
+ギブスアンサンブルモンテカルロ法は、温度$T$で平衡状態にある液体(相1)と気体(相2)をシミュレートするために設計されている\cite{gibbs-ensemble-panagiotopoulos-2}。初期状態として、相1は体積$V_1$のシミュレーションボックスに$N_1$個の粒子を、相2は体積$V_2$のシミュレーションボックスに$N_2$個の粒子を含む。尚、粒子の総数$N=N_1+N_2$と総体積$V=V_1+V_2$はシミュレーションにおいて保存されているものとする。これにより二つのシミュレーションボックスは全体として物質量$N$、体積$V$、温度$T$が一定のカノニカルアンサンブルを形成する。シミュレーションは、粒子配置の変更・体積の再配置・粒子交換で構成される。
+\subsection{粒子配置の変更}\label{principle-subsec:change-of-particle-placement}
+このステップでは、各シミュレーションボックスは独立しているものとする。ある粒子がシミュレーションボックス1でランダムに選ばれ、シミュレーションボックス1の新しい位置へ一様なランダム変位が与えられる。この新しい位置への粒子の移動は、$\min(1, \varphi)$の確率で受け入れられる。この$\varphi$は新しい状態と古い状態の確率の比であり、
+
+\large
+\begin{eqnarray}
+\varphi &=& \exp(-{\beta}E_{new})/\exp(-{\beta}E_{old}) \nonumber\\
+        &=& \exp(-{\beta}{\Delta}E)\label{eq:change-of-particle-placement-probability}
+\end{eqnarray}
+\normalsize
+で与えられる。尚、$\exp(-{\beta}{\Delta}E)$は試行移動のエネルギー変化であり、移動が拒否された場合、古い状態が状態のマルコフ連鎖で再集計される。
+
+\subsection{体積の再配置}\label{principle-subsec:volume-reallocation}
+\subsection{粒子交換}\label{principle-subsec:particle-replacement}
 相間平衡は、全ての成分の示強変数、すなわち温度、圧力、化学ポテンシャルが二つの相で等しいことで実現される。
 
 
