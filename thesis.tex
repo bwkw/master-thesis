@@ -174,19 +174,52 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \section{GE法}\label{principle-sec:gibbs-ensemble}
 ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
 
-ギブスアンサンブルモンテカルロ法は、温度$T$で平衡状態にある液体(相1)と気体(相2)をシミュレートするために設計されている\cite{gibbs-ensemble-panagiotopoulos-2}。初期状態として、相1は体積$V_1$のシミュレーションボックスに$N_1$個の粒子を、相2は体積$V_2$のシミュレーションボックスに$N_2$個の粒子を含む。尚、粒子の総数$N=N_1+N_2$と総体積$V=V_1+V_2$はシミュレーションにおいて保存されているものとする。これにより二つのシミュレーションボックスは全体として物質量$N$、体積$V$、温度$T$が一定のカノニカルアンサンブルを形成する。シミュレーションは、粒子配置の変更・体積の再配置・粒子交換で構成される。
+ギブスアンサンブルモンテカルロ法は、温度$T$で平衡状態にある液体(相A)と気体(相B)をシミュレートするために設計されている\cite{gibbs-ensemble-panagiotopoulos-2}。初期状態として、相Aは体積$V_A$のシミュレーションボックスに$N_A$個の粒子を、相Bは体積$V_B$のシミュレーションボックスに$N_B$個の粒子を含む。尚、粒子の総数$N=N_A+N_B$と総体積$V=V_A+V_B$はシミュレーションにおいて保存されているものとする。これにより二つのシミュレーションボックスは全体として物質量$N$、体積$V$、温度$T$が一定のカノニカルアンサンブルを形成する。シミュレーションは、粒子配置の変更・体積の再配置・粒子交換で構成される。
 \subsection{粒子配置の変更}\label{principle-subsec:change-of-particle-placement}
-このステップでは、各シミュレーションボックスは独立しているものとする。ある粒子がシミュレーションボックス1でランダムに選ばれ、シミュレーションボックス1の新しい位置へ一様なランダム変位が与えられる。この新しい位置への粒子の移動は、$\min(1, \varphi)$の確率で受け入れられる。この$\varphi$は新しい状態と古い状態の確率の比であり、
+このステップでは、各シミュレーションボックスは独立しているものとする。ある粒子がシミュレーションボックスAでランダムに選ばれ、シミュレーションボックスAの新しい位置へ一様なランダム変位が与えられる。この新しい位置への粒子の移動は、$\min(1, \varphi_{move}^A)$の確率で受け入れられる。この$\varphi_{move}^A$は新しい状態と古い状態の確率の比であり、
 
 \large
 \begin{eqnarray}
-\varphi &=& \exp(-{\beta}E_{new})/\exp(-{\beta}E_{old}) \nonumber\\
-        &=& \exp(-{\beta}{\Delta}E)\label{eq:change-of-particle-placement-probability}
+\varphi_{move}^A &=& \exp(-{\beta}E_{new}^A)/\exp(-{\beta}E_{old}^A) \nonumber\\
+        &=& \exp(-{\beta}{\Delta}E^A)\label{eq:change-of-particle-placement-probability}
 \end{eqnarray}
 \normalsize
-で与えられる。尚、$\exp(-{\beta}{\Delta}E)$は試行移動のエネルギー変化であり、移動が拒否された場合、古い状態が状態のマルコフ連鎖で再集計される。
+で与えられる。尚、${\Delta}E^A$は試行移動のエネルギー変化であり、試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
 
 \subsection{体積の再配置}\label{principle-subsec:volume-reallocation}
+このステップでは、各シミュレーションボックスでの試行は相関があるものとする。今、シミュレーションボックスAで$\Delta{V}$体積変化があるとすると、新旧の状態の確率の比は、
+
+\large
+\begin{eqnarray}
+\varphi_{vol}^A &=& \frac{\exp[-{\beta}P(V^A+{\Delta}V)-{\beta}E^A_{new}+N\ln(V^A+{\Delta}V)]}{\exp[-{\beta}PV^A-{\beta}E^A_{old}+N^A\ln(V^A)]} \nonumber\\
+        &=& \exp[-{\beta}P{\Delta}V-{\beta}{\Delta}E^A+N^A\ln(V^A+{\Delta}V)-N^A\ln(V^A)]\label{eq:volume-reallocation-probability-A}
+\end{eqnarray}
+\normalsize
+と表される。
+2つのシミュレーションボックスの総体積は保存されているので、シミュレーションボックスBでは${\Delta}V$の体積変化を伴い、等温等圧アンサンブルを発生させることができる。尚、ここでは2つの相が共存する=シミュレーションボックスA,Bの圧力Pは等しいと仮定している。
+シミュレーションボックスBの新旧の状態の確率比は、
+
+\large
+\begin{eqnarray}
+\varphi_{vol}^B &=& \exp[-{\beta}P{\Delta}V-{\beta}{\Delta}E^B+N^B\ln(V^B-{\Delta}V)-N^B\ln(V^B)]\label{eq:volume-reallocation-probability-B}
+\end{eqnarray}
+\normalsize
+と表される。
+
+全体として新旧の状態の確率比は、
+\large
+\begin{eqnarray}
+\varphi_{vol} &=& \varphi_{vol}^A×\varphi_{vol}^B \nonumber
+\end{eqnarray}
+\normalsize
+と書けるので、式(\ref{eq:volume-reallocation-probability-A}),(\ref{eq:volume-reallocation-probability-B})より、
+\large
+\begin{eqnarray}
+\varphi_{vol} &=& \exp\Bigg(-\beta\bigg[{\Delta}E^A+{\Delta}E^B-N^{A}kT\ln{\frac{V^A+\Delta{V}}{V^A}}-N^{B}kT\ln{\frac{V^B+\Delta{V}}{V^B}}\bigg]\Bigg) \label{eq:volume-reallocation-probability-all}
+\end{eqnarray}
+であり、$\min(1, \varphi_{vol})$の確率で受け入れられる。
+試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
+
 \subsection{粒子交換}\label{principle-subsec:particle-replacement}
 相間平衡は、全ての成分の示強変数、すなわち温度、圧力、化学ポテンシャルが二つの相で等しいことで実現される。
 
