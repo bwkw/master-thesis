@@ -249,6 +249,20 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 \normalsize
 で与えられる。$Q$は熱浴の質量と呼ばれ、緩和の時定数を決める。
 
+ここで、本研究における温度$T$の時間発展を図\ref{fig:time-temperature}に示す。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/nose-hoover/tT.pdf}
+    \end{center}
+    \caption{温度$T$の時間発展。初期緩和があり、初期緩和後も$T=1.0$の周りで揺らぎが観測される。}
+    \label{fig:time-temperature}
+\end{figure}
+
+\newpage
+図\ref{fig:time-temperature}に示すように、温度$T$は能勢フーバー法により制御されていることが分かる。
+初期緩和後も$T=1.0$の周りで揺らぎが見られるが、初期緩和後には、温度$T=1.0$であるとして、解析を行った。
+
 
 \section{GE法}\label{principle-sec:gibbs-ensemble}
 ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
