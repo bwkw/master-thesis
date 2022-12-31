@@ -94,7 +94,7 @@ LJポテンシャルは、アルゴンのような貴ガスのファンデルワ
 \phi(r)=4{\epsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right)\label{eq:lj}
 \end{equation}
 \normalsize
-と表される。
+で与えられる。
 ここで、$r$は粒子間距離、${\sigma}$は粒子直径の長さ、${\epsilon}$はポテンシャルの深さを表す。
 式(\ref{eq:lj})の右辺第一項は粒子間の斥力相互作用を表し、右辺第二項は粒子間の引力相互作用を表す。
 LJポテンシャルを用いる系では、パラメタ$\sigma$\,,\,$\epsilon$と粒子の質量$m$を用いて物理量を無次元化したLJ単位系と呼ばれる単位を用いる。
@@ -131,7 +131,7 @@ P^*=\frac{P\sigma^3}{\epsilon}\label{eq:P}
 t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \end{equation}
 \normalsize
-と表される。
+で与えられる。
 
 % \section{WCAポテンシャル}\label{principle-sec:WCA}
 % \ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
@@ -146,7 +146,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 % \end{array} \right.
 % \end{equation}
 % \normalsize
-% と表される\cite{wca}。
+% で与えられる\cite{wca}。
 % したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二粒子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
 
 
@@ -170,6 +170,60 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \subsection{時間積分}\label{principle-subsec:time-integral}
 
 \subsection{温度制御}\label{principle-subsec:temperature-control}
+$N$粒子系のハミルトニアンは、
+
+\large
+\begin{eqnarray}
+H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r}_1,...,\mathbf{r}_N) \label{eq:molecular-dynamics-hamiltonian}
+\end{eqnarray}
+\normalsize
+で与えられる\cite{molecular-dynamics-hamiltonian}。ここで、$\mathbf{p}_1,...,\mathbf{p}_N$は粒子の運動量で$\mathbf{p}_i+m_i\mathbf{v}_i$で定義され、$U(\mathbf{r}_1,...,\mathbf{r}_N)$は粒子間のポテンシャルである。
+分子動力学法は、与えられたハミルトニアンから導出されるハミルトンの運動方程式を数値積分することで原子の座標や速度を更新していく手法であり、式(\ref{eq:molecular-dynamics-hamiltonian})よりハミルトンの運動方程式は、
+
+\large
+\begin{eqnarray}
+\dot{\mathbf{r}}_i &=& \frac{\partial H}{\partial \mathbf{p}_i} \label{eq:molecular-dynamics-hamilton-r}
+\end{eqnarray}
+\normalsize
+\large
+\begin{eqnarray}
+\dot{\mathbf{p}}_i &=& -\frac{\partial H}{\partial \mathbf{r}_i} \label{eq:molecular-dynamics-hamilton-p}
+\end{eqnarray}
+\normalsize
+と書ける。
+さらに、式(\ref{eq:molecular-dynamics-hamilton-r}),(\ref{eq:molecular-dynamics-hamilton-p})より、
+
+\large
+\begin{eqnarray}
+\frac{dH}{dt} &=& \sum_{i=1}^N\Bigg[\frac{\partial H}{\partial \mathbf{r}_i}\dot{\mathbf{r}}_i+\frac{\partial H}{\partial \mathbf{p}_i}\dot{\mathbf{p}}_i\Bigg] \nonumber \\
+              &=&  \sum_{i=1}^N\Bigg[\frac{\partial H}{\partial \mathbf{r}_i}\frac{\partial H}{\partial \mathbf{p}_i}i-\frac{\partial H}{\partial \mathbf{p}_i}\frac{\partial H}{\partial \mathbf{r}_i}\Bigg] \nonumber \\
+              &=& 0 \label{eq:molecular-dynamics-hamilton-H}
+\end{eqnarray}
+\normalsize
+となるため、単純なMDシミュレーションにおいては全エネルギー$E$が保存され、原子数$N$、体積$V$、エネルギー$E$が一定のNVEアンサンブルが実現される。
+ただ、実用的な面で言うとNVEアンサンブルよりもNVTアンサンブルが望ましいため、温度制御が必要となる。
+
+温度制御の手法として、速度スケーリング法\cite{velocity-scaling}、ベレンゼン法\cite{berendsen}、能勢フーバー法\cite{nose,hoover}、ランジュバン法\cite{langevin}が存在する。まず、速度スケーリング法は強烈に温度制御をかける手法でシミュレーションとして安定しないため、ベレンゼン法は厳密なカノニカル分布にならない場合があるため、本研究では採用には至らなかった。能勢フーバー法とランジュバン法を比較すると、能勢フーバー法は稀に温度が一様にならない、ランジュバン法は収束が遅い、といった問題点が存在する。
+そこで、本研究では温度が一様に制御されることを確認した上で、収束が早く、厳密なカノニカル分布を実現する能勢フーバー法を採用した。
+能勢フーバー法は、系が小さい場合でも厳密にカノニカル分布を再現する手法として提案されたもので、能勢フーバー法の運動方程式は、
+
+\large
+\begin{eqnarray}
+\dot{\mathbf{r}}_i &=& \frac{\partial H}{\partial \mathbf{p}_i} \label{eq:nose-hoover-r}
+\end{eqnarray}
+\normalsize
+\large
+\begin{eqnarray}
+\dot{\mathbf{p}}_i &=& -\frac{\partial H}{\partial \mathbf{r}_i}-\mathbf{p}_i\zeta \label{eq:nose-hoover-p}
+\end{eqnarray}
+\normalsize
+\large
+\begin{eqnarray}
+\dot{\zeta} &=& \frac{1}{Q}(T-T_0) \label{eq:nose-hoover-zeta}
+\end{eqnarray}
+\normalsize
+で与えられる。$Q$は熱浴の質量と呼ばれ、緩和の時定数を決める。
+
 
 \section{GE法}\label{principle-sec:gibbs-ensemble}
 ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
@@ -268,7 +322,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
                &=& \bm{y}^\top\bm{W}\bm{y}-2\bm{y}^\top\bm{W}\hat{\bm{y}}+\hat{\bm{y}}^\top\bm{W}\hat{\bm{y}} \label{eq:queue-residual-error}
 \end{eqnarray}
 \normalsize
-と表される。
+で与えられる。
 ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
 \subsection{勾配降下法}\label{principle-subsec:gradient-descent}
@@ -280,7 +334,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
                                       &=& -2(\bm{y}-\hat{\bm{y}})^\top\bm{W}\bm{J} \label{eq:gradient-of-the-chi-square-objective-function}
 \end{eqnarray}
 \normalsize
-と表される。
+で与えられる。
 ここで、$m×n$ヤコビアン行列$\partial\hat{\bm{y}}/{\partial\bm{p}}$は、関数の局所的な感度を表す。
 また、パラメタを最急降下の方向に移動させるパラメタ更新$\bm{h}$は、
 \large
@@ -288,7 +342,7 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \bm{h} = \alpha\bm{J}^\top\bm{W}(\bm{y}-\hat{\bm{y}})
 \end{eqnarray}
 \normalsize
-と表される\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
+で与えられる\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 尚、正のスカラー$\alpha$は、最急降下方向のステップの長さを示す。
 
 \subsection{ガウス・ニュートン法}\label{principle-subsec:gauss-newton}
@@ -313,14 +367,14 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \frac{\partial^2}{\partial\bm{h}}\chi^2(\bm{p}+\bm{h}) &\approx& -2(\bm{y}-\bm{\hat{y}})^\top\bm{W}\bm{J}+2\bm{h}^\top\bm{J}^\top\bm{W}\bm{J}
 \end{eqnarray}
 \normalsize
-と表される。
+で与えられる。
 以上より、ガウス・ニュートン更新のための正規方程式は、
 \large
 \begin{eqnarray}
 \Big[\bm{J}^\top\bm{W}\bm{J}\Big]\bm{h} = \bm{J}^\top\bm{W}(\bm{y}-\bm{\hat{y}})
 \end{eqnarray}
 \normalsize
-と表される\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
+で与えられる\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
 \subsection{Levenberg-Marquardrt法}\label{principle-subsec:levenberg-marquardt}
 Lebenberg-Marquardrt法は、非線形最小二乗問題を解くために1960年代初頭に開発された最適化アルゴリズムであり、様々な問題において、単純な勾配降下法や他の共役勾配法よりも大幅に優れていることが知られている\cite{levenberg-marquardt}。
