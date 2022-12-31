@@ -89,6 +89,20 @@
   keywords = {Monte Carlo, Canonical ensemble, Gibbs ensemble, GPU, CUDA},
   abstract = {This work describes an implementation of canonical and Gibbs ensemble Monte Carlo simulations on graphics processing units (GPUs). The pair-wise energy calculations, which consume the majority of the computational effort, are parallelized using the energetic decomposition algorithm. While energetic decomposition is relatively inefficient for traditional CPU-bound codes, the algorithm is ideally suited to the architecture of the GPU. The performance of the CPU and GPU codes are assessed for a variety of CPU and GPU combinations for systems containing between 512 and 131,072 particles. For a system of 131,072 particles, the GPU-enabled canonical and Gibbs ensemble codes were 10.3 and 29.1 times faster (GTX 480 GPU vs. i5-2500K CPU), respectively, than an optimized serial CPU-bound code. Due to overhead from memory transfers from system RAM to the GPU, the CPU code was slightly faster than the GPU code for simulations containing less than 600 particles. The critical temperature Tc∗=1.312(2) and density ρc∗=0.316(3) were determined for the tail corrected Lennard-Jones potential from simulations of 10,000 particle systems, and found to be in exact agreement with prior mixed field finite-size scaling calculations [J.J. Potoff, A.Z. Panagiotopoulos, J. Chem. Phys. 109 (1998) 10914].}
 }
+@article{velocity-verlet,
+  author = {{Spreiter}, Q. and {Walter}, M.},
+  title = "{Classical Molecular Dynamics Simulation with the Velocity Verlet Algorithm at Strong External Magnetic Fields}",
+  journal = {Journal of Computational Physics},
+  year = 1999,
+  month = jun,
+  volume = {152},
+  number = {1},
+  pages = {102-119},
+  doi = {10.1006/jcph.1999.6237},
+  adsurl = {https://ui.adsabs.harvard.edu/abs/1999JCoPh.152..102S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
 @article{velocity-scaling,
   title = {Isothermal molecular dynamics calculations for liquid salts},
   journal = {Chemical Physics Letters},

@@ -168,6 +168,31 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 % $r>r_c$でポテンシャルエネルギーが0になっている。
 
 \subsection{時間積分}\label{principle-subsec:time-integral}
+分子動力学法において、粒子間に働く力を基に粒子を逐次的に動かす手法として速度Verlet法が使用されている。
+位置$r(t)$の$t_0$まわりでのテイラー展開は、
+
+\large
+\begin{eqnarray}
+r(t) &=& r(t_0)+(t-t_0)v(t_0)+\frac{(t-t_0)^2}{2}a(t_0) \label{eq:taylor}
+\end{eqnarray}
+\normalsize
+であることから、$t_0$から微小時間$\Delta{t}$変化した時の位置$r(t+\Delta{t})$は、
+
+\large
+\begin{eqnarray}
+r(t_0+\Delta{t}) \simeq r(t_0)+\Delta{t}v(t_0)+\frac{\Delta{t}^2}{2}a(t_0) \label{eq:r-renewal-formula}
+\end{eqnarray}
+\normalsize
+で与えられ、これが位置$r(t)$の更新式である\cite{velocity-verlet}。
+また、速度$v(t)$は位置の1階微分で求められるので、速度の更新式は
+
+\large
+\begin{eqnarray}
+v(t_0+\Delta{t}) &=& \frac{d}{dt}r(t_0+\Delta{t}) \nonumber \\
+&\simeq& v(t_0)+\frac{\Delta{t}}{2}(a(t_0+\Delta{t})+a(t_0)) \label{eq:v-renewal-formula}
+\end{eqnarray}
+\normalsize
+で与えられる。
 
 \subsection{温度制御}\label{principle-subsec:temperature-control}
 $N$粒子系のハミルトニアンは、
