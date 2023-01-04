@@ -83,7 +83,7 @@ GE法やGDI法によって、「どんな物性がどのように共沸条件に
 \chapter{原理} \label{chap:principle}
 \section{分子動力学法}\label{principle-sec:molecular-dynamics}
 粒子や分子間に働く力を計算し、位置や運動量の時間発展を数値的に追う手法を分子動力学(Molecular Dynamics, MD)法と言う。分子動力学法は、多粒子系の研究に用いられる代表的な統計力学的計算機シミュレーション技術の一つであり\cite{molecular-dynamics-many-molecules}、本研究でも多粒子計算をMDシミュレーションにより行う。
-尚、MDシミュレーションには、分子動力学プログラムLarge-scale Atomic/Molecular Massively Parallel Simulator\,(LAMMPS)\cite{lammps}を、シミュレーションの可視化にはVisual Molecular Dynamics\,(VMD)\cite{vmd}を用いた。
+尚、MDシミュレーションには、分子動力学プログラムLarge-scale Atomic/Molecular Massively Parallel Simulator\,(LAMMPS)\cite{lammps}を、シミュレーションの可視化にはVisual Molecular Dynamics\,(VMD)\cite{vmd}を用いた。\ref{principle-subsec:LJ}節では本研究で用いたLJポテンシャルを、\ref{principle-subsec:time-integral}節、\ref{principle-subsec:temperature-control}節では分子動力学において重要な概念である時間積分、温度制御についてそれぞれ説明する。
 
 \subsection{LJポテンシャル}\label{principle-subsec:LJ}
 分子動力学計算において頻繁に用いられるモデルの一つにLennard-Jones\,(LJ)ポテンシャルと呼ばれるものが存在する。
@@ -264,11 +264,15 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 初期緩和後も$T=1.0$の周りで揺らぎが見られるが、初期緩和後には、温度$T=1.0$であるとして、解析を行った。
 
 
-\section{GE法}\label{principle-sec:gibbs-ensemble}
+\section{気液共存状態} \label{principle-sec:gas-liquid-coexistence}
+共沸現象は気液共存状態が実現され、かつ気相と液相の混合比が等しくなる条件であるから、共沸条件を調べるためには、まず気相と液相の共存状態を達成する必要がある。気液共存状態とは、与えられた環境(温度$T$や圧力$P$)において気相と液相の化学ポテンシャル$\mu$が等しい状況であり、その手法としてGE法、GDI法が用いられてきた。\ref{principle-subsec:gibbs-ensemble}節ではGE法を、\ref{principle-subsec:gibbs-duhem-integration}節ではGDI法をそれぞれ説明する。
+
+\subsection{GE法} \label{principle-subsec:gibbs-ensemble}
 ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
 
 ギブスアンサンブルモンテカルロ法は、温度$T$で平衡状態にある液体(相A)と気体(相B)をシミュレートするために設計されている\cite{gibbs-ensemble-panagiotopoulos-2}。初期状態として、相Aは体積$V_A$のシミュレーションボックスに$N_A$個の粒子を、相Bは体積$V_B$のシミュレーションボックスに$N_B$個の粒子を含む。尚、粒子の総数$N=N_A+N_B$と総体積$V=V_A+V_B$はシミュレーションにおいて保存されているものとする。これにより二つのシミュレーションボックスは全体として物質量$N$、体積$V$、温度$T$が一定のカノニカルアンサンブルを形成する。シミュレーションは、粒子配置の変更・体積の再配置・粒子交換で構成される。
-\subsection{粒子配置の変更}\label{principle-subsec:particle-displacement}
+
+\subsubsection{粒子配置の変更}\label{principle-subsubsec:particle-displacement}
 このステップでは、各シミュレーションボックスは独立しているものとする。ある粒子がシミュレーションボックスAでランダムに選ばれ、シミュレーションボックスAの新しい位置へ一様なランダム変位が与えられる。この新しい位置への粒子の移動は、$\min(1, \varphi_{move}^A)$の確率で受け入れられる。この$\varphi_{move}^A$は新しい状態と古い状態の確率の比であり、
 
 \large
@@ -279,7 +283,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 \normalsize
 で与えられる。尚、${\Delta}E^A$は試行移動のエネルギー変化であり、試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
 
-\subsection{体積の再配置}\label{principle-subsec:volume-rearrangement}
+\subsubsection{体積の再配置}\label{principle-subsubsec:volume-rearrangement}
 このステップでは、各シミュレーションボックスでの試行は相関があるものとする。
 今、シミュレーションボックスAで$\Delta{V}$体積変化があるとすると、新旧の状態の確率の比は、
 
@@ -315,7 +319,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 であり、$\min(1, \varphi_{vol})$の確率で受け入れられる。
 試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
 
-\subsection{粒子交換}\label{principle-subsec:particle-interchange}
+\subsubsection{粒子交換}\label{principle-subsubsec:particle-interchange}
 このステップでは、各シミュレーションボックスでの試行は相関があるものとする。
 今、シミュレーションボックスAで新しい位置がランダムに選ばれる時、新旧の状態の確率の比は、
 
@@ -346,7 +350,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
 
 
-\section{GDI法}\label{principle-sec:gibbs-duhem-integration}
+\subsection{GDI法}\label{principle-subsec:gibbs-duhem-integration}
 気液共存状態の実現には、相間で示強変数である温度$T$・圧力$P$・化学ポテンシャル$\mu$の一致が必要である。
 ギブスアンサンブル法では、示強変数の一致のために粒子の交換が必要であったが、GDI法ではクラウジウス・クラペイロン方程式によって示強変数の一致を実現する。
 
@@ -447,7 +451,7 @@ dS &=& S_2-S_1 \nonumber \\
 
 
 \section{最適化手法}\label{principle-sec:optimization-method}
-本研究では、密度のフィッティングにLevenberg-Marquardt(LM)法を用いる。その説明のため、代表的な最適化手法を以下にまとめる。
+本研究では、密度のフィッティングにLevenberg-Marquardt(LM)法を用いる。その説明のため、代表的な最適化手法を以下にまとめる。\ref{principle-subsec:least-squares}節では最小二乗法を、\ref{principle-subsec:gradient-descent}節では勾配降下法を、\ref{principle-subsec:gauss-newton}節ではガウス・ニュートン法を、\ref{principle-subsec:levenberg-marquardt}節ではLevenberg-Marquardt法をそれぞれ説明する。
 
 \subsection{最小二乗法}\label{principle-subsec:least-squares}
 最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメタ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
