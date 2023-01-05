@@ -77,7 +77,7 @@ def make_azeotrope_file(filename, a_composition_ratio, X):
 ## Bの気液濃度ファイル作成
 def make_b_gas_liquid_concentration_file(filename, b_gas_concentration, b_liquid_concentration):
     with open(filename, "a") as f:
-        f.write("{} {} {}\n".format(b_gas_concentration, b_liquid_concentration, b_gas_concentration-b_liquid_concentration))
+        f.write("{} {} {} {} {} {}\n".format(b_gas_concentration.n, b_gas_concentration.s, b_liquid_concentration.n, b_liquid_concentration.s, (b_gas_concentration-b_liquid_concentration).n, (b_gas_concentration-b_liquid_concentration).s))
 
 ## 共沸pltファイル作成
 def make_azeotrope_plt_file(filename, length, temperature, composition_number, variable_epsilon, c_density):
