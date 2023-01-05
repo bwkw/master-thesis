@@ -357,11 +357,11 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 気液共存状態の実現には、相間で示強変数である温度$T$・圧力$P$・化学ポテンシャル$\mu$の一致が必要である。
 ギブスアンサンブル法では、示強変数の一致のために粒子の交換が必要であったが、GDI法ではクラウジウス・クラペイロン方程式によって示強変数の一致を実現する。
 
-今、温度$T$、圧力$P$において相1と相2の相平衡が実現されているとすると、それぞれの相での化学ポテンシャル$\mu(T,P)$は等しいので、
+今、温度$T$、圧力$P$において相Aと相Bの相平衡が実現されているとすると、それぞれの相での化学ポテンシャル$\mu(T,P)$は等しいので、
 
 \large
 \begin{eqnarray}
-\mu_1(T,P) &=& \mu_2(T,P) \label{eq:gdi-mu}
+\mu_A(T,P) &=& \mu_B(T,P) \label{eq:gdi-mu}
 \end{eqnarray}
 \normalsize
 が満たされる。
@@ -369,14 +369,14 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 
 \large
 \begin{eqnarray}
-G_1(T,P) &=& G_2(T,P) \label{eq:gdi-g}
+G_A(T,P) &=& G_B(T,P) \label{eq:gdi-g}
 \end{eqnarray}
 \normalsize
 が満たされ、温度が$T$から$T+\Delta{T}$、平衡圧が$P$から$P+\Delta{P}$になるとすると、
 
 \large
 \begin{eqnarray}
-G_1(T+\Delta{T},P+\Delta{P}) &=& G_2(T+\Delta{T},P+\Delta{P}) \label{eq:gdi-g-delta}
+G_A(T+\Delta{T},P+\Delta{P}) &=& G_B(T+\Delta{T},P+\Delta{P}) \label{eq:gdi-g-delta}
 \end{eqnarray}
 \normalsize
 が満たされる。
@@ -384,7 +384,7 @@ G_1(T+\Delta{T},P+\Delta{P}) &=& G_2(T+\Delta{T},P+\Delta{P}) \label{eq:gdi-g-de
 
 \large
 \begin{eqnarray}
-\bigg(\frac{\partial{G_1}}{\partial{T}}\bigg)_PdT + \bigg(\frac{\partial{G_1}}{\partial{P}}\bigg)_TdP &=& \bigg(\frac{\partial{G_2}}{\partial{T}}\bigg)_PdT + \bigg(\frac{\partial{G_2}}{\partial{P}}\bigg)_TdP \label{eq:gdi-partial-g}
+\bigg(\frac{\partial{G_A}}{\partial{T}}\bigg)_PdT + \bigg(\frac{\partial{G_A}}{\partial{P}}\bigg)_TdP &=& \bigg(\frac{\partial{G_B}}{\partial{T}}\bigg)_PdT + \bigg(\frac{\partial{G_B}}{\partial{P}}\bigg)_TdP \label{eq:gdi-partial-g}
 \end{eqnarray}
 \normalsize
 が与えられる。
@@ -430,16 +430,16 @@ dG &=& dH-SdT-TdS \nonumber\\
 
 \large
 \begin{eqnarray}
--S_1dT+V_1dP &=& -S_2dT+V_2dP \nonumber \\
-\Leftrightarrow \frac{dP}{dT} &=& \frac{S_2-S_1}{V_2-V_1} \label{eq:gdi-dp-dt}
+-S_AdT+V_AdP &=& -S_BdT+V_BdP \nonumber \\
+\Leftrightarrow \frac{dP}{dT} &=& \frac{S_B-S_A}{V_B-V_A} \label{eq:gdi-dp-dt}
 \end{eqnarray}
 \normalsize
 が導かれる。
-ここで、$dS=S_2-S_1$は相転移$1\rightarrow2$に伴う1molあたりのエントロピー変化であるから、1molあたりの相転移熱を$H$とすると、
+ここで、$dS=S_B-S_A$は相転移$A\rightarrow{B}$に伴う1molあたりのエントロピー変化であるから、1molあたりの相転移熱を$H$とすると、
 
 \large
 \begin{eqnarray}
-dS &=& S_2-S_1 \nonumber \\
+dS &=& S_B-S_A \nonumber \\
    &=& \frac{\Delta{H}}{T} \label{eq:gdi-ds}
 \end{eqnarray}
 \normalsize
