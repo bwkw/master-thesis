@@ -104,12 +104,7 @@ LJポテンシャルを用いる系では、パラメタ$\sigma$\,,\,$\epsilon$�
 例えば、アルゴンでは、${\sigma}=3.40×10^{-10}\,\mathrm{m}$\,,\,${\epsilon}=1.67×10^{-21}\,\mathrm{J}$であり\cite{lennard-jones-argon-parameters}、
 他にも多くの気体ごとに値が定められている\cite{lennard-jones-many-parameters}。
 
-LJ単位系では、ボルツマン定数$k$は
-\large
-\begin{equation}
-k=1.0\label{eq:k}
-\end{equation}
-\normalsize
+LJ単位系では、ボルツマン定数$k$は$k=1.0$、
 温度$T^*$はパラメタ$\epsilon$\,,ボルツマン定数$k$を用いて、
 \large
 \begin{equation}
@@ -122,7 +117,7 @@ T^*=\frac{kT}{\epsilon}\label{eq:T}
 P^*=\frac{P\sigma^3}{\epsilon}\label{eq:P}
 \end{equation}
 \normalsize
-数密度$\rho^*$はパラメタ$\sigma$を用いて、
+密度$\rho^*$はパラメタ$\sigma$を用いて、
 \large
 \begin{equation}
 \rho^*=\rho{\sigma}^3\label{eq:rho}
@@ -135,6 +130,16 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
 \end{equation}
 \normalsize
 で与えられる。
+
+図\ref{fig:dis-poen}にLJポテンシャルにおける粒子間距離$r$と粒子間のポテンシャルエネルギー$E$を示す。尚、図\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
+
+\begin{figure}[htbp]
+    \begin{center}
+        \includegraphics[width=14cm]{fig/dis-poen/dis-poen.pdf}
+    \end{center}
+    \caption{LJの粒子間距離-ポテンシャルエネルギー。}
+    \label{fig:dis-poen}
+\end{figure}
 
 % \section{WCAポテンシャル}\label{principle-sec:WCA}
 % \ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
