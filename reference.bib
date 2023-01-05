@@ -89,6 +89,17 @@
   keywords = {Monte Carlo, Canonical ensemble, Gibbs ensemble, GPU, CUDA},
   abstract = {This work describes an implementation of canonical and Gibbs ensemble Monte Carlo simulations on graphics processing units (GPUs). The pair-wise energy calculations, which consume the majority of the computational effort, are parallelized using the energetic decomposition algorithm. While energetic decomposition is relatively inefficient for traditional CPU-bound codes, the algorithm is ideally suited to the architecture of the GPU. The performance of the CPU and GPU codes are assessed for a variety of CPU and GPU combinations for systems containing between 512 and 131,072 particles. For a system of 131,072 particles, the GPU-enabled canonical and Gibbs ensemble codes were 10.3 and 29.1 times faster (GTX 480 GPU vs. i5-2500K CPU), respectively, than an optimized serial CPU-bound code. Due to overhead from memory transfers from system RAM to the GPU, the CPU code was slightly faster than the GPU code for simulations containing less than 600 particles. The critical temperature Tc∗=1.312(2) and density ρc∗=0.316(3) were determined for the tail corrected Lennard-Jones potential from simulations of 10,000 particle systems, and found to be in exact agreement with prior mixed field finite-size scaling calculations [J.J. Potoff, A.Z. Panagiotopoulos, J. Chem. Phys. 109 (1998) 10914].}
 }
+@book{lennard-jones-system-of-units,
+  author = {Allen, Michael P. and Tildesley, Dominic J.},
+  title = "{Computer Simulation of Liquids}",
+  publisher = {Oxford University Press},
+  year = {2017},
+  month = {06},
+  abstract = "{This book provides a practical guide to molecular dynamics and Monte Carlo simulation techniques used in the modelling of simple and complex liquids. Computer simulation is an essential tool in studying the chemistry and physics of condensed matter, complementing and reinforcing both experiment and theory. Simulations provide detailed information about structure and dynamics, essential to understand the many fluid systems that play a key role in our daily lives: polymers, gels, colloidal suspensions, liquid crystals, biological membranes, and glasses. The second edition of this pioneering book aims to explain how simulation programs work, how to use them, and how to interpret the results, with examples of the latest research in this rapidly evolving field. Accompanying programs in Fortran and Python provide practical, hands-on, illustrations of the ideas in the text.}",
+  isbn = {9780198803195},
+  doi = {10.1093/oso/9780198803195.001.0001},
+  url = {https://doi.org/10.1093/oso/9780198803195.001.0001},
+}
 @article{velocity-verlet,
   author = {{Spreiter}, Q. and {Walter}, M.},
   title = "{Classical Molecular Dynamics Simulation with the Velocity Verlet Algorithm at Strong External Magnetic Fields}",
