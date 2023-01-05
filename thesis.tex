@@ -748,7 +748,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \subsection{第三成分の添加による目的物質の最高濃度の上昇} \label{method-subsec:bi-component-addition-of-3rd-component-highest-purity}
 蒸留によって得られる目的物質の最高濃度は共沸現象によって頭打ちになるが、第三成分を添加することにより、共沸混合物の組成を変化させ、目的物質の最高濃度を上げることが出来る\cite{azeotrope-add_third_component}。本節では、相互作用が対称な二成分LJ系（A, Bとする）に第三成分（Cとする）を添加するシミュレーションによって、共沸組成が変化することで目的物質の最高濃度が上がることを確認する。
 
-シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01（添加割合$1.0\%$）で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図\ref{fig:lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first}に、Aの組成比0.198, Bの組成比0.792, Cの組成比0.01の時の粒子の初期配置を示す。
+シミュレーションは、初期状態として$200×100×100$の直方体の左半分にA, B, C合わせて$N=702464(56×56×56×4)$個の粒子を、右半分に$N=19652(17×17×17×4)$個の粒子を面心立方(face-centered cubic, fcc)構造上に配置する。尚、シミュレーションではCの組成比を0.01（添加割合$1.0\%$）で固定して、Aの組成比を0.0198〜0.9702に0.0198刻みで変化させて、それぞれの粒子をランダムに配置する。図\ref{fig:lan139088-lbn556351-lcn7025-ran3891-rbn15564-rcn197-first}に、Aの組成比0.396, Bの組成比0.594, Cの組成比0.01の時の粒子の初期配置を示す。
 
 \begin{figure}[htbp]
     \begin{center}
@@ -783,14 +783,14 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
             A-A & 1.0 & 1.0 & 3.0 \\
             A-B & 1.05 & 0.9 & 3.0 \\
             B-B & 1.0 & 1.0 & 3.0 \\
-            A-C & 1.05 & 1.0 & 3.0 \\
-            B-C & 1.0 & 0.9 & 1.12246 \\
-            C-C & 1.0 & 1.0 & 3.0
+            A-C & 1.0 & 2.0 & 3.0 \\
+            B-C & 1.0 & 1.0 & 3.0 \\
+            C-C & 1.0 & 2.0 & 3.0
         \end{tabular}
     \end{center}
 \end{table}
 
-表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示したように、第三成分CはAとは引力相互作用をもち、Bとは斥力相互作用をもつようなものを選択した。
+表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示したように、第三成分CはAとは強い引力相互作用をもち、Bとは弱い引力相互作用を持つ。
 
 \ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質（=B）の最高濃度が上がることを確認する。尚、本研究ではAの組成比を0.0198〜0.9702に0.0198刻みで変化させた49本のシミュレーションを1つのジョブでスーパーコンピュータohtakaで並列実行した。また、1本のシミュレーションあたり2ノード、256プロセス並列、1スレッド並列で実行した。
 
@@ -881,7 +881,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 \section{二成分LJ系における共沸現象の実現} \label{results-sec:bi-component-azeotrope}
 \subsection{相互作用が対称な二成分LJ系における共沸現象の実現} \label{results-subsec:bi-symmetric-component-azeotrope}
-\ref{method-subsec:bi-symmetric-component-azeotrope}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各粒子の座標を出力する。図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-last}に、最終ステップの粒子のスナップショットを示す。
+\ref{method-subsec:bi-symmetric-component-azeotrope}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各粒子の座標を出力する。図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-last}に、Aの組成比0.2, Bの組成比0.8の時の最終ステップの粒子のスナップショットを示す。
 
 \begin{figure}[htbp]
     \begin{center}
@@ -1011,7 +1011,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \newpage
 \section{相互作用が対称な二成分LJ系への第三成分の添加による目的物質の最高濃度の上昇} \label{results-sec:bi-component-addition-of-3rd-component-highest-purity}
 \subsection{第三成分の添加による目的物質の最高濃度の上昇} \label{results-subsec:bi-component-addition-of-3rd-component-highest-purity}
-\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各粒子の座標を出力する。図\ref{fig:bi-component-addition-of-3rd-component-highest-purity-sample}に、最終ステップの粒子のスナップショットを示す。
+\ref{method-subsec:bi-component-addition-of-3rd-component-highest-purity}節で示したパラメタでMDシミュレーションをLAMMPSで実行して、各粒子の座標を出力する。図\ref{fig:bi-component-addition-of-3rd-component-highest-purity-sample}に、Aの組成比0.396, Bの組成比0.594, Cの組成比0.01の時の最終ステップの粒子のスナップショットを示す。
 
 \begin{figure}[htbp]
     \begin{center}
