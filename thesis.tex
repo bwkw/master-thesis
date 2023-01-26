@@ -56,17 +56,21 @@
 
 % 和文要旨
 \japaneseabstract{%
-水とエタノールの混合物から蒸留を繰り返し、エタノールを濃縮することでアルコール度数を上げることができるが、共沸という現象によってアルコール度数は96度までしか上げることが出来ず、それ以上エタノールを濃縮できないことが知られている。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象を共沸蒸留塔、抽出蒸留塔、反応蒸留塔といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、共沸現象は数値計算で精力的に研究が行われてきた。\\
-これまで共沸現象は、数値計算の分野においては、ギブスアンサンブル(Gibbs Ensemble, GE)法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法を基に研究されてきた。しかし、GE法はシミュレーションボックス間での粒子交換が必要なため計算が重い、臨界点近傍での気液の密度が近く気液の判別が困難なため計算が不安定といった問題点が、GDI法は共沸現象を基準点からの積分により定義するため誤差が積算されていく、各共沸点が依存しているため並列計算に向いていないといった問題点が存在する。そこで、我々は分子動力学(Molecular Dynamics, MD)法により、1つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現し、共沸組成を導いた。\\
-本研究では、まず、二成分(以降では、二成分をA, B粒子とする)のLennard-Jones\,(LJ)系において気液共存状態をMD法により実現した。ここで、気液共存状態におけるA, Bの気相密度を$g_A, g_B$、液相密度を$l_A, l_B$とすると、共沸条件はそれぞれの成分において気相と液相の密度比が等しくなることであるから$X=g_Al_B-l_Ag_B$と定義すると共沸点は$X=0$で与えられる。相互作用が対称の場合は$A:B=1:1$の場合に共沸が起こることが、非対称の場合は共沸が起こる組成が$A:B=1:1$からずれることが観測された。\\
+水とエタノールの混合物から蒸留を繰り返し、エタノールを濃縮することでアルコール度数を上げることができるが、共沸という現象によってアルコール度数は96度までしか上げることが出来ず、それ以上エタノールを濃縮できないことが知られている。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指すが、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象を共沸蒸留塔、抽出蒸留塔、反応蒸留塔といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、共沸現象は数値計算で精力的に研究が行われてきた。
+
+これまで共沸現象は、数値計算の分野においては、ギブスアンサンブル(Gibbs Ensemble, GE)法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法といった、それぞれの単相を個別に計算し、理論を援用する手法を基に研究されてきた。しかし、GE法はシミュレーションボックス間での粒子交換が必要なため計算が重い、臨界点近傍での気液の密度が近く気液の判別が困難なため計算が不安定といった問題点が、GDI法は共沸現象を基準点からの積分により定義するため誤差が積算されていく、各共沸点が依存しているため並列計算に向いていないといった問題点が存在する。そこで、我々は分子動力学(Molecular Dynamics, MD)法により、1つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現し、共沸組成を導いた。
+
+本研究では、まず、二成分(以降では、二成分をA, B粒子とする)のLennard-Jones\,(LJ)系において気液共存状態をMD法により実現した。ここで、気液共存状態におけるA, Bの気相密度を$g_A, g_B$、液相密度を$l_A, l_B$とすると、共沸条件はそれぞれの成分において気相と液相の密度比が等しくなることであるから$X=g_Al_B-l_Ag_B$と定義すると共沸点は$X=0$で与えられる。相互作用が対称の場合は$A:B=1:1$の場合に共沸が起こることが、非対称の場合は共沸が起こる組成が$A:B=1:1$からずれることが観測された。
 また、二成分系に第三成分を添加させることによって、目的物質の最高濃度を上げること、特定段数で到達する目的物質の濃度を上げることに成功した。
 }
 
 % 英文要旨
 \englishabstract{%
-It is known that the alcohol content can be raised by concentrating ethanol through repeated distillation from a mixture of water and ethanol, but the alcohol content can only be raised to 96 degrees due to a phenomenon called azeotropy, and ethanol cannot be concentrated any further. Azeotropy is a phenomenon in which the composition of the gas and liquid phases become equal when a liquid mixture boils, and it is very important in engineering applications to predict the composition ratio (azeotropic composition) of the liquid mixture that causes the azeotropic phenomenon from the mixture. Although it is possible to confirm this azeotropic phenomenon by conducting actual distillation in experimental systems such as azeotropic distillation columns, extractive distillation columns, and reactive distillation columns, azeotropic phenomena have been vigorously studied by numerical calculations because of the need to microscopically investigate how physical properties affect the azeotropic conditions.\\
-Azeotropic phenomena have been studied in the field of numerical calculations based on methods such as the Gibbs Ensemble (GE) method and the Gibbs-Duhem Integration (GDI) method, in which each single phase is calculated separately and the theory is supported. However, the GE method is based on the use of a single phase that is calculated between simulation boxes. However, the GE method has problems such as heavy calculation due to the need of particle exchange between simulation boxes, unstable calculation due to the difficulty of discriminating gas and liquid due to the close density of gas and liquid near the critical point, and the GDI method defines azeotropic phenomena by integrating from a reference point, which leads to the accumulation of errors, and is not suitable for parallel calculations because each azeotropic point is dependent on the other. Therefore, we have used the Molecular Dynamics (MD) method to realize gas-liquid coexistence in a single simulation box, which is more stable, accurate, and suitable for parallel calculations, to realize azeotropic phenomena and to derive azeotropic composition.\\
-In this study, gas-liquid coexistence was first realized in the two-component (hereafter, the two components are referred to as A and B particles) Lennard-Jones (LJ) system by the MD method. Here, the gas-phase densities of A and B in the gas-liquid coexistence state are $g_A, g_B$ and the liquid-phase densities are $l_A, l_B$. The azeotrope condition is defined as $X=g_Al_B-l_Ag_B$, where $X=0$ is the azeotrope point, since the density ratio of gas and liquid phase is equal for each component. It is observed that azeotropy occurs when $A:B=1:1$ if the interaction is symmetric, while the composition at which azeotropy occurs shifts from $A:B=1:1$ if the interaction is asymmetric.\\
+It is known that the alcohol content can be raised by concentrating ethanol through repeated distillation from a mixture of water and ethanol, but the alcohol content can only be raised to 96 degrees due to a phenomenon called azeotropy, and ethanol cannot be concentrated any further. Azeotropy is a phenomenon in which the composition of the gas and liquid phases become equal when a liquid mixture boils, and it is very important in engineering applications to predict the composition ratio (azeotropic composition) of the liquid mixture that causes the azeotropic phenomenon from the mixture. Although it is possible to confirm this azeotropic phenomenon by conducting actual distillation in experimental systems such as azeotropic distillation columns, extractive distillation columns, and reactive distillation columns, azeotropic phenomena have been vigorously studied by numerical calculations because of the need to microscopically investigate how physical properties affect the azeotropic conditions.
+
+Azeotropic phenomena have been studied in the field of numerical calculations based on methods such as the Gibbs Ensemble (GE) method and the Gibbs-Duhem Integration (GDI) method, in which each single phase is calculated separately and the theory is supported. However, the GE method is based on the use of a single phase that is calculated between simulation boxes. However, the GE method has problems such as heavy calculation due to the need of particle exchange between simulation boxes, unstable calculation due to the difficulty of discriminating gas and liquid due to the close density of gas and liquid near the critical point, and the GDI method defines azeotropic phenomena by integrating from a reference point, which leads to the accumulation of errors, and is not suitable for parallel calculations because each azeotropic point is dependent on the other. Therefore, we have used the Molecular Dynamics (MD) method to realize gas-liquid coexistence in a single simulation box, which is more stable, accurate, and suitable for parallel calculations, to realize azeotropic phenomena and to derive azeotropic composition.
+
+In this study, gas-liquid coexistence was first realized in the two-component (hereafter, the two components are referred to as A and B particles) Lennard-Jones (LJ) system by the MD method. Here, the gas-phase densities of A and B in the gas-liquid coexistence state are $g_A, g_B$ and the liquid-phase densities are $l_A, l_B$. The azeotrope condition is defined as $X=g_Al_B-l_Ag_B$, where $X=0$ is the azeotrope point, since the density ratio of gas and liquid phase is equal for each component. It is observed that azeotropy occurs when $A:B=1:1$ if the interaction is symmetric, while the composition at which azeotropy occurs shifts from $A:B=1:1$ if the interaction is asymmetric.
 Also, by adding a third component to the two-component system, we succeeded in increasing the maximum concentration of the target substance and the concentration of the target substance reached at a specific number of steps.
 }
 
@@ -83,7 +87,8 @@ Also, by adding a third component to the two-component system, we succeeded in i
 
 
 \section{研究の背景} \label{introduction:background}
-蒸留\cite{distillation-book}とは、液体の混合物から沸騰と凝縮を利用して成分や物質を分離するプロセスのことを言う。混合物を加熱していくと、液面から各成分が蒸発していき、各成分の蒸気圧の和が外圧と等しくなったときに沸騰が始まる。このとき、発生する蒸気の組成比はラウールの法則\cite{raoul}に従って、純液体の蒸気圧と混合溶液中のモル分率の積で決定される。この蒸気を凝縮すると液体混合物が得られるが、この液体混合物は初めの液体混合物と比較すると、特定成分の濃度が上がったものとなる。つまり、この蒸留という操作を繰り返し行うことによって、目的成分の濃度を上昇させることができる。\\
+蒸留\cite{distillation-book}とは、液体の混合物から沸騰と凝縮を利用して成分や物質を分離するプロセスのことを言う。混合物を加熱していくと、液面から各成分が蒸発していき、各成分の蒸気圧の和が外圧と等しくなったときに沸騰が始まる。このとき、発生する蒸気の組成比はラウールの法則\cite{raoul}に従って、純液体の蒸気圧と混合溶液中のモル分率の積で決定される。この蒸気を凝縮すると液体混合物が得られるが、この液体混合物は初めの液体混合物と比較すると、特定成分の濃度が上がったものとなる。つまり、この蒸留という操作を繰り返し行うことによって、目的成分の濃度を上昇させることができる。
+
 今、水とエタノールの混合物に蒸留を行うことを考える。前述のように、水とエタノールの混合物に蒸留を繰り返し行うことで、エタノールを濃縮し、アルコール度数を上げることができる。しかし、共沸という現象によって、いくら蒸留を繰り返してもアルコール度数は96度までしか上げることが出来ず、それ以上エタノールは濃縮できないことが知られている。これが世界最高濃度の蒸留酒として知られる「スピリタス」\cite{spirytus}である。共沸とは液体混合物が沸騰する際に気相と液相の組成が等しくなる現象を指す\cite{azeotrope}が、混合物から共沸現象を起こす液体混合物の組成比（共沸組成）を予測することは工学応用上、非常に重要である。この共沸現象は、共沸蒸留塔\cite{azeotropic-distillation-1,azeotropic-distillation-2}、抽出蒸留塔\cite{extractive-distillation-1,extractive-distillation-2}、反応蒸留塔\cite{reactive-distillation-1,reactive-distillation-2}といった実際に実験系で蒸留を行うことによって確認することは可能ではあるが、どんな物性がどのように共沸条件に効いてくるかをミクロに調べたいという背景から、主に数値計算で精力的に研究が行われてきた。数値計算の分野においては、ギブスアンサンブル(Gibbs Ensemble, GE)法\cite{gibbs-ensemble-1,gibbs-ensemble-2}などのモンテカルロ法や、ギブスデュエム積分(Gibbs-Duhem Integration, GDI)法\cite{gibbs-duhem-integration-1,gibbs-duhem-integration-2}といった、それぞれの単相を個別に計算し、理論を援用する手法で研究されてきた。
 
 
@@ -158,39 +163,6 @@ t^*=t\sqrt{\frac{\epsilon}{m{\sigma}^2}}\label{eq:time}
     \label{fig:dis-poen}
 \end{figure}
 
-% \section{WCAポテンシャル}\label{principle-sec:WCA}
-% \ref{principle-sec:LJ}で示したLJポテンシャルの斥力作用と引力作用が入れ替わる$r_c=2^{\frac{1}{6}}{\approx}1.12246$にカットオフ距離を設けたポテンシャルをWCAポテンシャルと呼び、
-% WCAポテンシャル粒子系においてもLJ単位系を用いる。
-% カットオフ距離とは、その距離内の粒子間の相互作用のみを考慮するものであり、それ以上の距離での粒子間の力を無視するものである\cite{cutoff}。
-% WCAポテンシャル粒子系において二つの粒子間相互作用ポテンシャルエネルギーは、
-% \large
-% \begin{equation}
-% \phi(r) = \left\{ \begin{array}{ll}
-%     4{\epsilon}\left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right) & (r\,{\leq}\,{r_c}) \\
-%     0 & (r>r_c)\label{eq:wca}
-% \end{array} \right.
-% \end{equation}
-% \normalsize
-% で与えられる\cite{wca}。
-% したがって、WCAポテンシャルとはLJポテンシャルの斥力作用と引力作用が入れ替わる$r=r_c$にカットオフ距離を設けることにより、式(\ref{eq:wca})のように二粒子間の引力作用を無視し、斥力作用のみを考慮したポテンシャルである。
-
-
-% \section{LJ, WCAポテンシャルの比較}\label{principle-sec:LJ-WCA}
-% 図\ref{fig:dis-poen}にLJポテンシャル粒子系とWCAポテンシャル粒子系における粒子間距離$r$と粒子間のポテンシャルエネルギー$E$を示す。
-% 尚、図\ref{fig:dis-poen}ではLJポテンシャルにカットオフ距離2.5を設けているものとする。
-
-% \newpage
-% \begin{figure}[htbp]
-%     \begin{center}
-%         \includegraphics[width=14cm]{fig/dis-poen/dis-poen.pdf}
-%     \end{center}
-%     \caption{WCAとLJの粒子間距離-ポテンシャルエネルギー。
-%     WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、$r>r_c$でポテンシャルエネルギーが0になっている。}
-%     \label{fig:dis-poen}
-% \end{figure}
-
-% 図\ref{fig:dis-poen}に示すように、WCAポテンシャルはLJポテンシャルにカットオフ距離$r=r_c$を設けることにより、
-% $r>r_c$でポテンシャルエネルギーが0になっている。
 
 \subsection{時間積分}\label{principle-subsec:time-integral}
 分子動力学法において、粒子間に働く力を基に粒子を逐次的に動かす手法として速度Verlet法が使用されている。
@@ -1158,9 +1130,9 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 
 
 \chapter{結論及び考察} \label{chap:summary}
-我々は分子動力学(Molecular Dynamics, MD)法\cite{molecular-dynamics}により、一つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現することを第一の目的と、既存の手法で困難であった第三成分の添加による目的物質の最高濃度を上げること、特定段数で到達する目的物質の濃度を上げることを第二の目的としたが、これは共に達成された。\\
-まず、一つのシミュレーションボックスで共沸現象を実現したが、これは共沸現象の研究へ新たなアプローチを提案するものであり、実在する系を正確にモデリング出来れば、実在する系についても正確で早い共沸現象の実現をサポートするものである。\\
-続いて、第三成分の添加による目的物質の最高濃度を上げること、特定段数で到達する目的物質の濃度を上げることに成功したが、これはどのような第三成分を添加することにより、どれだけ目的物質の最高濃度や段数を変更できるかをよりミクロに調べる方法として非常に有用である。
+我々は分子動力学(Molecular Dynamics, MD)法\cite{molecular-dynamics}により、一つのシミュレーションボックスで気液共存状態を実現することで、より安定で精度が高く、並列計算に向いた手法で共沸現象を実現することを第一の目的と、既存の手法で困難であった第三成分の添加による目的物質の最高濃度を上げること、特定段数で到達する目的物質の濃度を上げることを第二の目的としたが、これは共に達成された。
+
+まず、一つのシミュレーションボックスで共沸現象を実現したが、これは共沸現象の研究へ新たなアプローチを提案するものであり、実在する系を正確にモデリング出来れば、実在する系についても正確で早い共沸現象の実現をサポートするものである。続いて、第三成分の添加による目的物質の最高濃度を上げること、特定段数で到達する目的物質の濃度を上げることに成功したが、これはどのような第三成分を添加することにより、どれだけ目的物質の最高濃度や段数を変更できるかをよりミクロに調べる方法として非常に有用である。
 
 % 考察は、「研究の背景」及び「目的」において提起した問題に正しく答えるようにする。得られた結果は満足すべきものだったか？不満があるならその理由はなにか？解決できそうなのか？また、「大きい理由」にも言及する。本研究によりどのような課題が見つかったかを書き、この分野における「研究の流れ」においてのような位置づけにあるかを説明した上で、今後、どのような発展の方向があるかについて書く。
 
