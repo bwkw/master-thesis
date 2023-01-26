@@ -218,12 +218,12 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 \large
 \begin{eqnarray}
 \frac{dH}{dt} &=& \sum_{i=1}^N\Bigg[\frac{\partial H}{\partial \mathbf{r}_i}\dot{\mathbf{r}}_i+\frac{\partial H}{\partial \mathbf{p}_i}\dot{\mathbf{p}}_i\Bigg] \nonumber \\
-              &=&  \sum_{i=1}^N\Bigg[\frac{\partial H}{\partial \mathbf{r}_i}\frac{\partial H}{\partial \mathbf{p}_i}i-\frac{\partial H}{\partial \mathbf{p}_i}\frac{\partial H}{\partial \mathbf{r}_i}\Bigg] \nonumber \\
+              &=&  \sum_{i=1}^N\Bigg[\frac{\partial H}{\partial \mathbf{r}_i}\frac{\partial H}{\partial \mathbf{p}_i}-\frac{\partial H}{\partial \mathbf{p}_i}\frac{\partial H}{\partial \mathbf{r}_i}\Bigg] \nonumber \\
               &=& 0 \label{eq:molecular-dynamics-hamilton-H}
 \end{eqnarray}
 \normalsize
 となるため、単純なMDシミュレーションにおいては全エネルギー$E$が保存され、原子数$N$、体積$V$、エネルギー$E$が一定のNVEアンサンブル\cite{nve-ensemble}が実現される。
-ただ、実用的な面で言うとNVEアンサンブルよりも原子数$N$、体積$V$、エネルギー$T$が一定のNVTアンサンブル\cite{nvt-ensemble}が望ましいため、温度制御が必要となる。
+ただ、実用的な面で言うとNVEアンサンブルよりも原子数$N$、体積$V$、温度$T$が一定のNVTアンサンブル\cite{nvt-ensemble}が望ましいため、温度制御が必要となる。
 
 温度制御の手法として、速度スケーリング法\cite{velocity-scaling}、ベレンゼン法\cite{berendsen}、能勢フーバー法\cite{nose,hoover}、ランジュバン法\cite{langevin}が存在する。まず、速度スケーリング法は強烈に温度制御をかける手法でシミュレーションとして安定しないため、ベレンゼン法は厳密なカノニカル分布にならない場合があるため、本研究では採用には至らなかった。能勢フーバー法とランジュバン法を比較すると、能勢フーバー法は稀に温度が一様にならない、ランジュバン法は収束が遅い、といった問題点が存在する。
 そこで、本研究では温度が一様に制御されることを確認した上で、収束が早く、厳密なカノニカル分布を実現する能勢フーバー法を採用した。
@@ -270,11 +270,11 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 ギブスアンサンブルモンテカルロ法は、温度$T$で平衡状態にある液体(相A)と気体(相B)をシミュレートするために設計されている\cite{gibbs-ensemble-panagiotopoulos-2}。初期状態として、相Aは体積$V_A$のシミュレーションボックスに$N_A$個の粒子を、相Bは体積$V_B$のシミュレーションボックスに$N_B$個の粒子を含む。尚、粒子の総数$N=N_A+N_B$と総体積$V=V_A+V_B$はシミュレーションにおいて保存されているものとする。これにより二つのシミュレーションボックスは全体として物質量$N$、体積$V$、温度$T$が一定のNVTアンサンブルを形成する。シミュレーションは、粒子配置の変更・体積の再配置・粒子交換で構成される。
 
 \subsubsection{粒子配置の変更}\label{principle-subsubsec:particle-displacement}
-このステップでは、各シミュレーションボックスは独立しているものとする。ある粒子がシミュレーションボックスAでランダムに選ばれ、シミュレーションボックスAの新しい位置へ一様なランダム変位が与えられる。この新しい位置への粒子の移動は、$\min(1, \varphi_{move}^A)$の確率で受け入れられる。この$\varphi_{move}^A$は新しい状態と古い状態の確率の比であり、
+このステップでは、各シミュレーションボックスは独立しているものとする。ある粒子がシミュレーションボックスAでランダムに選ばれ、シミュレーションボックスAの新しい位置へ一様なランダム変位が与えられる。この新しい位置への粒子の移動は、$\min(1, \varphi_\mathrm{move}^A)$の確率で受け入れられる。この$\varphi_\mathrm{move}^A$は新しい状態と古い状態の確率の比であり、
 
 \large
 \begin{eqnarray}
-\varphi_{move}^A &=& \exp(-{\beta}E_{new}^A)/\exp(-{\beta}E_{old}^A) \nonumber\\
+\varphi_\mathrm{move}^A &=& \exp(-{\beta}E_\mathrm{new}^A)/\exp(-{\beta}E_\mathrm{old}^A) \nonumber\\
                  &=& \exp(-{\beta}{\Delta}E^A)\label{eq:particle-displacement-probability}
 \end{eqnarray}
 \normalsize
@@ -286,7 +286,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 
 \large
 \begin{eqnarray}
-\varphi_{vol}^A &=& \frac{\exp[-{\beta}P(V^A+{\Delta}V)-{\beta}E^A_{new}+N\ln(V^A+{\Delta}V)]}{\exp[-{\beta}PV^A-{\beta}E^A_{old}+N^A\ln(V^A)]} \nonumber\\
+\varphi_\mathrm{vol}^A &=& \frac{\exp[-{\beta}P(V^A+{\Delta}V)-{\beta}E^A_\mathrm{new}+N\ln(V^A+{\Delta}V)]}{\exp[-{\beta}PV^A-{\beta}E^A_\mathrm{old}+N^A\ln(V^A)]} \nonumber\\
                 &=& \exp[-{\beta}P{\Delta}V-{\beta}{\Delta}E^A+N^A\ln(V^A+{\Delta}V)-N^A\ln(V^A)]\label{eq:volume-rearrangement-probability-A}
 \end{eqnarray}
 \normalsize
@@ -296,7 +296,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 
 \large
 \begin{eqnarray}
-\varphi_{vol}^B &=& \exp[-{\beta}P{\Delta}V-{\beta}{\Delta}E^B+N^B\ln(V^B-{\Delta}V)-N^B\ln(V^B)]\label{eq:volume-rearrangement-probability-B}
+\varphi_\mathrm{vol}^B &=& \exp[-{\beta}P{\Delta}V-{\beta}{\Delta}E^B+N^B\ln(V^B-{\Delta}V)-N^B\ln(V^B)]\label{eq:volume-rearrangement-probability-B}
 \end{eqnarray}
 \normalsize
 で与えられる。
@@ -305,15 +305,15 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 
 \large
 \begin{eqnarray}
-\varphi_{vol} &=& \varphi_{vol}^A×\varphi_{vol}^B \nonumber
+\varphi_\mathrm{vol} &=& \varphi_\mathrm{vol}^A×\varphi_\mathrm{vol}^B \nonumber
 \end{eqnarray}
 \normalsize
 と書けるので、式(\ref{eq:volume-rearrangement-probability-A}),(\ref{eq:volume-rearrangement-probability-B})より、
 \large
 \begin{eqnarray}
-\varphi_{vol} &=& \exp\Bigg(-\beta\bigg[{\Delta}E^A+{\Delta}E^B-N^{A}kT\ln{\frac{V^A+\Delta{V}}{V^A}}-N^{B}kT\ln{\frac{V^B+\Delta{V}}{V^B}}\bigg]\Bigg) \label{eq:volume-rearrangement-probability-all}
+\varphi_\mathrm{vol} &=& \exp\Bigg(-\beta\bigg[{\Delta}E^A+{\Delta}E^B-N^{A}kT\ln{\frac{V^A+\Delta{V}}{V^A}}-N^{B}kT\ln{\frac{V^B+\Delta{V}}{V^B}}\bigg]\Bigg) \label{eq:volume-rearrangement-probability-all}
 \end{eqnarray}
-であり、$\min(1, \varphi_{vol})$の確率で受け入れられる。
+であり、$\min(1, \varphi_\mathrm{vol})$の確率で受け入れられる。
 試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
 
 \subsubsection{粒子交換}\label{principle-subsubsec:particle-interchange}
@@ -322,7 +322,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 
 \large
 \begin{eqnarray}
-\varphi_{int}^A &=& \frac{\exp[-{\beta}E^A_{new}+\beta(N^A+1)\mu-\ln(N^A+1)!-3(N^A+1)\ln\lambda+(N^A+1)\ln{V^A}]}{\exp[-{\beta}E^A_{old}+{\beta}N^A{\mu}-\ln{N^A!}-3N^A\ln{\lambda}+N^A\ln(V^A)]}  \nonumber\\
+\varphi_\mathrm{int}^A &=& \frac{\exp[-{\beta}E^A_\mathrm{new}+\beta(N^A+1)\mu-\ln(N^A+1)!-3(N^A+1)\ln\lambda+(N^A+1)\ln{V^A}]}{\exp[-{\beta}E^A_\mathrm{old}+{\beta}N^A{\mu}-\ln{N^A!}-3N^A\ln{\lambda}+N^A\ln(V^A)]}  \nonumber\\
                 &=& \exp[-{\beta}{\Delta}E^A+\ln(zV^A/(N^A+1))]\label{eq:particle-interchange-probability-A}
 \end{eqnarray}
 \normalsize
@@ -332,18 +332,18 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 
 \large
 \begin{eqnarray}
-\varphi_{int}^B &=& \exp[-{\beta}{\Delta}E^A+\ln(N^B/zV^B)]\label{eq:particle-interchange-probability-B}
+\varphi_\mathrm{int}^B &=& \exp[-{\beta}{\Delta}E^A+\ln(N^B/zV^B)]\label{eq:particle-interchange-probability-B}
 \end{eqnarray}
 \normalsize
 で与えられ、式(\ref{eq:particle-interchange-probability-A}),(\ref{eq:particle-interchange-probability-B})より、全体として新旧の状態の確率比は、
 
 \large
 \begin{eqnarray}
-\varphi_{int} &=& \varphi_{int}^A×\varphi_{int}^B \nonumber\\
+\varphi_\mathrm{int} &=& \varphi_\mathrm{int}^A×\varphi_\mathrm{int}^B \nonumber\\
               &=& \exp\Bigg(-\beta\bigg[{\Delta}E^A+{\Delta}E^B+{kT}\ln{\frac{V^B(N^A+1)}{V^AN^B}}\bigg]\Bigg)\label{eq:particle-interchange-probability-all}
 \end{eqnarray}
 \normalsize
-であり、$\min(1, \varphi_{int})$の確率で受け入れられる。
+であり、$\min(1, \varphi_\mathrm{int})$の確率で受け入れられる。
 試行が拒否された場合、マルコフ連鎖の中で古い状態が再集計される。
 
 
