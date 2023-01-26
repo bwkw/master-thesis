@@ -7,6 +7,6 @@ set ylabel "{/Arial-Italic E}"
 set xlabel font "Arial,15"
 set ylabel font "Arial,15"
 set tics font "Arial,10"
-set key font"Arial,16"
+unset key
 
 plot "dis-poen.dat" u 1:3 with lines linewidth 5
