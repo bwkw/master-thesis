@@ -667,7 +667,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 本節では、この二つのパラメタを変化させた時の共沸組成の変化を観測する。
 
 
-\subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{method-subsec:bi-component-sigma-azeotrope-ratio}
+\subsection{二成分LJ系における直径と共沸組成の関係} \label{method-subsec:bi-component-sigma-azeotrope-ratio}
 二成分LJ系において${\sigma}$を変化させた時のシミュレーションにおけるパラメタを表\ref{table:bi-component-sigma-azeotrope-ratio-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-sigma-azeotrope-ratio-potential-parameter}に示す。
 
 \begin{table}[htbp]
@@ -699,7 +699,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \ref{results-subsec:bi-component-sigma-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、各$\sigma$において\ref{method-subsec:bi-asymmetric-component-azeotrope}節と同様な手法で共沸組成を求め、$\sigma$と共沸組成の関係を導出する。
 
 
-\subsection{二成分LJ系における$\epsilon$と共沸組成の関係} \label{method-subsec:bi-component-epsilon-azeotrope-ratio}
+\subsection{二成分LJ系におけるエネルギースケールと共沸組成の関係} \label{method-subsec:bi-component-epsilon-azeotrope-ratio}
 二成分LJ系において${\epsilon}$を変化させた時のシミュレーションにおけるパラメタを表\ref{table:bi-component-epsilon-azeotrope-ratio-parameter}に、各粒子間のポテンシャルパラメタ及びカットオフ距離を表\ref{table:bi-component-epsilon-azeotrope-ratio-potential-parameter}に示す。
 
 \begin{table}[htbp]
@@ -915,13 +915,13 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-表\ref{table:lan140493-lbn561971-ran3930-rbn15722-fitting}に示すように、Aの組成比0.2の時の、$X$の値を導出することが出来る。Aの組成比を0.02〜0.98に0.02刻みで変化させ、上記と同様のプロセスで各組成比における$X$を導出する。図\ref{fig:bi-symmetric}に、Aの組成比とその各組成比における$X$を示す。
+表\ref{table:lan140493-lbn561971-ran3930-rbn15722-fitting}に示すように、Aの組成比0.2の時の、共沸パラメタ$X$の値を導出することが出来る。Aの組成比を0.02〜0.98に0.02刻みで変化させ、上記と同様のプロセスで各組成比における$X$を導出する。図\ref{fig:bi-symmetric}に、Aの組成比とその各組成比における$X$を示す。
 
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=14cm]{fig/bi-symmetric/L100T1.0.pdf}
     \end{center}
-    \caption{相互作用が対称な二成分LJ系におけるAの組成比とその各組成比における$X$}
+    \caption{相互作用が対称な二成分LJ系におけるAの組成比とその各組成比における共沸パラメタ$X$}
     \label{fig:bi-symmetric}
 \end{figure}
 
@@ -935,22 +935,23 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \includegraphics[width=14cm]{fig/bi-asymmetric/L100T1.0E1.05.pdf}
     \end{center}
-    \caption{相互作用が非対称な二成分LJ系におけるAの組成比とその各組成比における$X$}
+    \caption{相互作用が非対称な二成分LJ系におけるAの組成比とその各組成比における共沸パラメタ$X$}
     \label{fig:bi-asymmetric}
 \end{figure}
 
+\newpage
 共沸条件は$X=0$であるから、図\ref{fig:bi-asymmetric}よりAの組成比$\neq0.5$で共沸現象が実現されていることが分かる。
 
 \newpage
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-parameter-azeotrope-ratio}
-\subsection{二成分LJ系における$\sigma$と共沸組成の関係} \label{results-subsec:bi-component-sigma-azeotrope-ratio}
+\subsection{二成分LJ系における直径と共沸組成の関係} \label{results-subsec:bi-component-sigma-azeotrope-ratio}
 \ref{results-subsec:bi-asymmetric-component-azeotrope}節と同様のプロセスで相互作用が非対称な二成分LJ系におけるBの組成比とその各組成比における$X$の関係を得る。ここで、図\ref{fig:bi-asymmetric}のx軸をBの組成比に置き換えたものを図\ref{fig:bi-asymmetric-b}に示す。
 
 \begin{figure}[htbp]
     \begin{center}
         \includegraphics[width=14cm]{fig/bi-asymmetric-b/L100T1.0E1.05.pdf}
     \end{center}
-    \caption{相互作用が非対称な二成分LJ系におけるBの組成比とその各組成比における$X$}
+    \caption{相互作用が非対称な二成分LJ系におけるBの組成比とその各組成比における共沸パラメタ$X$}
     \label{fig:bi-asymmetric-b}
 \end{figure}
 
@@ -961,7 +962,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \includegraphics[width=14cm]{fig/bi-asymmetric-b-part/L100T1.0E1.05.pdf}
     \end{center}
-    \caption{相互作用が非対称な二成分LJ系における共沸組成近傍のBの組成比と$X$}
+    \caption{相互作用が非対称な二成分LJ系における共沸組成近傍のBの組成比と共沸パラメタ$X$}
     \label{fig:bi-asymmetric-b-part}
 \end{figure}
 
@@ -979,7 +980,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 図\ref{fig:sigma-composition_ratio}から、$\sigma$を大きくすればするほど、その物質の共沸組成が小さくなることが分かる。
 
 \newpage
-\subsection{二成分LJ系における$\epsilon$と共沸組成の関係} \label{results-subsec:bi-component-epsilon-azeotrope-ratio}
+\subsection{二成分LJ系におけるエネルギースケールと共沸組成の関係} \label{results-subsec:bi-component-epsilon-azeotrope-ratio}
 \ref{results-subsec:bi-component-sigma-azeotrope-ratio}節と同様のプロセスで、$\epsilon=0.925〜1.3$の各$\epsilon$におけるBの共沸組成比を求める。このようにして導出した$\epsilon$とその各$\epsilon$におけるBの共沸組成比を図\ref{fig:epsilon-composition_ratio}に示す。
 
 \begin{figure}[htbp]
