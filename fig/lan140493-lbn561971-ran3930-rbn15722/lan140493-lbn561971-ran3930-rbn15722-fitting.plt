@@ -14,4 +14,4 @@ db(x) = (dbl+dbg)/2 - ((dbl-dbg)/2)*tanh((x-c)/(2*d))
 fit da(x) 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:2 via a, b, dal, dag
 fit db(x) 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:3 via c, d, dbl, dbg
 
-plot 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:2 title 'A-density' with points pt 1, da(x) title 'A-density-fit' with line lt 1 lc rgb hsv2rgb(0, 1, 1), 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:3 title 'B-density' with points pt 1, db(x) title 'B-density-fit' with line lt 1 lc rgb hsv2rgb(1, 1, 0)
+plot 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:2 title 'A' with points pt 1, da(x) notitle with line lt 1 lc rgb hsv2rgb(0, 1, 1), 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:3 title 'B' with points pt 1, db(x) notitle with line lt 1 lc rgb hsv2rgb(1, 1, 0)

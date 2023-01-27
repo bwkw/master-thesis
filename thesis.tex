@@ -754,7 +754,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
         \caption{各パラメタの値}
         \label{table:bi-component-addition-of-3rd-component-parameter}
         \begin{tabular}{c c c}
-            $T$ & timestep & ステップ数 \\
+            $T$ & 時間刻み & ステップ数 \\
             \hline
             1.0 & 0.001 & 7000000 \\
         \end{tabular}
@@ -765,7 +765,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \caption{各ポテンシャルパラメタ及びカットオフ距離の値}
         \label{table:bi-component-addition-of-3rd-component-potential-parameter}
-        \begin{tabular}{c c c c}
+        \begin{tabular}{c | c c c}
             & $\sigma$ & $\epsilon$ & $r_c$ \\
             \hline
             A-A & 1.0 & 1.0 & 3.0 \\
@@ -778,9 +778,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示したように、第三成分CはAとは強い引力相互作用をもち、Bとは弱い引力相互作用を持つ。
-
-\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質（=B）の最高濃度が上がることを確認する。尚、本研究ではAの組成比を0.0198〜0.9702に0.0198刻みで変化させた49本のシミュレーションを1つのジョブでスーパーコンピュータohtakaで並列実行した。また、1本のシミュレーションあたり2ノード、256プロセス並列、1スレッド並列で実行した。
+表\ref{table:bi-component-addition-of-3rd-component-potential-parameter}に示したように、第三成分CはAとは強い引力相互作用をもち、Bとは弱い引力相互作用を持つ。\ref{results-subsec:bi-component-addition-of-3rd-component-highest-purity}節では、上記のパラメタを元にシミュレーションを行い、相互作用が対称な二成分LJ系の結果（\ref{results-subsec:bi-symmetric-component-azeotrope}節）の共沸組成と比較し、共沸組成が変化し目的物質（=B）の最高濃度が上がることを確認する。尚、本研究ではAの組成比を0.0198〜0.9702に0.0198刻みで変化させた49本のシミュレーションを1つのジョブでスーパーコンピュータohtakaで並列実行した。また、1本のシミュレーションあたり2ノード、256プロセス並列、1スレッド並列で実行した。
 
 
 \subsection{第三成分の添加割合と目的物質の最高濃度の関係} \label{method-subsec:bi-component-addition-of-3rd-component-addition-ratio-highest-purity}
@@ -856,8 +854,8 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \begin{center}
         \caption{単成分LJ系における密度近似による気液密度値}
         \label{table:ln78732-rn10976-ld0.629856-rd0.087808-fitting}
-            \begin{tabular}{c || c | c}
-                & $\rho_l$ & $\rho_g$ \\
+            \begin{tabular}{c | c c}
+                & $\rho_l$ & $\rho_g$ \\\hline
                 先行研究 & 0.5891(1) & 0.0856(2) \\
                 本研究 & 0.641(1) & 0.054(1)
             \end{tabular}

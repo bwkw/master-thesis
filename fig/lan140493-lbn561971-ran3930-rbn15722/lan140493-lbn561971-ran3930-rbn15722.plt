@@ -9,4 +9,4 @@ set tics font 'Arial,10'
 set key font 'Arial,16'
 
 
-plot 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:2 title 'A-density' with points pt 1, 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:3 title 'B-density' with points pt 1
+plot 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:2 title 'A' with points pt 1, 'lan140493-lbn561971-ran3930-rbn15722.density' u 1:3 title 'B' with points pt 1
