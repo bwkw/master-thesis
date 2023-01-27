@@ -8,4 +8,4 @@ set xrange [0.0:2.0]
 set tics font 'Arial,10'
 set key font 'Arial,16'
 
-plot '3rd-component-addition-ratio-steps.dat' pt 1 ps 1 notitle
+plot '3rd-component-addition-ratio-steps.dat' pt 6 ps 1 notitle
