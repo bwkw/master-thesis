@@ -267,7 +267,7 @@ H(\mathbf{p},\mathbf{r}) &=& \sum_{i=1}^N\frac{\mathbf{p}_i^2}{2m_i}+U(\mathbf{r
 共沸現象は気液共存状態が実現され、かつ気相と液相の混合比が等しくなる条件であるから、共沸条件を調べるためには、まず気相と液相の共存状態を達成する必要がある。気液共存状態とは、与えられた環境(温度$T$や圧力$P$)において気相と液相の化学ポテンシャル$\mu$が等しい状況であり、その手法としてGE法、GDI法が用いられてきた。\ref{principle-subsec:gibbs-ensemble}節ではGE法を、\ref{principle-subsec:gibbs-duhem-integration}節ではGDI法をそれぞれ説明する。
 
 \subsection{GE法} \label{principle-subsec:gibbs-ensemble}
-ギブスアンサンブルモンテカルロ法(GEMC)は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
+ギブスアンサンブルモンテカルロ(GEMC)法は、Panagiotopoulosらによって開発され\cite{gibbs-ensemble-panagiotopoulos-1,gibbs-ensemble-panagiotopoulos-2}、単成分および多成分系の相平衡を効率的に計算するための手法として確立されてきた手法である\cite{gibbs-ensemble-phase-equilibrium-1,gibbs-ensemble-phase-equilibrium-2}。
 
 ギブスアンサンブルモンテカルロ法は、温度$T$で平衡状態にある液体(相A)と気体(相B)をシミュレートするために設計されている\cite{gibbs-ensemble-panagiotopoulos-2}。初期状態として、相Aは体積$V_A$のシミュレーションボックスに$N_A$個の粒子を、相Bは体積$V_B$のシミュレーションボックスに$N_B$個の粒子を含む。尚、粒子の総数$N=N_A+N_B$と総体積$V=V_A+V_B$はシミュレーションにおいて保存されているものとする。これにより二つのシミュレーションボックスは全体として物質量$N$、体積$V$、温度$T$が一定のNVTアンサンブルを形成する。シミュレーションは、粒子配置の変更・体積の再配置・粒子交換で構成される。
 
@@ -456,13 +456,13 @@ dS &=& S_B-S_A \nonumber \\
 最小二乗問題は、モデル関数とデータ点の誤差の二乗和で表される目的関数を最小化することで、パラメタ化された数学モデルをデータ点の集合に適合させるものである。今、独立変数$t$と$n$個のパラメタ$\bm{p}$のベクトルからなるモデル関数$\hat{y}(t;\bm{p})$、$m$個のデータ点$(t_i, y_i)$が存在する時、最小二乗問題は$\hat{y}(t;\bm{p})$と$m$個のデータ点$(t_i, y_i)$の間の誤差（または重み付き残差）の重み付き二乗和を最小化することに等しく、目的関数は
 \large
 \begin{eqnarray}
-\chi^2(\bm{p}) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_(y_i)}\Bigg]^2 \nonumber\\
+\chi^2(\bm{p}) &=& \sum_{i=1}^{m}\Bigg[\frac{y(t_i)-\hat{y}(t_i;\bm{p})}{\sigma_{(y_i)}}\Bigg]^2 \nonumber\\
                &=& (\bm{y}-\hat{\bm{y}}(\bm{p}))^\top\bm{W}(\bm{y}-\hat{\bm{y}}(\bm{p})) \nonumber\\
                &=& \bm{y}^\top\bm{W}\bm{y}-2\bm{y}^\top\bm{W}\hat{\bm{y}}+\hat{\bm{y}}^\top\bm{W}\hat{\bm{y}} \label{eq:queue-residual-error}
 \end{eqnarray}
 \normalsize
 で与えられる。
-ここで、$\sigma_(y_i)$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
+ここで、$\sigma_{(y_i)}$はデータ$y(t_i)$の測定誤差、$\bm{W}$は重み付け行列を示す\cite{gradient-descent_gauss-newton_levenberg-marquardt}。
 
 \subsection{勾配降下法}\label{principle-subsec:gradient-descent}
 勾配降下法は、パラメタ値を下り坂方向、つまり目的関数の勾配と反対方向に更新する最小化手法である。勾配降下法は、単純な目的関数の最小化問題においては、非常によく収束することが知られている\cite{gradient-descent}。パラメタに関するカイ二乗目的関数の勾配は、
@@ -624,7 +624,6 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-\newpage
 表\ref{table:symmetric-bi-component-azeotrope-parameter}, \ref{table:symmetric-bi-component-azeotrope-potential-parameter}に示したパラメタを基に、MDシミュレーションをLAMMPSで実行して、各粒子の座標を出力し、各位置$x$\,(0.0〜1.0の0.0025刻み)における密度を測定する。尚、各粒子の密度は最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。このように粒子の密度を測定しプロットすることで、最終的に気液共存状態が実現されていることを確認する。
 
 \ref{results-subsec:bi-symmetric-component-azeotrope}節では、Aの組成比を0.02〜0.98に0.02刻みで変化させ、各組成比において上記の手法で気液共存状態を実現する。その後、気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に各組成比において共沸パラメタ$X=g_Al_B-l_Ag_B$を求め、共沸パラメタ$X=0$となる共沸組成を導出する。尚、本研究ではAの組成比を0.02〜0.98に0.02刻みで変化させた49本のシミュレーションを1つのジョブでスーパーコンピュータohtakaで並列実行した。また、1本のシミュレーションあたり2ノード、256プロセス並列、1スレッド並列で実行した。
@@ -659,6 +658,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
+\newpage
 表\ref{table:asymmetric-bi-component-azeotrope-parameter}, \ref{table:asymmetric-bi-component-azeotrope-potential-parameter}パラメタを基に、MDシミュレーションをLAMMPSで実行して、各粒子の座標を出力し、各位置$x$\,(0.0〜1.0の0.0025刻み)における密度を測定する。尚、各粒子の密度は最後の1000000ステップから1000ステップ刻みに各粒子の位置座標を出力した1000個の結果の平均を取るものとする。このように粒子の密度を測定しプロットすることで、最終的に気液共存状態が実現されていることを確認する。
 
 \ref{results-subsec:bi-asymmetric-component-azeotrope}節では、Aの組成比を0.02〜0.98に0.02刻みで変化させ、各組成比において上記の手法で気液共存状態を実現する。その後、気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$を元に各組成比において共沸パラメタ$X=g_Al_B-l_Ag_B$を求め、共沸パラメタ$X=0$となる共沸組成を導出する。尚、本研究ではAの組成比を0.02〜0.98に0.02刻みで変化させた49本のシミュレーションを1つのジョブでスーパーコンピュータohtakaで並列実行した。また、1本のシミュレーションあたり2ノード、256プロセス並列、1スレッド並列で実行した。
@@ -730,7 +730,6 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \end{center}
 \end{table}
 
-\newpage
 \ref{results-subsec:bi-component-epsilon-azeotrope-ratio}節では、上記のパラメタを元にシミュレーションを行い、各$\epsilon$において\ref{method-subsec:bi-asymmetric-component-azeotrope}節と同様な手法で共沸組成を求め、$\epsilon$と共沸組成の関係を導出する。
 
 
@@ -831,6 +830,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:ln78732-rn10976-ld0.629856-rd0.087808}
 \end{figure}
 
+\newpage
 図\ref{fig:ln78732-rn10976-ld0.629856-rd0.087808}より、$x:0.2〜0.45$で液体状態を、$x:0.45〜0.55$で気液界面を、$x:0.55〜0.8$で気体状態をとる、気液共存状態が実現されていることが分かる。ここで、気液界面およびその近傍の密度プロファイルの関数は、次のような式で表されることが知られている\cite{gas-liquid-interface-density-profile}。
 \large
 \begin{eqnarray}
@@ -901,8 +901,6 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:lan140493-lbn561971-ran3930-rbn15722-fitting}
 \end{figure}
 
-\newpage
-
 図\ref{fig:lan140493-lbn561971-ran3930-rbn15722-fitting}より得られた、気液共存状態におけるA, Bの気相密度$g_A, g_B$、液相密度$l_A, l_B$、$X=g_Al_B-l_Ag_B$を表\ref{table:lan140493-lbn561971-ran3930-rbn15722-fitting}に示す。
 
 \begin{table}[htbp]
@@ -927,6 +925,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
     \label{fig:bi-symmetric}
 \end{figure}
 
+\newpage
 共沸条件は$X=0$であるから、図\ref{fig:bi-symmetric}より、Aの組成比$\approx0.5$で共沸現象が実現されていることが分かる。
 
 
@@ -944,7 +943,6 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \newpage
 共沸条件は$X=0$であるから、図\ref{fig:bi-asymmetric}よりAの組成比$\neq0.5$で共沸現象が実現されていることが分かる。
 
-\newpage
 \section{二成分LJ系におけるポテンシャルパラメタと共沸組成の関係} \label{results-sec:bi-component-potential-parameter-azeotrope-ratio}
 \subsection{二成分LJ系における直径と共沸組成の関係} \label{results-subsec:bi-component-sigma-azeotrope-ratio}
 \ref{results-subsec:bi-asymmetric-component-azeotrope}節と同様のプロセスで相互作用が非対称な二成分LJ系におけるBの組成比とその各組成比における$X$の関係を得る。ここで、図\ref{fig:bi-asymmetric}のx軸をBの組成比に置き換えたものを図\ref{fig:bi-asymmetric-b}に示す。
@@ -958,7 +956,7 @@ LJ系では、ある温度、密度条件では気相と液相が相分離する
 \end{figure}
 
 \newpage
-図\ref{fig:bi-asymmetric-b}の赤く囲まれた部分を抽出し、以下の図\ref{fig:bi-asymmetric-b-part}のようにして、共沸組成を誤差付きで導出する。
+図\ref{fig:bi-asymmetric-b}の赤く囲まれた部分を抽出し、図\ref{fig:bi-asymmetric-b-part}のようにして、共沸組成を誤差付きで導出する。
 
 \begin{figure}[htbp]
     \begin{center}
